@@ -7,10 +7,10 @@ const router = Router();
 
 const echoSchema = z.object({
   body: z.object({
-    message: z.string().min(1)
+    message: z.string().min(1),
   }),
   query: z.any(),
-  params: z.any()
+  params: z.any(),
 });
 
 router.post("/echo", validate(echoSchema), echo);
