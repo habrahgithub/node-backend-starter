@@ -3,13 +3,16 @@ import swaggerUi from "swagger-ui-express";
 import { openapiSpec } from "./openapi.js";
 import routes from "./routes/index.js";
 import { notFound, internalServerError } from "./errors.js";
+import { requestId } from "./middleware/requestId.js";
 
 export const createApp = () => {
   const app = express();
   app.use(express.json());
 
+  app.use(requestId);
+
   app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
+    console.log(`[${req.requestId}] ${req.method} ${req.url}`);
     next();
   });
 
@@ -26,7 +29,7 @@ export const createApp = () => {
   });
 
   app.use((err, req, res, _next) => {
-    console.error(err);
+    console.error(`[${req.requestId}]`, err);
     res.status(500).json(internalServerError());
   });
 

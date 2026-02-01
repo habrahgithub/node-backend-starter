@@ -53,3 +53,18 @@ it("validation error includes message", async () => {
   expect(typeof res.body.message).toBe("string");
   expect(Array.isArray(res.body.details)).toBe(true);
 });
+
+it("adds x-request-id when missing", async () => {
+  const app = createApp();
+  const res = await request(app).get("/api/v1/health");
+  expect(res.status).toBe(200);
+  expect(typeof res.headers["x-request-id"]).toBe("string");
+  expect(res.headers["x-request-id"].length).toBeGreaterThan(0);
+});
+
+it("echoes back provided x-request-id", async () => {
+  const app = createApp();
+  const res = await request(app).get("/api/v1/health").set("x-request-id", "habib-test-123");
+  expect(res.status).toBe(200);
+  expect(res.headers["x-request-id"]).toBe("habib-test-123");
+});
