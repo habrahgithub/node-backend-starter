@@ -2,6 +2,7 @@ import express from "express";
 import swaggerUi from "swagger-ui-express";
 import { openapiSpec } from "./openapi.js";
 import routes from "./routes/index.js";
+import { notFound, internalServerError } from "./errors.js";
 
 export const createApp = () => {
   const app = express();
@@ -21,12 +22,12 @@ export const createApp = () => {
   app.use("/api/v1", routes);
 
   app.use((req, res) => {
-    res.status(404).json({ ok: false, error: "Not Found" });
+    res.status(404).json(notFound());
   });
 
   app.use((err, req, res, _next) => {
     console.error(err);
-    res.status(500).json({ ok: false, error: "Internal Server Error" });
+    res.status(500).json(internalServerError());
   });
 
   return app;

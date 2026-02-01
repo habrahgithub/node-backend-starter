@@ -1,11 +1,51 @@
+const ErrorResponse = {
+  type: "object",
+  properties: {
+    ok: { type: "boolean", example: false },
+    error: { type: "string" },
+    message: { type: "string" },
+    details: {},
+  },
+  required: ["ok", "error", "message"],
+};
+
 export const openapiSpec = {
   openapi: "3.0.3",
   info: {
     title: "Node Backend Starter",
     version: "1.0.0",
-    description: "Starter backend with versioned API, validation, tests, and CI",
+    description: "Starter backend with versioned API, validation, tests, CI, and docs",
   },
   servers: [{ url: "/" }],
+  components: {
+    schemas: {
+      ErrorResponse,
+      HealthResponse: {
+        type: "object",
+        properties: {
+          ok: { type: "boolean", example: true },
+          service: { type: "string", example: "node-backend-starter" },
+          time: { type: "string", example: "2026-02-01T07:11:47.985Z" },
+        },
+        required: ["ok", "service", "time"],
+      },
+      EchoRequest: {
+        type: "object",
+        properties: {
+          message: { type: "string", minLength: 1 },
+        },
+        required: ["message"],
+      },
+      EchoResponse: {
+        type: "object",
+        properties: {
+          ok: { type: "boolean", example: true },
+          message: { type: "string" },
+        },
+        required: ["ok", "message"],
+      },
+    },
+  },
   paths: {
     "/api/v1/health": {
       get: {
@@ -15,15 +55,15 @@ export const openapiSpec = {
             description: "Service is healthy",
             content: {
               "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    ok: { type: "boolean" },
-                    service: { type: "string" },
-                    time: { type: "string" },
-                  },
-                  required: ["ok", "service", "time"],
-                },
+                schema: { $ref: "#/components/schemas/HealthResponse" },
+              },
+            },
+          },
+          500: {
+            description: "Unexpected server error",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/ErrorResponse" },
               },
             },
           },
@@ -37,13 +77,7 @@ export const openapiSpec = {
           required: true,
           content: {
             "application/json": {
-              schema: {
-                type: "object",
-                properties: {
-                  message: { type: "string", minLength: 1 },
-                },
-                required: ["message"],
-              },
+              schema: { $ref: "#/components/schemas/EchoRequest" },
             },
           },
         },
@@ -52,14 +86,7 @@ export const openapiSpec = {
             description: "Echo response",
             content: {
               "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    ok: { type: "boolean" },
-                    message: { type: "string" },
-                  },
-                  required: ["ok", "message"],
-                },
+                schema: { $ref: "#/components/schemas/EchoResponse" },
               },
             },
           },
@@ -67,15 +94,15 @@ export const openapiSpec = {
             description: "Validation error",
             content: {
               "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    ok: { type: "boolean" },
-                    error: { type: "string" },
-                    details: { type: "array" },
-                  },
-                  required: ["ok", "error", "details"],
-                },
+                schema: { $ref: "#/components/schemas/ErrorResponse" },
+              },
+            },
+          },
+          500: {
+            description: "Unexpected server error",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/ErrorResponse" },
               },
             },
           },

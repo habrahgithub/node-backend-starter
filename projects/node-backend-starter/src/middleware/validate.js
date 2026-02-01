@@ -1,3 +1,5 @@
+import { validationError } from "../errors.js";
+
 export const validate = (schema) => (req, res, next) => {
   const result = schema.safeParse({
     body: req.body,
@@ -6,11 +8,7 @@ export const validate = (schema) => (req, res, next) => {
   });
 
   if (!result.success) {
-    return res.status(400).json({
-      ok: false,
-      error: "ValidationError",
-      details: result.error.issues,
-    });
+    return res.status(400).json(validationError(result.error.issues));
   }
 
   req.validated = result.data;
