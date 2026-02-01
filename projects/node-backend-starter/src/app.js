@@ -4,12 +4,23 @@ import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import { openapiSpec } from "./openapi.js";
 import routes from "./routes/index.js";
-import { notFound, internalServerError } from "./errors.js";
+import { notFound, internalServerError, rateLimitExceeded } from "./errors.js";
 import { requestIdMiddleware } from "./middleware/requestId.middleware.js";
+
+const getRateLimitConfig = () => {
+  const windowMsRaw = Number.parseInt(process.env.RATE_LIMIT_WINDOW_MS, 10);
+  const maxRaw = Number.parseInt(process.env.RATE_LIMIT_MAX, 10);
+
+  return {
+    windowMs: Number.isFinite(windowMsRaw) && windowMsRaw > 0 ? windowMsRaw : 15 * 60 * 1000,
+    max: Number.isFinite(maxRaw) && maxRaw > 0 ? maxRaw : 300,
+  };
+};
 
 export const createApp = () => {
   const app = express();
   app.use(requestIdMiddleware);
+  app.use(helmet());
 
   app.use(express.json());
 
@@ -18,19 +29,16 @@ export const createApp = () => {
     next();
   });
 
-  // Security headers
-  app.use(
-    helmet({
-      contentSecurityPolicy: false
-    })
-  );
-
   // Rate limit API only (docs stay accessible)
+  const { windowMs, max } = getRateLimitConfig();
   const apiLimiter = rateLimit({
-    windowMs: 60 * 1000,
-    limit: 120,
+    windowMs,
+    max,
     standardHeaders: true,
-    legacyHeaders: false
+    legacyHeaders: false,
+    handler: (req, res) => {
+      res.status(429).json(rateLimitExceeded());
+    },
   });
 
   app.get("/openapi.json", (req, res) => {

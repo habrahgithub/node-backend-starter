@@ -59,6 +59,14 @@ export const openapiSpec = {
               },
             },
           },
+          429: {
+            description: "Too many requests",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/ErrorResponse" },
+              },
+            },
+          },
           500: {
             description: "Unexpected server error",
             content: {
@@ -92,6 +100,14 @@ export const openapiSpec = {
           },
           400: {
             description: "Validation error",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/ErrorResponse" },
+              },
+            },
+          },
+          429: {
+            description: "Too many requests",
             content: {
               "application/json": {
                 schema: { $ref: "#/components/schemas/ErrorResponse" },

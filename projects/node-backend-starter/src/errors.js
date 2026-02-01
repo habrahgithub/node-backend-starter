@@ -15,3 +15,5 @@ export const internalServerError = () =>
 
 export const validationError = (issues) =>
   errorResponse("ValidationError", "Request validation failed", issues);
+
+export const rateLimitExceeded = () => errorResponse("RateLimitExceeded", "Too many requests", []);

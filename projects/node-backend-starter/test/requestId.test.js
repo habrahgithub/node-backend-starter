@@ -6,10 +6,7 @@ describe("request id middleware", () => {
   it("auto generates x-request-id when missing", async () => {
     const app = createApp();
 
-    const res = await request(app)
-      .post("/api/v1/echo")
-      .send({ message: "hello" })
-      .expect(200);
+    const res = await request(app).post("/api/v1/echo").send({ message: "hello" }).expect(200);
 
     const rid = res.headers["x-request-id"];
     expect(typeof rid).toBe("string");
