@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import routes from "./routes/index.js";
 
 dotenv.config();
 
@@ -12,40 +13,22 @@ app.use((req, res, next) => {
   next();
 });
 
-const PORT = process.env.PORT || 3000;
+// routes
+app.use(routes);
 
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    ok: true,
-    service: "node-backend-starter",
-    time: new Date().toISOString()
-  });
-});
-
-// basic error handler
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).json({ ok: false, error: "Internal Server Error" });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next();
-});
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next();
-});
+// 404 handler
 app.use((req, res) => {
   res.status(404).json({ ok: false, error: "Not Found" });
 });
+
+// error handler
 app.use((err, req, res, next) => {
   console.error("Unhandled error:", err);
   res.status(500).json({ ok: false, error: "Internal Server Error" });
 });
+
+const PORT = process.env.PORT || 3000;
+
 const server = app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
@@ -57,7 +40,6 @@ const shutdown = (signal) => {
     process.exit(0);
   });
 
-  // Force exit if stuck connections remain
   setTimeout(() => {
     console.error("Force exiting after timeout.");
     process.exit(1);
