@@ -48,3 +48,37 @@ const shutdown = (signal) => {
 
 process.on("SIGINT", () => shutdown("SIGINT"));
 process.on("SIGTERM", () => shutdown("SIGTERM"));
+let isShuttingDown = false;
+
+const shutdown = (signal) => {
+  if (isShuttingDown) return;
+  isShuttingDown = true;
+
+  console.log(`Received ${signal}. Shutting down...`);
+
+  // Node can keep sockets open due to keep alive.
+  // These helpers exist on newer Node versions.
+  try {
+    if (typeof server.closeIdleConnections === "function") {
+      server.closeIdleConnections();
+    }
+    if (typeof server.closeAllConnections === "function") {
+      server.closeAllConnections();
+    }
+  } catch (e) {
+    // ignore
+  }
+
+  server.close(() => {
+    console.log("HTTP server closed.");
+    process.exit(0);
+  });
+
+  setTimeout(() => {
+    console.error("Force exiting after timeout.");
+    process.exit(1);
+  }, 10_000).unref();
+};
+
+process.once("SIGINT", () => shutdown("SIGINT"));
+process.once("SIGTERM", () => shutdown("SIGTERM"));
