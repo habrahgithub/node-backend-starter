@@ -44,6 +44,29 @@ export const openapiSpec = {
         },
         required: ["ok", "message"],
       },
+      MeResponse: {
+        type: "object",
+        properties: {
+          ok: { type: "boolean", example: true },
+          user: {
+            type: "object",
+            properties: {
+              sub: { type: "string", example: "user-123" },
+              email: { type: "string", example: "user@example.com" },
+              roles: { type: "array", items: { type: "string" }, example: ["user"] },
+            },
+            required: ["sub", "email", "roles"],
+          },
+        },
+        required: ["ok", "user"],
+      },
+    },
+    securitySchemes: {
+      bearerAuth: {
+        type: "http",
+        scheme: "bearer",
+        bearerFormat: "JWT",
+      },
     },
   },
   paths: {
@@ -108,6 +131,38 @@ export const openapiSpec = {
           },
           429: {
             description: "Too many requests",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/ErrorResponse" },
+              },
+            },
+          },
+          500: {
+            description: "Unexpected server error",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/ErrorResponse" },
+              },
+            },
+          },
+        },
+      },
+    },
+    "/api/v1/me": {
+      get: {
+        summary: "Get current user",
+        security: [{ bearerAuth: [] }],
+        responses: {
+          200: {
+            description: "Current user",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/MeResponse" },
+              },
+            },
+          },
+          401: {
+            description: "Unauthorized",
             content: {
               "application/json": {
                 schema: { $ref: "#/components/schemas/ErrorResponse" },
