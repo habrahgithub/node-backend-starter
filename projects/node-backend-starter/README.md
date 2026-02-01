@@ -32,8 +32,18 @@ initialDelaySeconds: 5
 periodSeconds: 10
 
 livenessProbe:
-httpGet:
-path: /api/v1/health
-port: 3000
-initialDelaySeconds: 10
-periodSeconds: 20
+  httpGet:
+    path: /api/v1/health
+    port: 3000
+  initialDelaySeconds: 10
+  periodSeconds: 20
+
+## Release status
+
+Stable v1.0.0
+No direct commits to main; use PRs or feature branches.
+
+## Release status
+
+Stable v1.0.0
+No direct commits to main; use PRs or feature branches.
