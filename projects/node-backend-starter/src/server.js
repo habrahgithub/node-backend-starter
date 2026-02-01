@@ -1,58 +1,16 @@
-import express from "express";
 import dotenv from "dotenv";
-import routes from "./routes/index.js";
+import { createApp } from "./app.js";
 
 dotenv.config();
 
-const app = express();
-app.use(express.json());
-
-/* =========================
-   Request logging
-========================= */
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next();
-});
-
-/* =========================
-   Routes
-========================= */
-app.use("/api/v1", routes);
-
-/* =========================
-   404 handler
-========================= */
-app.use((req, res) => {
-  res.status(404).json({
-    ok: false,
-    error: "Not Found",
-  });
-});
-
-/* =========================
-   Error handler
-========================= */
-app.use((err, req, res, _next) => {
-  console.error(err);
-  res.status(500).json({
-    ok: false,
-    error: "Internal Server Error",
-  });
-});
-
-/* =========================
-   Server start
-========================= */
 const PORT = process.env.PORT || 3000;
+
+const app = createApp();
 
 const server = app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 
-/* =========================
-   Graceful shutdown (SAFE)
-========================= */
 let isShuttingDown = false;
 
 const shutdown = (signal) => {
