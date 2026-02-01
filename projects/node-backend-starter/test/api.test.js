@@ -28,3 +28,9 @@ describe("API v1", () => {
     expect(Array.isArray(res.body.details)).toBe(true);
   });
 });
+it("GET /openapi.json returns spec", async () => {
+  const app = createApp();
+  const res = await request(app).get("/openapi.json");
+  expect(res.status).toBe(200);
+  expect(res.body.openapi).toBe("3.0.3");
+});

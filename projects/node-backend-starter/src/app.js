@@ -1,25 +1,29 @@
 import express from "express";
+import swaggerUi from "swagger-ui-express";
+import { openapiSpec } from "./openapi.js";
 import routes from "./routes/index.js";
 
 export const createApp = () => {
   const app = express();
   app.use(express.json());
 
-  // request logging
   app.use((req, res, next) => {
     console.log(`${req.method} ${req.url}`);
     next();
   });
 
-  // routes
+  app.get("/openapi.json", (req, res) => {
+    res.json(openapiSpec);
+  });
+
+  app.use("/docs", swaggerUi.serve, swaggerUi.setup(openapiSpec));
+
   app.use("/api/v1", routes);
 
-  // 404 handler
   app.use((req, res) => {
     res.status(404).json({ ok: false, error: "Not Found" });
   });
 
-  // error handler
   app.use((err, req, res, _next) => {
     console.error(err);
     res.status(500).json({ ok: false, error: "Internal Server Error" });
