@@ -34,3 +34,22 @@ it("GET /openapi.json returns spec", async () => {
   expect(res.status).toBe(200);
   expect(res.body.openapi).toBe("3.0.3");
 });
+
+it("unknown route returns standardized 404", async () => {
+  const app = createApp();
+  const res = await request(app).get("/does-not-exist");
+  expect(res.status).toBe(404);
+  expect(res.body.ok).toBe(false);
+  expect(res.body.error).toBe("NotFound");
+  expect(typeof res.body.message).toBe("string");
+});
+
+it("validation error includes message", async () => {
+  const app = createApp();
+  const res = await request(app).post("/api/v1/echo").send({ message: "" });
+  expect(res.status).toBe(400);
+  expect(res.body.ok).toBe(false);
+  expect(res.body.error).toBe("ValidationError");
+  expect(typeof res.body.message).toBe("string");
+  expect(Array.isArray(res.body.details)).toBe(true);
+});
