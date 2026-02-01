@@ -1,14 +1,20 @@
 import dotenv from "dotenv";
 import { createApp } from "./app.js";
+import { loadEnv } from "./config/env.js";
 
 dotenv.config();
 
-const PORT = process.env.PORT || 3000;
+const { port } = loadEnv();
 
 const app = createApp();
 
-const server = app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+const server = app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+
+server.on("error", (err) => {
+  console.error("Failed to start server:", err);
+  process.exit(1);
 });
 
 let isShuttingDown = false;
