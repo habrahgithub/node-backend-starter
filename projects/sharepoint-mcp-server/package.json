@@ -1,0 +1,23 @@
+{
+  "name": "docsmith-connect-m365",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "DocSmith Connect for Microsoft 365: governed SharePoint/Microsoft Lists connector for MCP",
+  "dependencies": {
+    "@azure/msal-node": "^5.0.3",
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "dotenv": "^17.2.4",
+    "zod": "^4.3.6"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

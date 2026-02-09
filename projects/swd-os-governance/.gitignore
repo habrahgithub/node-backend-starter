@@ -1,0 +1,3 @@
+# SWD local execution logs
+.swd/
+*.local.md
