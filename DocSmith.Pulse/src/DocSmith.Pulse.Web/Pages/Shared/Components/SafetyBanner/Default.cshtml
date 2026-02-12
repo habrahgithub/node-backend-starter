@@ -1,0 +1,16 @@
+@model DocSmith.Pulse.Web.Models.SafetyBannerVm
+
+@if (Model.IsKillSwitchEnabled)
+{
+    <div class="alert alert-danger py-2 mb-3" role="alert">
+        <strong>DocSmith Pulse is disabled by admin Kill Switch.</strong>
+        Generate, queue, export, scheduler, and integration actions are blocked.
+    </div>
+}
+else if (Model.IsSafeModeEnabled)
+{
+    <div class="alert alert-warning py-2 mb-3" role="alert">
+        <strong>Organization Safe Mode is ON.</strong>
+        Automation and unsafe actions are blocked. Audit logging is active.
+    </div>
+}

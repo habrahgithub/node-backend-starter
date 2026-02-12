@@ -1,0 +1,56 @@
+@page
+@model DocSmith.Pulse.Web.Pages.DailyPulseModel
+@{
+    ViewData["Title"] = "Daily Pulse";
+}
+
+<h2>Daily Pulse</h2>
+
+<div class="card mb-3">
+    <div class="card-header">Today's Post</div>
+    <div class="card-body">
+        @if (Model.TodaysPost == null || Model.TodaysPost.ContentIdea == null)
+        {
+            <p>No scheduled post for today.</p>
+        }
+        else
+        {
+            <p><strong>Idea #@Model.TodaysPost.ContentIdeaId</strong> - @Model.TodaysPost.ContentIdea.Topic</p>
+            <p><strong>Scheduled UTC:</strong> @Model.TodaysPost.ContentIdea.ScheduledForUtc?.ToString("yyyy-MM-dd HH:mm")</p>
+            <textarea class="form-control mb-2" rows="8" readonly>@Model.TodaysPost.DraftText
+
+@Model.TodaysPost.Hashtags</textarea>
+
+            <form method="post" asp-page-handler="MarkPosted">
+                <input type="hidden" name="draftId" value="@Model.TodaysPost.Id" />
+                <button type="submit" class="btn btn-success" disabled="@Model.IsPulseDisabled">Mark Posted</button>
+            </form>
+        }
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header">Today's Comments Queue</div>
+    <div class="card-body">
+        @if (Model.TodaysComments.Count == 0)
+        {
+            <p>No queued engagement items.</p>
+        }
+        else
+        {
+            foreach (var item in Model.TodaysComments)
+            {
+                <div class="border rounded p-3 mb-2">
+                    <p class="mb-1"><strong>@item.AuthorName</strong> (@item.Status)</p>
+                    <p class="mb-2 small">@item.PostUrl</p>
+                    <textarea class="form-control mb-2" rows="2" readonly>@item.DraftCommentShort</textarea>
+                    <textarea class="form-control mb-2" rows="4" readonly>@item.DraftCommentMedium</textarea>
+                    <form method="post" asp-page-handler="MarkCommentUsed">
+                        <input type="hidden" name="targetId" value="@item.Id" />
+                        <button type="submit" class="btn btn-outline-primary btn-sm" disabled="@Model.IsPulseDisabled">Mark Comment Used</button>
+                    </form>
+                </div>
+            }
+        }
+    </div>
+</div>

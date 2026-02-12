@@ -1,0 +1,80 @@
+@page "{id:int?}"
+@model DocSmith.Pulse.Web.Pages.DraftsModel
+@{
+    ViewData["Title"] = "Drafts";
+}
+
+<h2>Drafts</h2>
+
+<form method="get" class="row g-2 mb-3">
+    <div class="col-md-6">
+        <select name="id" class="form-select">
+            <option value="">Select idea...</option>
+            @foreach (var option in Model.IdeaOptions)
+            {
+                <option value="@option.Id" selected="@(Model.Idea?.Id == option.Id ? "selected" : null)">#@option.Id - @option.Topic (@option.Status)</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-outline-secondary">Load</button>
+    </div>
+</form>
+
+@if (Model.Idea == null)
+{
+    <p>Choose an idea to view drafts.</p>
+}
+else
+{
+    <p><strong>Idea:</strong> @Model.Idea.Topic</p>
+    <p><strong>Status:</strong> @Model.Idea.Status</p>
+
+    @if (Model.Drafts.Count == 0)
+    {
+        <p>No drafts found. Generate drafts from Ideas page.</p>
+    }
+    else
+    {
+        foreach (var draft in Model.Drafts)
+        {
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>Variant @draft.VariantNo @(draft.IsApproved ? "(Approved)" : "")</h5>
+                    <textarea class="form-control mb-2" rows="8" readonly>@draft.DraftText
+
+@draft.Hashtags</textarea>
+
+                    <div class="d-flex gap-2">
+                        <form method="post" asp-page-handler="Approve">
+                            <input type="hidden" name="draftId" value="@draft.Id" />
+                            <button type="submit" class="btn btn-sm btn-outline-primary" disabled="@Model.IsPulseDisabled">Approve</button>
+                        </form>
+                        <form method="post" asp-page-handler="Export">
+                            <input type="hidden" name="draftId" value="@draft.Id" />
+                            <button type="submit" class="btn btn-sm btn-outline-secondary" disabled="@Model.IsPulseDisabled">Export .md</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    @if (Model.Idea.Status == DocSmith.Pulse.Core.Enums.ContentIdeaStatus.Approved)
+    {
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5>Schedule Approved Draft</h5>
+                <form method="post" asp-page-handler="Schedule" class="row g-2">
+                    <input type="hidden" name="ideaId" value="@Model.Idea.Id" />
+                    <div class="col-md-4">
+                        <input type="datetime-local" name="scheduledForUtc" class="form-control" required />
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-success" disabled="@Model.IsPulseDisabled">Schedule</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,103 @@
+@page
+@model DocSmith.Pulse.Web.Pages.IdeasModel
+@{
+    ViewData["Title"] = "Ideas";
+}
+
+<h2>Ideas</h2>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="post" asp-page-handler="Add" class="row g-3">
+            <div class="col-md-6">
+                <label asp-for="Input.Topic" class="form-label">Topic</label>
+                <input asp-for="Input.Topic" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.Persona" class="form-label">Persona</label>
+                <select asp-for="Input.Persona" class="form-select">
+                    <option>SME Founder</option>
+                    <option>HR Admin</option>
+                    <option>Accountant</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.ContentType" class="form-label">Content Type</label>
+                <select asp-for="Input.ContentType" class="form-select">
+                    <option value="Tip">Tip</option>
+                    <option value="Checklist">Checklist</option>
+                    <option value="MythVsFact">Myth vs Fact</option>
+                    <option value="MicroCase">Micro-case</option>
+                    <option value="FieldNote">Field note</option>
+                    <option value="Insight">Insight</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Input.CtaStyle" class="form-label">CTA Style</label>
+                <select asp-for="Input.CtaStyle" class="form-select">
+                    <option value="None">None</option>
+                    <option value="Soft">Soft</option>
+                    <option value="Neutral">Neutral</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Input.CampaignId" class="form-label">Campaign</label>
+                <select asp-for="Input.CampaignId" class="form-select">
+                    <option value="">No campaign</option>
+                    @foreach (var campaign in Model.Campaigns)
+                    {
+                        <option value="@campaign.Id">@campaign.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Input.KeyPoint" class="form-label">Key Point</label>
+                <input asp-for="Input.KeyPoint" class="form-control" />
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Add Idea</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table table-sm table-striped align-middle">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Topic</th>
+        <th>Campaign</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Scheduled UTC</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.Ideas.Count == 0)
+    {
+        <tr><td colspan="7">No ideas yet.</td></tr>
+    }
+    else
+    {
+        foreach (var item in Model.Ideas)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Topic</td>
+                <td>@(item.Campaign?.Name ?? "-")</td>
+                <td>@item.ContentType</td>
+                <td>@item.Status</td>
+                <td>@(item.ScheduledForUtc?.ToString("yyyy-MM-dd HH:mm") ?? "-")</td>
+                <td>
+                    <form method="post" asp-page-handler="Generate" class="d-inline">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit" class="btn btn-sm btn-outline-primary" disabled="@Model.IsPulseDisabled">Generate 3 Drafts</button>
+                    </form>
+                    <a asp-page="/Drafts" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary ms-1">View Drafts</a>
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>

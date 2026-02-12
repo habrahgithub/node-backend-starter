@@ -1,0 +1,96 @@
+@page
+@model DocSmith.Pulse.Web.Pages.CampaignsModel
+@{
+    ViewData["Title"] = "Campaigns";
+}
+
+<h2>Campaigns</h2>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="post" asp-page-handler="Add" class="row g-2">
+            <div class="col-md-4">
+                <label asp-for="NewCampaign.Name" class="form-label">Name</label>
+                <input asp-for="NewCampaign.Name" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label asp-for="NewCampaign.Objective" class="form-label">Objective</label>
+                <input asp-for="NewCampaign.Objective" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="NewCampaign.StartsOnUtc" class="form-label">Start</label>
+                <input asp-for="NewCampaign.StartsOnUtc" type="date" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="NewCampaign.EndsOnUtc" class="form-label">End</label>
+                <input asp-for="NewCampaign.EndsOnUtc" type="date" class="form-control" />
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Create Campaign</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h5>Generate 7-Day Pack</h5>
+        <form method="post" asp-page-handler="GeneratePack" class="row g-2">
+            <div class="col-md-4">
+                <label class="form-label">Campaign</label>
+                <select name="campaignId" class="form-select">
+                    @foreach (var c in Model.Campaigns)
+                    {
+                        <option value="@c.Id">@c.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Persona</label>
+                <select name="persona" class="form-select">
+                    <option>SME Founder</option>
+                    <option>HR Admin</option>
+                    <option>Accountant</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Start Date (UTC)</label>
+                <input type="date" name="startDateUtc" class="form-control" required />
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-outline-primary w-100" disabled="@Model.IsPulseDisabled">Generate Pack</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table table-sm table-striped align-middle">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Objective</th>
+        <th>Window</th>
+        <th>Created</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.Campaigns.Count == 0)
+    {
+        <tr><td colspan="5">No campaigns yet.</td></tr>
+    }
+    else
+    {
+        foreach (var c in Model.Campaigns)
+        {
+            <tr>
+                <td>@c.Id</td>
+                <td>@c.Name</td>
+                <td>@c.Objective</td>
+                <td>@(c.StartsOnUtc?.ToString("yyyy-MM-dd") ?? "-") → @(c.EndsOnUtc?.ToString("yyyy-MM-dd") ?? "-")</td>
+                <td>@c.CreatedAtUtc.ToString("yyyy-MM-dd HH:mm")</td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>

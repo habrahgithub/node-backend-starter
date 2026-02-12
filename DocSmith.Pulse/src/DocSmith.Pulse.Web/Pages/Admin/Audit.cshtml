@@ -1,0 +1,59 @@
+@page
+@model DocSmith.Pulse.Web.Pages.Admin.AuditModel
+@{
+    ViewData["Title"] = "Audit";
+}
+
+<h2>Audit Log (Append-only)</h2>
+
+<form method="get" class="row g-2 mb-3">
+    <div class="col-md-4">
+        <select name="action" class="form-select">
+            <option value="">All actions</option>
+            @foreach (var action in Model.ActionTypes)
+            {
+                <option value="@action" selected="@(Model.SelectedAction == action ? "selected" : null)">@action</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-outline-secondary">Filter</button>
+    </div>
+</form>
+
+<table class="table table-sm table-striped align-middle">
+    <thead>
+    <tr>
+        <th>At (UTC)</th>
+        <th>Action</th>
+        <th>Entity</th>
+        <th>Entity Id</th>
+        <th>Blocked</th>
+        <th>Reason</th>
+        <th>Summary</th>
+        <th>Path</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.Logs.Count == 0)
+    {
+        <tr><td colspan="8">No audit entries yet.</td></tr>
+    }
+    else
+    {
+        foreach (var log in Model.Logs)
+        {
+            <tr>
+                <td>@log.OccurredAtUtc.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>@log.Action</td>
+                <td>@log.EntityType</td>
+                <td>@log.EntityId</td>
+                <td>@log.WasBlocked</td>
+                <td>@log.Reason</td>
+                <td>@log.InputSummary</td>
+                <td>@log.SourcePath</td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
