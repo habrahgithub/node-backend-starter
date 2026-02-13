@@ -22,17 +22,22 @@ MCP is the interface. The product outcome is governance + execution automation i
 
 1. Requests without `actor_role` and `correlation_id` are rejected.
 2. Allowed actor roles: `Axis | Forge | Prime | System`.
-3. All list/library access is server-resolved from allowlist config.
-4. Non-allowlisted operations are blocked (`SWD_ENABLED_TOOLS`).
-5. Hard kill switch: `MCP_DISABLED=1` prevents startup.
-6. Read-only phase mode (`SWD_PHASE_MODE=read_only`) only registers:
+3. Authorization uses Entra token role context (`token_roles`) when present; request `actor_role` is treated as declared role for audit/comparison.
+4. Role mismatch handling is controlled by `SWD_ROLE_MISMATCH_MODE` (`warn` or `reject`; production should use `reject`).
+5. Production can enforce token role presence with `SWD_REQUIRE_TOKEN_ROLE=true`.
+6. All list/library access is server-resolved from allowlist config.
+7. Non-allowlisted operations are blocked (`SWD_ENABLED_TOOLS`).
+8. Hard kill switch: `MCP_DISABLED=1` prevents startup.
+9. Read-only phase mode (`SWD_PHASE_MODE=read_only`) only registers:
    - `lists.query`, `lists.get`, `docs.link`
-7. Writes are rollout-gated by `SWD_ENABLE_WRITES` (default `false`).
-8. Every tool call writes one audit row to `MCP Audit Log`:
+10. Writes are rollout-gated by `SWD_ENABLE_WRITES` (default `false`).
+11. Every tool call writes one audit row to `MCP Audit Log`:
    - `timestamp_gst`, `actor_role`, `tool`, `target`, `correlation_id`, `request_hash`, `result`, `error`
-9. `Execution Inbox` is metadata-only by default:
+12. Optional extended audit fields can be enabled after list schema update:
+   - `declared_actor_role`, `effective_actor_role`, `role_mismatch`
+13. `Execution Inbox` is metadata-only by default:
    - `Subject`, `From`, `ReceivedAt`, `WebLink`, `MessageId`
-10. `Execution Inbox` `MessageId` is deduplicated on create for idempotent intake.
+14. `Execution Inbox` `MessageId` is deduplicated on create for idempotent intake.
 
 ## Network posture (V1 default)
 
@@ -60,9 +65,16 @@ Set `.env` values:
 - certificate auth vars (`SP_CLIENT_CERT_THUMBPRINT`, private key path/content)
 - `SWD_ALLOWLIST_PATH`
 - `MCP_DISABLED=0`
+- `MCP_TRANSPORT=stdio` (default) or `MCP_TRANSPORT=http`
+- `MCP_HTTP_HOST=127.0.0.1` (when `MCP_TRANSPORT=http`)
+- `MCP_HTTP_PORT=3900` (when `MCP_TRANSPORT=http`)
+- `MCP_HTTP_PATH=/mcp` (when `MCP_TRANSPORT=http`)
 - `SWD_PHASE_MODE=read_only` for read-only rollout
 - `SWD_ENABLE_WRITES=false` until Prime write approval
 - `AUDIT_MODE=fail_closed` for production (`fail_open` for dev only)
+- `SWD_ROLE_MISMATCH_MODE=reject` in production (`warn` for local/testing)
+- `SWD_REQUIRE_TOKEN_ROLE=true` in production once host injects `token_roles`
+- optional `SWD_INCLUDE_ROLE_BINDING_AUDIT_FIELDS=true` after adding audit list columns
 - optional `SWD_ENABLED_TOOLS` to narrow enabled operations
 
 Set `config/allowlist.json` values:
@@ -72,7 +84,19 @@ Set `config/allowlist.json` values:
 
 ## Run locally
 
+Run using MCP stdio transport (default):
+
 ```bash
+npm start
+```
+
+Run using MCP Streamable HTTP transport:
+
+```bash
+MCP_TRANSPORT=http \
+MCP_HTTP_HOST=127.0.0.1 \
+MCP_HTTP_PORT=3900 \
+MCP_HTTP_PATH=/mcp \
 npm start
 ```
 

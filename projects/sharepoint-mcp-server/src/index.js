@@ -1,7 +1,9 @@
 import "dotenv/config";
 import crypto from "node:crypto";
+import { createServer } from "node:http";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import * as z from "zod/v4";
 import { base64DecodeToBuffer } from "./lib/base64.js";
 import { loadPolicyConfig } from "./lib/config.js";
@@ -20,9 +22,17 @@ const ActorRoleSchema = z.enum(["Axis", "Forge", "Prime", "System"]);
 
 const AuditContextInputSchema = {
   actor_role: ActorRoleSchema.describe("Required role for every request"),
+  token_roles: z
+    .array(z.string().min(1))
+    .optional()
+    .describe(
+      "Trusted Entra token role claims. Must be injected by the authenticated host runtime, not end-user payload."
+    ),
   correlation_id: z.string().min(1).describe("Required trace ID spanning end-to-end workflow"),
   request_id: z.string().min(1).optional().describe("Optional caller request ID"),
 };
+
+const SUPPORTED_TRANSPORTS = new Set(["stdio", "http"]);
 
 function buildToolResult({ isError = false, structuredContent }) {
   return {
@@ -34,9 +44,74 @@ function buildToolResult({ isError = false, structuredContent }) {
 
 function normalizeRequestContext(input) {
   return {
-    actor_role: input.actor_role,
+    declared_actor_role: input.actor_role,
+    token_roles: Array.isArray(input.token_roles) ? input.token_roles : [],
     correlation_id: input.correlation_id,
     request_id: input.request_id || crypto.randomUUID(),
+  };
+}
+
+function normalizeRoleValue(role) {
+  if (typeof role !== "string") return "";
+  return role.trim();
+}
+
+function normalizeRoleSet(roles) {
+  return [...new Set((roles || []).map((role) => normalizeRoleValue(role)).filter(Boolean))];
+}
+
+function extractAuthoritativeRoles(policy, tokenRoles) {
+  const allowedByLower = new Map(
+    policy.allowedActorRoles.map((role) => [role.toLowerCase(), role])
+  );
+  const authoritative = normalizeRoleSet(tokenRoles)
+    .map((role) => allowedByLower.get(role.toLowerCase()))
+    .filter(Boolean);
+  return [...new Set(authoritative)];
+}
+
+function bindActorRole(policy, context) {
+  const declaredRole = normalizeRoleValue(context.declared_actor_role);
+  const authoritativeRoles = extractAuthoritativeRoles(policy, context.token_roles);
+  const hasTokenRole = authoritativeRoles.length > 0;
+
+  if (policy.requireTokenRole && !hasTokenRole) {
+    throw new PolicyError(
+      "No supported Entra app-role claim was provided. Authorization requires token_roles context.",
+      {
+        declared_actor_role: declaredRole,
+        token_roles: normalizeRoleSet(context.token_roles),
+        allowedActorRoles: policy.allowedActorRoles,
+      }
+    );
+  }
+
+  if (authoritativeRoles.length > 1) {
+    throw new PolicyError("Ambiguous Entra role context: multiple supported token roles provided.", {
+      token_roles: authoritativeRoles,
+      allowedActorRoles: policy.allowedActorRoles,
+    });
+  }
+
+  const effectiveRole = authoritativeRoles[0] || declaredRole;
+  const roleMismatch = Boolean(effectiveRole && declaredRole && effectiveRole !== declaredRole);
+
+  if (roleMismatch && policy.roleMismatchMode === "reject") {
+    throw new PolicyError(
+      `Declared actor_role '${declaredRole}' does not match token-derived role '${effectiveRole}'.`,
+      {
+        declared_actor_role: declaredRole,
+        effective_actor_role: effectiveRole,
+        token_roles: normalizeRoleSet(context.token_roles),
+      }
+    );
+  }
+
+  return {
+    declared_actor_role: declaredRole,
+    effective_actor_role: effectiveRole,
+    role_mismatch: roleMismatch,
+    token_roles: normalizeRoleSet(context.token_roles),
   };
 }
 
@@ -158,7 +233,7 @@ async function appendAuditLog({ graph, policy, event }) {
   const auditListId = resolveListId(policy, policy.allowlist.auditLogListName);
   const auditFields = {
     timestamp_gst: toGstIsoString(),
-    actor_role: event.actor_role,
+    actor_role: event.effective_actor_role,
     tool: event.tool,
     target: event.target,
     correlation_id: event.correlation_id,
@@ -166,6 +241,11 @@ async function appendAuditLog({ graph, policy, event }) {
     result: event.result,
     error: truncateValue(event.error || ""),
   };
+  if (policy.includeRoleBindingAuditFields) {
+    auditFields.declared_actor_role = event.declared_actor_role;
+    auditFields.effective_actor_role = event.effective_actor_role;
+    auditFields.role_mismatch = event.role_mismatch;
+  }
 
   await graph.request(`/sites/${policy.allowlist.siteId}/lists/${auditListId}/items`, {
     method: "POST",
@@ -233,19 +313,26 @@ function enrichError(error, context) {
 }
 
 async function executeWithAudit({ graph, policy, toolName, target, input, context, run }) {
-  assertActorRoleAllowed(policy, context.actor_role);
-  assertToolEnabled(policy, toolName);
-
   const request_hash = buildRequestHash({ tool: toolName, target, payload: input });
+  let roleBinding = {
+    declared_actor_role: context.declared_actor_role,
+    effective_actor_role: context.declared_actor_role,
+    role_mismatch: false,
+    token_roles: normalizeRoleSet(context.token_roles),
+  };
 
   try {
+    roleBinding = bindActorRole(policy, context);
+    assertActorRoleAllowed(policy, roleBinding.effective_actor_role);
+    assertToolEnabled(policy, toolName);
+
     const data = await run();
     try {
       await appendAuditLog({
         graph,
         policy,
         event: {
-          actor_role: context.actor_role,
+          ...roleBinding,
           tool: toolName,
           target,
           correlation_id: context.correlation_id,
@@ -275,6 +362,7 @@ async function executeWithAudit({ graph, policy, toolName, target, input, contex
           request_id: context.request_id,
           correlation_id: context.correlation_id,
           request_hash,
+          auth_context: roleBinding,
           data,
           audit_warning: {
             mode: policy.auditMode,
@@ -290,6 +378,7 @@ async function executeWithAudit({ graph, policy, toolName, target, input, contex
         request_id: context.request_id,
         correlation_id: context.correlation_id,
         request_hash,
+        auth_context: roleBinding,
         data,
       },
     });
@@ -301,7 +390,7 @@ async function executeWithAudit({ graph, policy, toolName, target, input, contex
         graph,
         policy,
         event: {
-          actor_role: context.actor_role,
+          ...roleBinding,
           tool: toolName,
           target,
           correlation_id: context.correlation_id,
@@ -318,6 +407,7 @@ async function executeWithAudit({ graph, policy, toolName, target, input, contex
           structuredContent: {
             ...errorPayload,
             request_hash,
+            auth_context: roleBinding,
             audit_warning: {
               mode: policy.auditMode,
               message: "Audit logging of error failed; returning operation error in fail_open mode.",
@@ -345,6 +435,7 @@ async function executeWithAudit({ graph, policy, toolName, target, input, contex
       structuredContent: {
         ...errorPayload,
         request_hash,
+        auth_context: roleBinding,
       },
     });
   }
@@ -696,6 +787,211 @@ function registerTools({ server, graph, policy }) {
   }
 }
 
+function createMcpToolServer({ graph, policy }) {
+  const server = new McpServer({
+    name: "docsmith-connect-m365",
+    version: "1.2.0",
+  });
+
+  registerTools({ server, graph, policy });
+  return server;
+}
+
+function normalizeHttpPath(value) {
+  const raw = (value || "/mcp").trim();
+  if (!raw) {
+    throw new Error("MCP_HTTP_PATH must not be empty when MCP_TRANSPORT=http.");
+  }
+  if (!raw.startsWith("/")) {
+    throw new Error("MCP_HTTP_PATH must start with '/'.");
+  }
+  if (raw === "/") return raw;
+  return raw.replace(/\/+$/, "");
+}
+
+function parseHttpPort(value) {
+  const parsed = Number.parseInt(value || "3900", 10);
+  if (!Number.isInteger(parsed) || parsed < 1 || parsed > 65535) {
+    throw new Error("MCP_HTTP_PORT must be an integer between 1 and 65535.");
+  }
+  return parsed;
+}
+
+function resolveTransportConfig() {
+  const transport = (process.env.MCP_TRANSPORT || "stdio").trim().toLowerCase();
+  if (!SUPPORTED_TRANSPORTS.has(transport)) {
+    throw new Error(
+      `MCP_TRANSPORT must be one of: ${[...SUPPORTED_TRANSPORTS].join(", ")} (received '${transport}').`
+    );
+  }
+
+  if (transport === "http") {
+    return {
+      mode: "http",
+      host: (process.env.MCP_HTTP_HOST || "127.0.0.1").trim() || "127.0.0.1",
+      port: parseHttpPort(process.env.MCP_HTTP_PORT),
+      path: normalizeHttpPath(process.env.MCP_HTTP_PATH),
+    };
+  }
+
+  return { mode: "stdio" };
+}
+
+function writeJsonResponse(res, statusCode, payload, extraHeaders = {}) {
+  res.statusCode = statusCode;
+  res.setHeader("content-type", "application/json; charset=utf-8");
+  for (const [name, value] of Object.entries(extraHeaders)) {
+    if (value !== undefined && value !== null) {
+      res.setHeader(name, value);
+    }
+  }
+  res.end(JSON.stringify(payload));
+}
+
+function writeHttpError(res, { statusCode, code, message, details, headers }) {
+  writeJsonResponse(
+    res,
+    statusCode,
+    {
+      error: {
+        code,
+        message,
+        ...(details ? { details } : {}),
+      },
+    },
+    headers
+  );
+}
+
+function requestPathname(req) {
+  const host = req.headers.host || "127.0.0.1";
+  const url = new URL(req.url || "/", `http://${host}`);
+  return url.pathname;
+}
+
+function isJsonContentType(contentTypeHeader) {
+  const raw = Array.isArray(contentTypeHeader) ? contentTypeHeader[0] : contentTypeHeader;
+  if (typeof raw !== "string" || !raw.trim()) return false;
+  return raw.split(";")[0].trim().toLowerCase() === "application/json";
+}
+
+async function readBodyUtf8(req, maxBytes = 1_000_000) {
+  const chunks = [];
+  let total = 0;
+  for await (const chunk of req) {
+    const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+    total += buffer.length;
+    if (total > maxBytes) {
+      throw new Error(`Request body exceeds max size of ${maxBytes} bytes.`);
+    }
+    chunks.push(buffer);
+  }
+
+  if (chunks.length === 0) return "";
+  return Buffer.concat(chunks).toString("utf8");
+}
+
+async function handleStreamableHttpRequest({ req, res, policy, graph, httpPath }) {
+  if (requestPathname(req) !== httpPath) {
+    writeHttpError(res, {
+      statusCode: 404,
+      code: "NOT_FOUND",
+      message: `No MCP route configured for '${req.url || "/"}'.`,
+      details: { expected_path: httpPath },
+    });
+    return;
+  }
+
+  if ((req.method || "").toUpperCase() !== "POST") {
+    writeHttpError(res, {
+      statusCode: 405,
+      code: "METHOD_NOT_ALLOWED",
+      message: "Only POST is supported for this MCP HTTP endpoint.",
+      details: { method: req.method || null },
+      headers: { allow: "POST" },
+    });
+    return;
+  }
+
+  if (!isJsonContentType(req.headers["content-type"])) {
+    writeHttpError(res, {
+      statusCode: 415,
+      code: "UNSUPPORTED_MEDIA_TYPE",
+      message: "POST requests must use content-type application/json.",
+      details: { content_type: req.headers["content-type"] || null },
+    });
+    return;
+  }
+
+  let parsedBody;
+  try {
+    const rawBody = await readBodyUtf8(req);
+    parsedBody = rawBody ? JSON.parse(rawBody) : {};
+  } catch (error) {
+    writeHttpError(res, {
+      statusCode: 400,
+      code: "BAD_JSON",
+      message: "Request body must be valid JSON.",
+      details: { reason: error?.message || String(error) },
+    });
+    return;
+  }
+
+  const server = createMcpToolServer({ graph, policy });
+  const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });
+  try {
+    await server.connect(transport);
+    await transport.handleRequest(req, res, parsedBody);
+  } catch (error) {
+    console.error("HTTP transport request failed:", error);
+    if (!res.headersSent) {
+      writeHttpError(res, {
+        statusCode: 500,
+        code: "INTERNAL_ERROR",
+        message: "Failed to process MCP request.",
+      });
+    }
+  } finally {
+    await Promise.allSettled([transport.close(), server.close()]);
+  }
+}
+
+async function startHttpTransport({ graph, policy, host, port, path }) {
+  const httpServer = createServer((req, res) => {
+    handleStreamableHttpRequest({ req, res, policy, graph, httpPath: path }).catch((error) => {
+      console.error("Unhandled HTTP request error:", error);
+      if (!res.headersSent) {
+        writeHttpError(res, {
+          statusCode: 500,
+          code: "INTERNAL_ERROR",
+          message: "Unhandled server error.",
+        });
+      }
+    });
+  });
+
+  await new Promise((resolve, reject) => {
+    httpServer.once("error", reject);
+    httpServer.listen(port, host, () => {
+      httpServer.off("error", reject);
+      resolve();
+    });
+  });
+
+  console.error(
+    `docsmith-connect-m365 running on streamable HTTP (url=http://${host}:${port}${path}, phase=${policy.phaseMode}, writes=${policy.writesEnabled ? "on" : "off"}, audit_mode=${policy.auditMode})`
+  );
+}
+
+async function startStdioTransport({ graph, policy }) {
+  const server = createMcpToolServer({ graph, policy });
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+  console.error(
+    `docsmith-connect-m365 running on stdio (phase=${policy.phaseMode}, writes=${policy.writesEnabled ? "on" : "off"}, audit_mode=${policy.auditMode})`
+  );
+}
+
 async function main() {
   const policy = await loadPolicyConfig();
   if (policy.mcpDisabled) {
@@ -716,18 +1012,19 @@ async function main() {
     scope: policy.auth.scope,
   });
 
-  const server = new McpServer({
-    name: "docsmith-connect-m365",
-    version: "1.2.0",
-  });
+  const transportConfig = resolveTransportConfig();
+  if (transportConfig.mode === "http") {
+    await startHttpTransport({
+      graph,
+      policy,
+      host: transportConfig.host,
+      port: transportConfig.port,
+      path: transportConfig.path,
+    });
+    return;
+  }
 
-  registerTools({ server, graph, policy });
-
-  const transport = new StdioServerTransport();
-  await server.connect(transport);
-  console.error(
-    `docsmith-connect-m365 running on stdio (phase=${policy.phaseMode}, writes=${policy.writesEnabled ? "on" : "off"}, audit_mode=${policy.auditMode})`
-  );
+  await startStdioTransport({ graph, policy });
 }
 
 main().catch((error) => {
