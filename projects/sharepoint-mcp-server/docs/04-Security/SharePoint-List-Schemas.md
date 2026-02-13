@@ -10,6 +10,9 @@ Columns (internal names should match exactly):
 - `Title` (Single line of text) default: `DocSmith Connect Audit`
 - `timestamp_gst` (Date and time, required)
 - `actor_role` (Choice, required): `Axis`, `Forge`, `Prime`, `System`
+- `declared_actor_role` (Choice, optional): `Axis`, `Forge`, `Prime`, `System`
+- `effective_actor_role` (Choice, optional): `Axis`, `Forge`, `Prime`, `System`
+- `role_mismatch` (Yes/No, optional)
 - `tool` (Single line of text, required)
 - `target` (Single line of text, required)
 - `correlation_id` (Single line of text, required)
@@ -131,4 +134,3 @@ Required metadata fields (library columns):
 - `DocType` (Choice): `Evidence`, `Policy`, `Report`, `Work Product`
 - `CorrelationId` (Single line of text)
 - `RelatedWOId` (Single line of text)
-

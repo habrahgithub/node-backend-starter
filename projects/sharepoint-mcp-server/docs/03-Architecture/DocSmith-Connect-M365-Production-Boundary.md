@@ -35,7 +35,9 @@ Recommended ingress controls:
 - Credential mode: certificate preferred, client secret local-dev fallback only
 - Role model:
   - API validates Entra app roles (`Prime`, `Axis`, `Forge`, `System`)
-  - `actor_role` request field must match authorized role context
+  - `actor_role` request field is treated as `declared_actor_role`
+  - `effective_actor_role` is derived from token `roles` claim (authoritative)
+  - Production rejects mismatch (`declared_actor_role != effective_actor_role`)
 
 ## 5. Control plane config
 
@@ -65,6 +67,9 @@ Disallowed in V1:
 Every call appends to `MCP Audit Log` with:
 - `timestamp_gst`
 - `actor_role`
+- `declared_actor_role` (optional)
+- `effective_actor_role` (optional)
+- `role_mismatch` (optional)
 - `tool`
 - `target`
 - `correlation_id`
@@ -86,4 +91,5 @@ Fail behavior:
   - `MCP_DISABLED=0`
   - `SWD_PHASE_MODE=read_only` during rollout
   - `SWD_ENABLE_WRITES=false` until approved
-
+  - `SWD_ROLE_MISMATCH_MODE=reject`
+  - `SWD_REQUIRE_TOKEN_ROLE=true`

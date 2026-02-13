@@ -11,14 +11,15 @@
 ## 2. Authorization and scope control
 
 1. Every tool call enforces `actor_role` and `correlation_id` presence.
-2. `actor_role` is one of `Axis|Forge|Prime|System`.
+2. `actor_role` is one of `Axis|Forge|Prime|System` (declared role for comparison/audit).
 3. All list/library identifiers are resolved from server allowlist.
 4. Calls targeting non-allowlisted lists/libraries are denied.
 5. Calls to disabled tools are denied.
 6. Write tools are denied when `SWD_ENABLE_WRITES=false`.
 7. `MCP_DISABLED=1` prevents connector startup.
 8. `SWD_PHASE_MODE=read_only` registers only read tools.
-9. `actor_role` is authorized from Entra app-role context, not trusted as free-form input.
+9. Authorization uses token-derived role context (`effective_actor_role`), not the free-form request field.
+10. In production, declared-vs-effective role mismatches are rejected.
 
 ## 3. Audit and evidence
 
@@ -26,6 +27,9 @@
 2. Audit row fields include:
    - `timestamp_gst`
    - `actor_role`
+   - `declared_actor_role` (optional, if enabled)
+   - `effective_actor_role` (optional, if enabled)
+   - `role_mismatch` (optional, if enabled)
    - `tool`
    - `target`
    - `correlation_id`

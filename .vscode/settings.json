@@ -1,0 +1,7 @@
+{
+  "chat.mcp.serverSampling": {
+    "workspace/.vscode/mcp.json: io.github.vercel/next-devtools-mcp": {
+      "allowedModels": ["copilot/auto"]
+    }
+  }
+}

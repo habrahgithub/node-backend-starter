@@ -1,0 +1,33 @@
+@page
+@model DocSmith.LinkedInBot.Pages.DraftsModel
+@{
+    ViewData["Title"] = "Drafts";
+}
+
+<h2>Drafts for Idea #@Model.Idea?.Id</h2>
+<p><b>Topic:</b> @Model.Idea?.Topic</p>
+
+<p><a href="/Ideas">&larr; Back to Ideas</a></p>
+<hr/>
+
+@if (Model.Drafts.Count == 0)
+{
+    <p>No drafts yet. Generate drafts from Ideas page.</p>
+}
+else
+{
+    foreach (var d in Model.Drafts)
+    {
+        <div style="border:1px solid #ccc; padding:12px; margin-bottom:12px;">
+            <h3>Variant @d.VariantNo @if(d.IsApproved){ <span>(Approved)</span> }</h3>
+            <pre style="white-space:pre-wrap;">@d.DraftText
+
+@d.Hashtags</pre>
+
+            <form method="post" asp-page-handler="Approve">
+                <input type="hidden" name="draftId" value="@d.Id" />
+                <button type="submit">Approve</button>
+            </form>
+        </div>
+    }
+}

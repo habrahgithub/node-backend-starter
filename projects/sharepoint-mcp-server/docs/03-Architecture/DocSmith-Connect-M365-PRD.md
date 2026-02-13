@@ -34,11 +34,13 @@ Out of scope (V1):
 ## 4. Functional requirements
 
 1. Connector must reject calls missing `actor_role` or `correlation_id`.
-2. Connector must resolve targets from server-side allowlist only.
-3. Connector must block non-allowlisted operations.
-4. Connector must block writes unless rollout flag enables them.
-5. Connector must append an audit row for every call result (`OK` or `ERROR`).
-6. Connector must enforce metadata-only write policy for `Execution Inbox` unless explicitly widened by config.
+2. Connector must derive authorization role from trusted Entra token roles context when available; request `actor_role` is declared-only.
+3. Connector must reject declared/effective role mismatch in production mode.
+4. Connector must resolve targets from server-side allowlist only.
+5. Connector must block non-allowlisted operations.
+6. Connector must block writes unless rollout flag enables them.
+7. Connector must append an audit row for every call result (`OK` or `ERROR`).
+8. Connector must enforce metadata-only write policy for `Execution Inbox` unless explicitly widened by config.
 
 ## 5. Non-functional requirements
 

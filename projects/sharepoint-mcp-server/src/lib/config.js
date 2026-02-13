@@ -139,6 +139,13 @@ export async function loadPolicyConfig() {
   if (!["fail_closed", "fail_open"].includes(auditMode)) {
     throw new Error("AUDIT_MODE must be 'fail_closed' or 'fail_open'.");
   }
+  const roleMismatchMode = (process.env.SWD_ROLE_MISMATCH_MODE || "warn").trim();
+  if (!["warn", "reject"].includes(roleMismatchMode)) {
+    throw new Error("SWD_ROLE_MISMATCH_MODE must be 'warn' or 'reject'.");
+  }
+  const requireTokenRole = (process.env.SWD_REQUIRE_TOKEN_ROLE || "false").toLowerCase() === "true";
+  const includeRoleBindingAuditFields =
+    (process.env.SWD_INCLUDE_ROLE_BINDING_AUDIT_FIELDS || "false").toLowerCase() === "true";
 
   return {
     auth,
@@ -149,5 +156,8 @@ export async function loadPolicyConfig() {
     allowedActorRoles: ALLOWED_ACTOR_ROLES,
     mcpDisabled,
     auditMode,
+    requireTokenRole,
+    roleMismatchMode,
+    includeRoleBindingAuditFields,
   };
 }

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/DocSmith.LinkedInBot.props" />
+</Project>
