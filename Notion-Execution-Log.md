@@ -33,3 +33,8 @@
   - repository hygiene trim summary
   - CTA/link verification references
   - current quality gate confirmation (`npm test`, `npm run build`)
+- Synced final closure audit note to Notion work-order tracking:
+  - full Playwright navigation audit completed for all public website routes
+  - pass result recorded (all route documents `200`, no console errors, no broken assets)
+  - non-blocking favicon cache persistence finding captured
+  - website scope marked frozen pending only compliance/regression/go-live disclosure updates

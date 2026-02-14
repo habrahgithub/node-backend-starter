@@ -53,3 +53,10 @@
   - added generator `scripts/generate-security-whitepaper-pdf.py`
   - regenerated `public/docs/security-whitepaper.pdf`
   - linked whitepaper directly on extension page CTA cluster
+- Completed final Playwright closure audit for `projects/swd-docsmith_brand-website` across all public routes with pass outcome:
+  - route documents returned `200`
+  - no console errors observed
+  - no `4xx/5xx` asset responses detected
+  - no broken image assets detected
+- Logged non-blocking closure finding: favicon cache persistence may show stale icon for some users until cache refresh.
+- Marked website phase as frozen after final audit, with change scope restricted to compliance corrections, regressions, or monetization-disclosure go-live updates.

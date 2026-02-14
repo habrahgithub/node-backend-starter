@@ -67,6 +67,31 @@
     - `projects/swd-docsmith_brand-website/docs/governance/WO-FORGE-AUDIT-RECEIPT-LICENSE-HARDENING-V1.md`
   - Added closure sync notes for website phase freeze readiness and PDF artifact publication links.
 
+- WO-2026-02-14-FORGE-WEBSITE-FINAL-PLAYWRIGHT-AUDIT
+- Status: Completed
+- Completed:
+  - Performed full live Playwright route audit for:
+    - `/`
+    - `/docsmith-sif`
+    - `/extension`
+    - `/routing-codes`
+    - `/wps-explained`
+    - `/sif-file-format`
+    - `/common-wps-errors`
+    - `/wps-error-dictionary`
+    - `/bank-wps-requirements-uae`
+    - `/enterprise-allowlist`
+  - Verified all route documents returned HTTP 200.
+  - Verified no broken images and no 4xx/5xx asset responses during audit run.
+  - Verified `Home` access path in both primary nav and Resources menu.
+  - Logged finding: favicon cache persistence can temporarily show stale icon on some user agents.
+
+- WO-2026-02-14-NOTION-WEBSITE-FREEZE-CLOSURE-SYNC
+- Status: Completed
+- Completed:
+  - Synced final audit findings into Notion execution/work-order logs.
+  - Recorded website freeze decision and post-freeze change-control scope.
+
 ## Habib Action Work Orders
 
 - WO-2026-02-14-HABIB-PR-SPLIT-APPROVAL
