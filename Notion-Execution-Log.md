@@ -24,3 +24,12 @@
   - quality gates passed (`npm test`, `npm run build`)
 - Logged governance work-order artifact reference:
   - `projects/swd-docsmith_brand-website/docs/governance/WO-FORGE-AUDIT-RECEIPT-LICENSE-HARDENING-V1.md`
+- Updated Notion-facing work-order trace for website closure and documentation hardening:
+  - freeze audit findings triaged and corrected (nav duplication + terminology mismatches)
+  - institutional page architecture rollout completed for `/sif-file-format`
+  - Figma MCP diagram assets generated and linked for manual/whitepaper production flow
+  - PDF closure actions recorded (manual regenerated, whitepaper source + generator created, website links wired)
+- Synced closure evidence set for governance consumption:
+  - repository hygiene trim summary
+  - CTA/link verification references
+  - current quality gate confirmation (`npm test`, `npm run build`)
