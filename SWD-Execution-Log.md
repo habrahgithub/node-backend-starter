@@ -60,3 +60,30 @@
   - no broken image assets detected
 - Logged non-blocking closure finding: favicon cache persistence may show stale icon for some users until cache refresh.
 - Marked website phase as frozen after final audit, with change scope restricted to compliance corrections, regressions, or monetization-disclosure go-live updates.
+
+### 2026-02-19
+- Ran closure housekeeping and pre-stress checkups across product stack:
+  - `projects/swd-docsmith-sif-extension`
+  - `projects/docsmith-licensing-service`
+  - `projects/docsmith-payment-gateway`
+- Confirmed store-hardening gate command passes:
+  - `LEGAL_LINKS_ENABLED=true npm run prestore-check`
+  - Result: permissions, host scopes, popup cleanup, legal links, and dev URL scan all passed.
+- Confirmed build integrity:
+  - `docsmith-licensing-service`: `npm run build` passed.
+  - `docsmith-payment-gateway`: `npm run build` passed.
+  - Extension packaging remains healthy after recent fixes (`npm run pack` previously completed successfully).
+- Verified live service health and checkout path:
+  - `https://licensing.docsmith.tools/api/health` returned `200`.
+  - Extension-origin checkout bootstrap (`POST /v1/checkout/session`) returned Ziina checkout URL for valid install IDs.
+  - `https://buy.docsmith.tools/buy/manual?...&source=extension` now auto-attempts instant checkout and redirects to Ziina when available.
+- Deployed buy gateway fallback recovery updates to production:
+  - Added automatic checkout recovery on `/buy/manual` for extension source.
+  - Added explicit instant-checkout CTA on manual page.
+  - Removed BUSINESS plan option from manual page selector (aligned with Free/Pro policy).
+- Observed one transient `502 Application failed to respond` during cold-path probing; immediate retries succeeded and subsequent unique install tests returned `200` with fresh Ziina payment intent URLs.
+- Stress-test readiness status: **Ready (with transient cold-start watchpoint)**.
+- Recommended stress test entry gates:
+  - Run concurrent checkout bootstrap tests with unique install IDs.
+  - Track `429` behavior separately (expected per install/hour throttling).
+  - Capture latency percentiles and any `5xx` bursts for cold-start tuning.

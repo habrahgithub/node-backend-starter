@@ -6,7 +6,14 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
-    "test": "node --test"
+    "test": "node --test",
+    "checkup:lint": "npm run lint --if-present",
+    "checkup:sanity": "npm run build --if-present",
+    "checkup:unit": "npm run test --if-present",
+    "checkup:regression": "npm run test --if-present",
+    "checkup:integration": "npm run test --if-present",
+    "checkup:run": "npm run checkup:lint && npm run checkup:unit && npm run checkup:sanity",
+    "checkup:full": "npm run checkup:run && npm run checkup:regression && npm run checkup:integration"
   },
   "keywords": [],
   "author": "",
