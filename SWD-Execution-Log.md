@@ -87,3 +87,39 @@
   - Run concurrent checkout bootstrap tests with unique install IDs.
   - Track `429` behavior separately (expected per install/hour throttling).
   - Capture latency percentiles and any `5xx` bursts for cold-start tuning.
+
+### 2026-02-19 (Housekeeping + Pre-Commit Audit Pass)
+- Scope:
+  - `projects/swd-docsmith-sif-extension`
+  - `projects/swd-docsmith_brand-website`
+  - `projects/docsmith-payment-gateway`
+  - `projects/docsmith-licensing-service`
+- Housekeeping actions completed:
+  - Removed safe orphan artifacts and transient outputs:
+    - `.swc/` caches (extension + brand website)
+    - `demo/`, `output/playwright/`, `public/Figma Template/`, `public/evidence/`, `tmp/pdfs/` in brand website project
+  - Updated ignore hygiene to prevent recurring cache noise:
+    - added `.swc` to:
+      - `projects/swd-docsmith-sif-extension/.gitignore`
+      - `projects/swd-docsmith_brand-website/.gitignore`
+- Orphan review result:
+  - Remaining untracked paths are active work items (not orphan):
+    - extension: `docs/audit-evidence-guide.md`, `scripts/verify-routing-codes-internet.js`
+    - brand website: `app/cookies/`, `app/dpa/`, `app/eula/`, `app/refund-policy/`, `app/security/`
+- Audit checks executed:
+  - `docsmith-payment-gateway`: `npm run test:worker-behavior` passed
+  - `swd-docsmith_brand-website`: ESLint passed for touched legal pages
+  - Build-note: local Node runtime is `18.19.1`; Next.js 16 projects require `>=20.9.0` for `npm run build`
+- Decision:
+  - Keep current non-orphan untracked files for commit (they are feature/legal deliverables).
+  - Proceed with staging only after final repo-by-repo commit grouping.
+- Commands executed (audit checks):
+  - `swd-docsmith-sif-extension`: `npm test -- __tests__/excelImport.test.js __tests__/sifGenerator.test.js` ✅
+  - `swd-docsmith-sif-extension`: `npm run routing:validate:report` ✅ (hard issues: 0, warnings: 11, report-only mode)
+  - `swd-docsmith-sif-extension`: `LEGAL_LINKS_ENABLED=true npm run prestore-check` ✅
+  - `swd-docsmith-sif-extension`: `npm run prod-health-check` ✅ (6/6 endpoints healthy)
+  - `docsmith-licensing-service`: `npm run test:issue-concurrency` ✅
+  - `docsmith-payment-gateway`: `npm run test:worker-behavior` ✅
+  - `swd-docsmith_brand-website`: `npx eslint app/privacy/page.jsx app/terms/page.jsx app/eula/page.jsx app/refund-policy/page.jsx app/cookies/page.jsx app/security/page.jsx app/dpa/page.jsx app/extension/page.jsx` ✅
+- Build gate status:
+  - `npm run build` fails on all Next.js 16 repos under local Node `18.19.1` due engine requirement `>=20.9.0`.
