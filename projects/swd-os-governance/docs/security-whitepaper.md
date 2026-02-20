@@ -176,10 +176,6 @@ Target response:
 
 - 2026-02-09: v1.0 published (supersedes earlier blank upload artifact).
 
-## Appendix A (Beta): DocSmith Connect (M365 / SharePoint)
+## Appendix A: Deferred Connectors
 
-DocSmith Connect is a separate beta effort and is not required for DocSmith SIF Generator operation.
-
-If DocSmith Connect is positioned publicly, security acceptance and architecture notes are tracked in:
-- `projects/sharepoint-mcp-server/docs/03-Architecture/DocSmith-Connect-M365-Production-Boundary.md`
-- `projects/sharepoint-mcp-server/docs/04-Security/DocSmith-Connect-M365-Security-Acceptance.md`
+Deferred connector planning is tracked in `docs/ROADMAP_CONNECTORS.md`. Connectors are out of scope for the current local-first build.
