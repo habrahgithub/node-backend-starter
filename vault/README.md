@@ -54,3 +54,46 @@ The Vault is a local-first, append-only memory system for SWD operations.
 
 - Vault v1.0 freeze checklist: `docs/VAULT_V1_FREEZE_CHECKLIST.md`
 - Pulse Phase 1 read-only connector contract: `docs/PULSE_PHASE1_READONLY_CONNECTOR_CONTRACT.md`
+
+## Governance Event Standard (External Production Environment)
+
+Use this event type taxonomy for external production governance workflows:
+
+- `directive.created`
+- `directive.signed`
+- `build.started`
+- `build.completed`
+- `review.sentinel`
+- `audit.warden`
+- `approval.prime`
+- `policy.violation`
+- `export.packaged` (only after Prime approval)
+
+Logical event payload fields:
+
+- `event_id`
+- `ts_utc`
+- `actor`
+- `type`
+- `subject`
+- `content`
+- `related_directive_hash`
+- `evidence_paths`
+- `status`
+- `signature`
+
+Current Vault schema mapping:
+
+- `event_id` -> `events.id` (integer primary key, auto-increment)
+- `ts_utc` -> `events.ts` (UTC ISO timestamp)
+- `type` -> `events.type`
+- `subject` -> `events.summary`
+- `status` -> `events.severity` (`info|notice|warning|critical|fatal`)
+- `evidence_paths` -> `events.evidence_paths_json`
+- `content`, `actor`, `related_directive_hash`, `signature` -> `events.details_json`
+
+Notes:
+
+- Keep appends local-first and append-only.
+- Keep actor values constrained to `prime|axis|forge|sentinel|warden`.
+- Keep event signatures compatible with the existing hash chain (`prev_hash` + canonical payload -> `hash`).

@@ -34,6 +34,30 @@ export default function HomePage() {
         </nav>
       </header>
 
+      {/* Top Banner - Clear Status Block */}
+      <section className="status-banner">
+        <div className="status-row">
+          <div className="status-item">
+            <span className="status-label">Vault Status:</span>
+            <span className={`release release-${status.releaseStatus.toLowerCase()}`}>
+              {status.releaseStatus}
+            </span>
+          </div>
+          <div className="status-item">
+            <span className="status-label">Last Event:</span>
+            <span className="status-value">{status.lastTs || "-"}</span>
+          </div>
+          <div className="status-item">
+            <span className="status-label">Chain Height:</span>
+            <span className="status-value">{status.health?.chainHeight ?? 0}</span>
+          </div>
+          <div className="status-item">
+            <span className="status-label">Backup Freshness:</span>
+            <span className="status-value">{formatHours(status.health?.backupFreshnessHours)}</span>
+          </div>
+        </div>
+      </section>
+
       {!status.hasDb ? (
         <section className="panel">
           <p>
@@ -82,6 +106,7 @@ export default function HomePage() {
             )}
           </section>
 
+          {/* Integrity Chain moved to top priority */}
           <section className="panel">
             <h2>Integrity Chain</h2>
             {status.chainStatus?.ok ? (
@@ -111,36 +136,51 @@ export default function HomePage() {
           </section>
 
           <section className="panel">
+            <h2>Last Sweep</h2>
+            {status.lastSweep ? (
+              <p>
+                [{status.lastSweep.ts}] {status.lastSweep.severity.toUpperCase()} {status.lastSweep.project}:{" "}
+                {status.lastSweep.summary}
+              </p>
+            ) : (
+              <p>No sweep events yet. Run <code>./swd-vault sweep --mode system</code>.</p>
+            )}
+          </section>
+
+          <section className="panel">
             <h2>Vault Health</h2>
             <div className="stats">
-              <article className="stat">
+              {/* Primary metrics - larger font */}
+              <article className="stat metric-primary">
                 <h2>Health Score</h2>
                 <p>{status.health?.score ?? 0}%</p>
                 <p className={`release release-${String(status.health?.status || "GREEN").toLowerCase()}`}>
                   {status.health?.status || "GREEN"}
                 </p>
               </article>
-              <article className="stat">
+              <article className="stat metric-primary">
                 <h2>Integrity</h2>
                 <p>{status.health?.chainContinuity ? "100%" : "0%"}</p>
               </article>
-              <article className="stat">
+              
+              {/* Secondary metrics - smaller font */}
+              <article className="stat metric-secondary">
                 <h2>Backup Freshness</h2>
                 <p className="small">{formatHours(status.health?.backupFreshnessHours)}</p>
               </article>
-              <article className="stat">
+              <article className="stat metric-secondary">
                 <h2>Recent Failures (7d)</h2>
                 <p>{status.health?.failedRuns7d ?? 0}</p>
               </article>
-              <article className="stat">
+              <article className="stat metric-secondary">
                 <h2>Duplicate Suppression</h2>
                 <p className="small">{formatPct(status.health?.duplicateSuppressionRatio)}</p>
               </article>
-              <article className="stat">
+              <article className="stat metric-secondary">
                 <h2>Seal Recency</h2>
                 <p className="small">{formatHours(status.health?.sealFreshnessHours)}</p>
               </article>
-              <article className="stat">
+              <article className="stat metric-secondary">
                 <h2>Chain Height</h2>
                 <p>{status.health?.chainHeight ?? 0}</p>
               </article>

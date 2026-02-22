@@ -1,7 +1,7 @@
 # SWD OS - UI/UX Operator Manual
 
 Document Status: Controlled
-Version: v1.1 (UI/UX Operations Edition)
+Version: v1.3 (UI/UX Operations Edition)
 Schema Version: `{{VAULT_SCHEMA_VERSION}}`
 Build ID: `{{VAULT_BUILD_ID}}`
 Node Runtime (Dashboard): `20.11.1`
@@ -347,7 +347,105 @@ Notion ingest example:
 ./swd-vault ingest notion --bundle <bundle-name> --include-html
 ```
 
-## 10. Controlled Distribution and Revision
+## 10. External Production Governance Pack (Operational Addendum)
+
+Scope:
+
+- This section applies only to the external production environment and external production team execution lane.
+- It does not define ARC internal member roles or ARC-internal SOPs.
+
+### 10.1 Standard Report Template
+
+Use this structure for work orders, issue updates, PR notes, War Room decisions, and Vault event content:
+
+- From:
+- To:
+- Timestamp:
+- Subject:
+- Content:
+- Content must include: Context; Inputs (artifacts/paths/versions); Actions performed (step-by-step); Results; Risks / Assumptions; Evidence (tests/logs/paths/hashes)
+- Next Action:
+- Next Actor:
+
+Subject format:
+
+`[EXTERNAL-PROD][Forge][<Module>][<Type>] <Short Title>`
+
+### 10.2 Authority and Boundaries
+
+Authority chain:
+
+- Prime (human): final authority for policy changes, trust changes, network enablement, and production export.
+- Axis (architect): reports to Prime, issues directives/signatures/acceptance criteria.
+- Forge (external production builder): external to ARC core, reports to Axis for scoped build execution, and acts only against valid directives.
+- Sentinel (watchdog): reports to Axis + Prime, reviews anomalies and policy violations.
+- Warden (audit): reports to Prime, validates security/compliance/evidence sufficiency.
+
+Boundary rules:
+
+- Reporting layer routes to Axis.
+- Authoritative decisions route to Prime.
+- Forge is an external production team capability, not an ARC internal layer.
+- Forge has no policy-write privilege.
+- ARC core modules remain network-deny unless Prime explicitly opens a gated export lane.
+
+### 10.3 SOP: Build-to-Approval
+
+SOP scope:
+
+- External production environment only (Axis -> External Forge -> Sentinel -> Warden -> Prime).
+- Not an ARC-internal membership or operating model.
+
+1. Axis creates directive pack: goal, scope, acceptance criteria, schema signature hash, test expectations, risk notes.
+2. Forge builds only in directive scope, runs skills-first checks, and produces evidence bundle.
+3. Sentinel reviews recursion attempts, policy violations, suspicious side effects, and unexpected IO/network behavior.
+4. Warden audits security posture, least privilege, fail-closed behavior, and evidence completeness.
+5. Prime issues final approval decision (`approved|rejected|deferred`) with Vault event.
+
+### 10.4 Run Chore Routine
+
+Definition: a chore is a repeatable operational action (build, test, verify, package, backup drill).
+
+Checklist:
+
+1. Assign `CHORE-YYYYMMDD-###`.
+2. Confirm Axis directive exists and scope matches.
+3. Run sequence in this order: `lint/static` -> `sanity/checkup` -> `unit` -> `integration` -> `system/e2e` (if required) -> `regression` (if risk warrants).
+4. Produce evidence bundle path.
+5. Append Vault event(s).
+
+Chore subject:
+
+`[EXTERNAL-PROD][Ops][Chore][Run] CHORE-YYYYMMDD-### <name>`
+
+### 10.5 Vault Event Taxonomy (Operational Standard)
+
+Recommended event types:
+
+- `directive.created`
+- `directive.signed`
+- `build.started`
+- `build.completed`
+- `review.sentinel`
+- `audit.warden`
+- `approval.prime`
+- `policy.violation`
+- `export.packaged` (post-approval only)
+
+Required event fields (logical model):
+
+- `event_id` (uuid)
+- `ts_utc`
+- `actor` (`prime|axis|forge|sentinel|warden`)
+- `type`
+- `subject`
+- `content`
+- `related_directive_hash` (nullable)
+- `evidence_paths` (json array)
+- `status` (`info|warning|fail|pass`)
+- `signature` (optional chain/hash link)
+
+## 11. Controlled Distribution and Revision
 
 Controlled recipients:
 
@@ -367,6 +465,8 @@ Revision history:
 | v1.0 | 2026-02-20 | Forge | Initial operator baseline. |
 | v1.0.1 | 2026-02-20 | Forge | Added control/distribution/sign-off structure. |
 | v1.1 | 2026-02-20 | Forge | Reframed manual to UI/UX-first operator workflows and screen playbooks. |
+| v1.2 | 2026-02-20 | Forge | Added ARC Forge governance addendum (report template, authority chain, SOP, chore routine, and event taxonomy). |
+| v1.3 | 2026-02-20 | Forge | Rescoped governance addendum to external production environment only and removed ARC-internal framing from SOP labels. |
 
 Approval and sign-off:
 
