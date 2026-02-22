@@ -16,7 +16,7 @@ from reportlab.platypus import ListFlowable, ListItem, Paragraph, SimpleDocTempl
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = ROOT / "docs" / "security-whitepaper.md"
-DEFAULT_OUTPUT = ROOT / "output" / "pdf" / "DocSmith-Security-Whitepaper-v1.pdf"
+DEFAULT_OUTPUT = ROOT / "output" / "pdf" / "security-whitepaper.pdf"
 
 
 @dataclass(frozen=True)

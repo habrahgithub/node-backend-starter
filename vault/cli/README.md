@@ -130,6 +130,35 @@ Git history backfill:
 
 Creates `type=commit` events with commit hash/author/timestamp/files/stats/risk tags.
 
+`swd-vault ingest logs`
+
+Ingest SWD governance log bundle artifacts from the workspace root patterns defined in
+`docs/SWD_LOG_BUNDLE_SPEC_V1.md`:
+
+```bash
+./swd-vault ingest logs --bundle swd-log-bundle-YYYY-MM-DD --root /home/habib/workspace
+```
+
+Report-only mode (no writes):
+
+```bash
+./swd-vault ingest logs --bundle swd-log-bundle-YYYY-MM-DD --root /home/habib/workspace --report
+```
+
+Behavior:
+
+- Scans canonical log artifacts (`SWD-Execution-Log.md`, `Notion-Execution-Log.md`,
+  `docs/DECISIONS.md`, `docs/SWD_WORK_ORDER_UPDATE_*.md`, `docs/SWD_DAILY_BRIEF_*.md`,
+  and per-project execution logs).
+- Canonicalizes text deterministically before hashing (line endings, trailing whitespace,
+  volatile export markers, Unicode NFC).
+- Writes bundle NDJSON snapshot to `vault/artifacts/log-bundles/<bundle>.ndjson`.
+- Enforces bundle/file/record duplicate controls before insert.
+- Suppresses `ingest_summary` when the run is duplicate-only.
+- Appends one `ingest_summary` event with required metrics:
+  `files_scanned`, `records_scanned`, `records_inserted`, `records_skipped`,
+  `duplicate_ratio`, `bundle_fingerprint`, `duration_ms`.
+
 `swd-vault ingest notion`
 
 Ingest Notion export bundles (safe default: markdown only):

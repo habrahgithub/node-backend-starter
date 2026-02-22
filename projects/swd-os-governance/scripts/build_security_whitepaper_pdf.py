@@ -175,12 +175,8 @@ def main() -> int:
     if not src_md.exists():
         raise SystemExit(f"Missing source markdown: {src_md}")
 
-    out_pdf = repo_root / "output" / "pdf" / "DocSmith-Security-Whitepaper-v1.pdf"
+    out_pdf = repo_root / "output" / "pdf" / "security-whitepaper.pdf"
     build_pdf(src_md, out_pdf)
-
-    # Stable alias used by website links and governance index.
-    alias_pdf = repo_root / "output" / "pdf" / "security-whitepaper.pdf"
-    alias_pdf.write_bytes(out_pdf.read_bytes())
     return 0
 
 

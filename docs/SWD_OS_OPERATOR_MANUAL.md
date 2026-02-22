@@ -1,10 +1,10 @@
-# SWD OS - Operator Manual
+# SWD OS - UI/UX Operator Manual
 
 Document Status: Controlled
-Version: v1.0 (Local-First Freeze Baseline)
+Version: v1.1 (UI/UX Operations Edition)
 Schema Version: `{{VAULT_SCHEMA_VERSION}}`
 Build ID: `{{VAULT_BUILD_ID}}`
-Node Runtime (Dashboard): `18.19.1`
+Node Runtime (Dashboard): `20.11.1`
 Last Updated: 2026-02-20
 Document ID: `SWD-OS-OPS-MANUAL-V1`
 Classification: Internal - Controlled
@@ -13,88 +13,307 @@ Approved By: CTO
 Effective Date: 2026-02-20
 Review Cycle: Quarterly
 
-## 0. Document Control
+## 0. Purpose and Scope
 
-### 0.1 Purpose of This Document
-
-This manual is the controlled operating reference for SWD OS v1.0. It defines required operational steps, governance controls, and recovery procedures for local-first operations.
-
-### 0.2 Scope
+This document is the operator-facing UI/UX manual for SWD OS.
+It explains how to run operations from the War Room interface, how to read system signals, and how to act on alerts without deep technical digging.
 
 In scope:
 
-- Vault CLI operations.
-- War Room dashboard operations.
-- Integrity, backup, restore, and anomaly workflows.
+- War Room navigation and behavior.
+- Operator workflows (daily operations, triage, run control, ingest control).
+- UX semantics for statuses, severity, and provenance.
 
 Out of scope:
 
-- Deferred connectors and cloud integrations.
-- Non-v1.0 architecture changes.
+- Internal implementation details of parsers and storage engines.
+- Future connectors and cloud features.
 
-## 1. System Overview
+## 1. Product Experience Intent
 
-### 1.1 Purpose
+SWD OS is designed as a local-first operations cockpit.
 
-SWD OS is a local-first governance operating system designed to:
+UX goals:
 
-- Maintain an append-only audit ledger.
-- Ingest structured knowledge bundles.
-- Enforce duplicate controls before insert.
-- Preserve integrity via hash chain.
-- Provide operator visibility via War Room.
+- Fast orientation: operator understands system state in under 30 seconds.
+- Low-friction control: safe actions are reachable in 1-2 clicks.
+- Forensic depth on demand: details are hidden by default, expandable when needed.
+- Deterministic trust: what the UI shows must match the append-only vault state.
 
-The system is built for deterministic local execution, cloud-independent operations, and audit-grade traceability.
+## 2. Operator Roles
 
-## 2. Architecture Overview
+Primary role:
 
-```text
-WSL (Linux)
-|
-|-- vault/cli              -> Ingestion engine
-|-- vault/dashboard        -> War Room (Next.js)
-|-- Vault DB (SQLite)      -> Append-only hash-chained ledger
-|-- Encrypted backups      -> Rotated and restore-tested
-`-- Local ingestion bundles
-```
+- Platform Operator: runs ingestion, monitors health, responds to blockers.
 
-## 3. Core Components
+Secondary roles:
 
-### 3.1 Vault CLI
+- Reviewer/Auditor: validates integrity, backup posture, and run provenance.
+- Product Owner: checks operational readiness and recurring failure trends.
 
-Responsibilities:
+## 3. War Room Information Architecture
 
-- Bundle ingestion.
-- Duplicate detection (bundle/file/record).
-- Provenance tagging.
-- Hash-chain maintenance.
-- Backup and restore workflows.
+Primary routes:
 
-Operational properties:
+- `/` Status: command center summary.
+- `/timeline`: forensic chronological event view.
+- `/runs`: execution history and evidence links.
+- `/decisions`: decision and ops-sweep stream.
+- `/blockers`: active blocker surface grouped by fingerprint.
+- `/projects`: per-project health cards.
+- `/run-profiles`: controlled trigger page for fast/standard/full profiles.
+- `/events/[id]`: event-level drilldown.
 
-- Append-only event model.
-- Monotonic recency by event `id`.
-- Counter-contract warnings for invalid ingest metrics.
-- No direct DB mutation outside `swd-vault`.
+Navigation behavior:
 
-### 3.2 War Room Dashboard
+- Status and Timeline are always first-class entry points.
+- Action pages (`/run-profiles`) are separated from read-only monitoring pages.
+- Deep details live in `/events/[id]` or collapsible sections to avoid clutter.
 
-Provides:
+## 4. UX Semantics (Visual Language)
 
-- Vault health.
-- Latest ingest coverage and anomaly badges.
-- Duplicate-only run detection.
-- Provenance visibility.
-- Timeline forensic drilldown.
+### 4.1 Release Color
 
-Runtime:
+- `GREEN`: no blockers in policy window.
+- `YELLOW`: warnings present, no blockers.
+- `RED`: blocker present or integrity-critical issue.
 
-- Node `18.19.1` via `.nvmrc`.
-- `better-sqlite3` ABI aligned to pinned Node.
+### 4.2 Severity Scale
 
-## 4. Operating the System
+- `info`: normal operational records.
+- `notice`: noteworthy but expected deviation (for example duplicate-only ingest).
+- `warning`: operator attention required, non-blocking.
+- `critical`: release-impacting issue.
+- `fatal`: execution failed in a way that may invalidate current run.
 
-### 4.1 Start Dashboard
+### 4.3 Badge Meaning
+
+- `duplicate-only`: ingest scanned data but inserted none (expected on rerun).
+- `counter-regression`: ingest metrics inconsistent; investigate parser output.
+- `html-path-mismatch`: html counters indicate partial path mismatch.
+
+## 5. Screen-by-Screen Operating Guide
+
+## 5.1 Status (`/`)
+
+Purpose:
+
+- One-screen health and readiness assessment.
+
+Operator reads in this order:
+
+1. Release color (GREEN/YELLOW/RED).
+2. Integrity widget (Chain OK or broken).
+3. Backup freshness.
+4. Recent critical events.
+5. Format Coverage (latest ingest).
+6. Last 10 ingests trend.
+
+Operator actions from this page:
+
+- If `RED`: move to `/blockers`, then `/timeline`.
+- If backup stale: execute backup flow and confirm recovery drill.
+- If coverage anomaly appears: open latest ingest summary event.
+
+## 5.2 Timeline (`/timeline`)
+
+Purpose:
+
+- Forensic history with filters.
+
+Use cases:
+
+- Determine when a failure started.
+- Validate if a warning is recurring.
+- Correlate run failures with ingest or config changes.
+
+Interaction rules:
+
+- Filter by project, type, severity before scrolling.
+- Expand only relevant event rows.
+- Read provenance only for high-value event types (`ingest_summary`, `backup`, `restore`).
+
+## 5.3 Runs (`/runs`)
+
+Purpose:
+
+- Inspect command execution outcomes.
+
+Read each row as:
+
+- command -> exit code -> duration -> evidence path.
+
+Operator decision:
+
+- non-zero exit + repeated fingerprint = recurring failure candidate.
+- isolated non-zero + no recurrence = transient incident candidate.
+
+## 5.4 Decisions (`/decisions`)
+
+Purpose:
+
+- Maintain operational continuity and intent.
+
+Expected tags:
+
+- `now`, `next`, `later` in details payload.
+
+Operator behavior:
+
+- record major direction shifts and freeze amendments.
+- do not use this view for verbose logs; keep entries decision-grade.
+
+## 5.5 Blockers (`/blockers`)
+
+Purpose:
+
+- Fast triage queue.
+
+Expected grouping:
+
+- fingerprint-based grouping to reduce noise.
+
+Operator flow:
+
+1. open highest recurrence blocker.
+2. inspect latest evidence path.
+3. confirm whether issue is new or known.
+4. execute remediation or assign action.
+
+## 5.6 Projects (`/projects`)
+
+Purpose:
+
+- Portfolio-level readiness by project.
+
+Card interpretation:
+
+- last activity time.
+- blocker count.
+- latest run status.
+
+Use when deciding what to run next (`fast` vs `standard` vs `full`).
+
+## 5.7 Run Profiles (`/run-profiles`)
+
+Purpose:
+
+- Safe control plane execution.
+
+Guardrails:
+
+- no arbitrary command input in UI.
+- only configured profiles are triggerable.
+- localhost + token hardening rules apply.
+
+UX expectation:
+
+- button click -> running state -> summary result -> link to run evidence.
+
+## 6. Core Operator Journeys
+
+### 6.1 Start-of-Day Health Check (2-5 min)
+
+1. Open `/` Status.
+2. Confirm chain status is OK.
+3. Confirm backup freshness is within policy.
+4. Check Recent Critical Events.
+5. Review latest ingest coverage and anomaly badges.
+6. If stable, run `fast` profile from `/run-profiles`.
+
+Success criteria:
+
+- no unresolved critical issues.
+- no stale backup condition.
+- no unexplained ingest anomaly.
+
+### 6.2 Ingest Snapshot Validation
+
+1. Trigger ingest workflow (CLI or controlled profile).
+2. Open `/` and confirm latest ingest appears.
+3. Check md/csv/html scanned vs inserted vs skipped.
+4. If duplicate-only badge appears on rerun, treat as expected.
+5. Open event details and verify provenance fields.
+
+Success criteria:
+
+- counters consistent.
+- provenance present.
+- chain remains healthy after ingest.
+
+### 6.3 Blocker Triage Workflow
+
+1. Open `/blockers`.
+2. Prioritize by severity + recurrence count.
+3. Open linked run evidence.
+4. Verify scope in `/timeline`.
+5. Apply fix and rerun minimal profile.
+6. Record decision in `/decisions` when policy/flow changes.
+
+Success criteria:
+
+- blocker no longer appears in latest run window.
+- no new critical regression introduced.
+
+### 6.4 Release Readiness Check
+
+1. Run standard/full profile.
+2. Validate `/runs` and `/blockers` are clean.
+3. Confirm governance checks (integrity + backup + env contract).
+4. Confirm release color on `/` is GREEN.
+
+Success criteria:
+
+- zero active blockers.
+- governance gate clear.
+- evidence links available for audit.
+
+## 7. UX Behavior Standards
+
+Interaction standards:
+
+- Keep list views scannable; details are progressive disclosure.
+- Prefer badges/tags over long status text blocks.
+- Show timestamps in consistent local format.
+- Never hide critical state behind multiple clicks.
+
+Copy standards:
+
+- Use action-oriented labels (`Run Fast`, `Verify Chain`, `Backup Now`).
+- Avoid ambiguous language (`maybe`, `probably`) in operator-facing status.
+- Keep summaries one-line and evidence-driven.
+
+Accessibility baseline:
+
+- keyboard reachable primary actions.
+- visible focus indicators.
+- color is not the only severity signal (badges/text labels required).
+
+## 8. Failure-State UX
+
+When integrity fails:
+
+- Status shows explicit broken-chain state.
+- Operator path is deterministic: stop writes -> restore -> verify -> resume.
+
+When env contract fails:
+
+- show missing variable by exact name.
+- avoid generic "configuration error" copy.
+
+When duplicate-only ingest occurs:
+
+- show as neutral/notice state, not warning.
+
+When counters regress:
+
+- show warning badge with direct link to latest ingest summary details.
+
+## 9. Technical Appendix (Quick Commands)
+
+Use only when UI action is unavailable or for controlled recovery.
+
+Start dashboard:
 
 ```bash
 cd vault/dashboard
@@ -103,231 +322,34 @@ nvm use
 npm run dev
 ```
 
-Production build/run:
-
-```bash
-npm run build
-npm start
-```
-
-### 4.2 Ingest Bundle
-
-Notion export (MD/CSV/HTML):
-
-```bash
-./swd-vault ingest notion --bundle <bundle-name> --include-html
-```
-
-Re-run safety behavior:
-
-- Duplicate content is skipped.
-- No-op ingest is suppressed.
-- Event count remains unchanged when input is identical.
-
-### 4.3 Verify Integrity
+Verify integrity:
 
 ```bash
 ./swd-vault verify chain
 ```
 
-Expected result:
-
-- Chain OK.
-- No hash mismatch.
-- No unsealed-row violation.
-
-If verification fails:
-
-1. Stop dashboard and ingestion activity.
-2. Restore from last valid encrypted backup.
-3. Re-run `./swd-vault verify chain`.
-4. Resume operations only after pass.
-
-### 4.4 Backup and Restore Drill
-
-Encrypted rotated backup:
+Backup with rotation:
 
 ```bash
 export VAULT_BACKUP_PASSPHRASE="<long-random-passphrase>"
 ./swd-vault backup --encrypt --dest ~/swd-backups/vault --rotate
 ```
 
-Restore drill (non-destructive):
+Restore dry-run:
 
 ```bash
 ./swd-vault restore --from ~/swd-backups/vault/<snapshot>.sqlite.gpg --dry-run
-./swd-vault verify chain
 ```
 
-## 5. Duplicate Control Model
-
-Three-layer duplicate protection:
-
-1. Bundle SHA.
-2. File fingerprint.
-3. Record fingerprint.
-
-Duplicate-only runs:
-
-- `inserted = 0`
-- `skipped > 0`
-- no new ingest-summary event.
-
-## 6. Provenance Model
-
-Each ingest summary includes:
-
-- `run_profile`
-- `cli_version`
-- `host_fingerprint`
-- `csv_rows_scanned`
-
-Provenance visibility:
-
-- War Room Status (latest and last-10 ingests).
-- Timeline expandable details for forensic event types.
-
-## 7. Laptop Safety Controls
-
-Baseline controls that must remain enabled:
-
-- SQLite WAL mode.
-- SQLite synchronous `NORMAL`.
-- Local DB path under WSL filesystem (not `/mnt/c`).
-- HTML ingest size cap and excerpt truncation.
-- Backup retention rotation.
-- Restore drills with verification.
-
-## 8. Anomaly Handling
-
-### 8.1 Counter-Contract Warning
-
-If counters are inconsistent (for example `scanned < inserted + skipped`):
-
-- a warning event is emitted.
-- ingest continues in non-blocking mode.
-- operator investigation is required before next scheduled run.
-
-### 8.2 Coverage Mismatch
-
-Examples:
-
-- scanned data with no inserted/skipped values.
-- format-scanned counts with missing format results.
-
-Action:
-
-1. Inspect latest `ingest_summary.details_json`.
-2. Validate parser flags for the bundle format.
-3. Re-run on a controlled sample.
-
-## 9. Forensic Operations
-
-Use Timeline details to trace:
-
-- run profile.
-- CLI version.
-- host fingerprint.
-- backup/restore verification outcomes.
-
-Authoritative event recency is event `id`, not wall-clock ordering.
-
-## 10. Maintenance Schedule
-
-Weekly:
-
-- `./swd-vault verify chain`
-- `./swd-vault restore --from <snapshot> --dry-run`
-
-Monthly:
-
-- review vault size trend and duplicate ratios.
-- review recent `system`/`security` warnings.
-- confirm backup rotation outputs.
-
-Before CLI upgrade:
-
-1. Capture current schema/build IDs.
-2. Run chain verify.
-3. Create encrypted backup.
-4. Apply upgrade.
-5. Ingest a small validation bundle.
-6. Verify chain again.
-7. Log decision in `docs/DECISIONS.md`.
-
-## 11. Upgrade Procedure
-
-```text
-Backup -> Verify -> Upgrade -> Test Ingest -> Verify -> Decision Log
-```
-
-Do not skip pre-upgrade backup.
-
-## 12. Freeze Baseline (v1.0)
-
-Frozen invariants:
-
-- hash chain algorithm and canonicalization.
-- additive-only schema compatibility.
-- duplicate semantics (bundle/file/record).
-- ingest provenance structure.
-- backup/restore verification contract.
-
-Any freeze amendment must be documented in `docs/DECISIONS.md`.
-
-## 13. Emergency Recovery
-
-If corruption is suspected:
-
-1. Stop dashboard process.
-2. Restore latest encrypted backup to explicit target path.
-3. Run `./swd-vault verify chain`.
-4. Confirm schema/build markers.
-5. Resume only after verification pass.
-
-## 14. Governance Principle
-
-SWD OS v1.0 is:
-
-- local-first.
-- deterministic.
-- append-only.
-- audit-traceable.
-- cloud-independent for current scope.
-
-Deferred connector planning lives only in `docs/ROADMAP_CONNECTORS.md`.
-
-## 15. Environment Requirements
-
-- WSL Linux environment.
-- Node `18.19.1`.
-- Python 3.x.
-- Free disk space >= 2 GB.
-- Encrypted local backup storage.
-
-## 16. PDF Export
-
-Simple export:
+Notion ingest example:
 
 ```bash
-npx markdown-pdf docs/SWD_OS_OPERATOR_MANUAL.md
+./swd-vault ingest notion --bundle <bundle-name> --include-html
 ```
 
-Audit-grade export:
+## 10. Controlled Distribution and Revision
 
-```bash
-pandoc docs/SWD_OS_OPERATOR_MANUAL.md \
-  --from markdown \
-  --pdf-engine=xelatex \
-  --toc \
-  --number-sections \
-  -V geometry:margin=1in \
-  -o SWD_OS_OPERATOR_MANUAL_v1.0.pdf
-```
-
-## 17. Controlled Distribution
-
-Controlled copy recipients:
+Controlled recipients:
 
 - SWD CTO
 - SWD Operations Lead
@@ -336,16 +358,17 @@ Controlled copy recipients:
 Distribution rule:
 
 - This document is distributed as a controlled PDF artifact.
-- Uncontrolled copies must be marked: "UNCONTROLLED WHEN PRINTED".
+- Uncontrolled copies must be marked: `UNCONTROLLED WHEN PRINTED`.
 
-## 18. Revision History
+Revision history:
 
 | Version | Date       | Author | Change Summary |
 | --- | --- | --- | --- |
-| v1.0 | 2026-02-20 | Forge | Initial local-first operator baseline established. |
-| v1.0.1 | 2026-02-20 | Forge | Added document control, controlled distribution, revision history, and sign-off sections. |
+| v1.0 | 2026-02-20 | Forge | Initial operator baseline. |
+| v1.0.1 | 2026-02-20 | Forge | Added control/distribution/sign-off structure. |
+| v1.1 | 2026-02-20 | Forge | Reframed manual to UI/UX-first operator workflows and screen playbooks. |
 
-## 19. Approval and Sign-Off
+Approval and sign-off:
 
 Prepared by:
 
@@ -367,9 +390,3 @@ Approved by:
 - Role: CTO
 - Date: ____________________
 - Signature: ____________________
-
-## 20. Controlled Copy Notice
-
-- Reference source of truth: `docs/SWD_OS_OPERATOR_MANUAL.md`
-- Runtime control markers: `VAULT_SCHEMA_VERSION`, `VAULT_BUILD_ID`
-- Any amendment requires a corresponding entry in `docs/DECISIONS.md`.

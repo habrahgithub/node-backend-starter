@@ -65,3 +65,12 @@ venv/
 .env
 .env.*
 !.env.example
+
+# Vault runtime data
+vault/db/
+vault/artifacts/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+!vault/db/.gitkeep
+!vault/artifacts/.gitkeep
