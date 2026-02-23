@@ -1,0 +1,39 @@
+{
+  "vaultDbPath": "./vault/db/vault.sqlite",
+  "repos": [
+    {
+      "name": "swd-os",
+      "path": "/home/habib/workspace",
+      "include": [
+        "README.md",
+        "docs/**",
+        "logs/**",
+        "ops/**"
+      ],
+      "exclude": [
+        "node_modules/**",
+        ".next/**",
+        "dist/**",
+        "build/**"
+      ],
+      "commands": {
+        "fast": [
+          "npm -v",
+          "./swd-vault sweep --mode system"
+        ],
+        "standard": [
+          "./swd-vault ingest bootstrap --all",
+          "./swd-vault sweep --mode system"
+        ],
+        "full": [
+          "./swd-vault ingest git --all --since 30d",
+          "./swd-vault ingest bootstrap --all",
+          "./swd-vault sweep --mode system"
+        ]
+      }
+    }
+  ],
+  "notion": {
+    "exportsPath": "/home/habib/notion-exports"
+  }
+}

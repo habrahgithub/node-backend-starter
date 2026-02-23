@@ -1,5 +1,7 @@
 {
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "eslint.validate": ["javascript"]
+  "chat.mcp.serverSampling": {
+    "workspace/.vscode/mcp.json: io.github.vercel/next-devtools-mcp": {
+      "allowedModels": ["copilot/auto"]
+    }
+  }
 }

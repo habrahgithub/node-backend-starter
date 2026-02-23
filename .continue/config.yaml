@@ -1,0 +1,107 @@
+# Continue Configuration File
+# https://docs.continue.dev/customization/config
+
+version: "1.0.0"
+name: "Prime Multi-Model Free Setup"
+description: "All models are completely FREE. Ordered by coding power (strongest first)"
+
+models:
+  - title: GPT-4o Mini
+    provider: openai
+    model: gpt-4o-mini
+  - title: GPT-4 Turbo
+    provider: openai
+    model: gpt-4-turbo
+  - title: Claude 3 Haiku
+    provider: anthropic
+    model: claude-3-haiku-20240307
+  - title: Gemini Pro
+    provider: google
+    model: gemini-pro
+  - title: CodeLlama
+    provider: ollama
+    model: codellama
+  - title: Mistral
+    provider: ollama
+    model: mistral
+  - title: GPT-3.5 Turbo
+    provider: openai
+    model: gpt-3.5-turbo
+
+context:
+  - provider: codebase
+    exclude_patterns:
+      - "*.log"
+      - "node_modules/**"
+      - ".git/**"
+      - "dist/**"
+      - "build/**"
+      - "*.min.js"
+      - "*.min.css"
+  - provider: file_tree
+  - provider: current_dir
+  - provider: url
+  - provider: docs
+
+slash_commands:
+  - name: test
+    description: "Generate unit tests for selected code"
+    prompt: |
+      Generate comprehensive unit tests for the following code.
+      Include edge cases and mock any dependencies.
+      Use the testing framework that's already in the project.
+
+      {{clipboard}}
+
+  - name: explain
+    description: "Explain how the selected code works"
+    prompt: |
+      Explain the following code in simple terms.
+      Include what it does, how it works, and any important considerations.
+
+      {{clipboard}}
+
+  - name: refactor
+    description: "Refactor selected code for better quality"
+    prompt: |
+      Refactor the following code to improve:
+      - Readability
+      - Performance
+      - Best practices
+      - Error handling
+
+      {{clipboard}}
+
+  - name: docs
+    description: "Generate documentation for selected code"
+    prompt: |
+      Generate documentation for the following code.
+      Include JSDoc comments and explain parameters and return values.
+
+      {{clipboard}}
+
+  - name: fix
+    description: "Fix bugs or issues in selected code"
+    prompt: |
+      Analyze the following code for potential bugs or issues.
+      Provide a fixed version with explanations.
+
+      {{clipboard}}
+
+autocomplete:
+  enabled: true
+
+ui:
+  show_model_in_status_bar: true
+  enable_code_lens: true
+  theme: system
+
+experimental:
+  streaming: true
+  context_caching: true
+
+api:
+  timeout_ms: 120000
+  max_retries: 3
+  retry_delay_ms: 1000
+  connection_pooling: true

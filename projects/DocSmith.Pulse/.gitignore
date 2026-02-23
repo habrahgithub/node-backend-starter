@@ -1,20 +1,22 @@
+# Build output
 **/bin/
 **/obj/
+
+# IDE/runtime
 **/*.user
 **/*.suo
 **/.vs/
+.vscode/
+.DS_Store
+
+# Local SDK cache
+.dotnet/
+
+# Local database/runtime files
 **/docsmith_pulse.db
 **/*.db-shm
 **/*.db-wal
-.dotnet/
-Data/
-Models/
-Options/
-Pages/
-Services/
-Migrations/
-Program.cs
-DocSmith.Pulse.csproj
-appsettings.json
-appsettings.Development.json
-wwwroot/
+
+# Local env
+.env
+.env.*

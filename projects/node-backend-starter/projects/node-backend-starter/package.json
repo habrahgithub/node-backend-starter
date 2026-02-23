@@ -1,0 +1,45 @@
+{
+  "name": "backend-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "checkup:lint": "npm run lint --if-present",
+    "checkup:sanity": "npm run build --if-present",
+    "checkup:unit": "npm run test --if-present",
+    "checkup:regression": "npm run test --if-present",
+    "checkup:integration": "npm run test --if-present",
+    "checkup:run": "npm run checkup:lint && npm run checkup:unit && npm run checkup:sanity",
+    "checkup:full": "npm run checkup:run && npm run checkup:regression && npm run checkup:integration"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "nodemon": "^3.1.11",
+    "openapi-types": "^12.1.3",
+    "prettier": "^3.8.1",
+    "supertest": "^7.2.2",
+    "vitest": "^4.0.18"
+  }
+}

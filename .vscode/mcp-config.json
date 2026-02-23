@@ -1,0 +1,110 @@
+{
+  "name": "Unified MCP Configuration",
+  "version": "1.0.0",
+  "description": "Shared Model Context Protocol (MCP) servers across all AI extensions",
+
+  "servers": [
+    {
+      "name": "sonarqube",
+      "enabled": true,
+      "type": "stdio",
+      "command": "sonarqube-mcp",
+      "args": [],
+      "env": {
+        "SONARQUBE_HOST": "http://localhost:9000",
+        "SONARQUBE_TOKEN": "${SONARQUBE_TOKEN}"
+      },
+      "capabilities": [
+        "code-analysis",
+        "code-quality",
+        "security-scanning",
+        "bug-detection"
+      ]
+    },
+
+    {
+      "name": "git-context",
+      "enabled": true,
+      "type": "builtin",
+      "capabilities": [
+        "repository-info",
+        "blame-information",
+        "commit-history",
+        "branch-context"
+      ]
+    },
+
+    {
+      "name": "filesystem-context",
+      "enabled": true,
+      "type": "builtin",
+      "capabilities": [
+        "file-reading",
+        "directory-structure",
+        "workspace-analysis",
+        "dependency-mapping"
+      ]
+    },
+
+    {
+      "name": "memory-context",
+      "enabled": true,
+      "type": "builtin",
+      "capabilities": [
+        "conversation-history",
+        "learned-patterns",
+        "code-understanding",
+        "project-knowledge"
+      ]
+    },
+
+    {
+      "name": "railway-api",
+      "enabled": true,
+      "type": "stdio",
+      "command": "railway-mcp",
+      "env": {
+        "RAILWAY_TOKEN": "${RAILWAY_API_TOKEN}"
+      },
+      "capabilities": [
+        "deployment",
+        "environment-management",
+        "service-configuration",
+        "monitoring"
+      ]
+    }
+  ],
+
+  "contextProviders": [
+    {
+      "name": "code-context",
+      "types": ["javascript", "typescript", "python", "go", "rust"],
+      "maxTokens": 8192,
+      "includeDependencies": true
+    },
+    {
+      "name": "project-context",
+      "includes": ["package.json", "tsconfig.json", "pyproject.toml", ".gitignore"],
+      "maxTokens": 4096
+    },
+    {
+      "name": "skill-context",
+      "skillsPath": "~/.agents/skills",
+      "autoLoad": true
+    }
+  ],
+
+  "resourceLimits": {
+    "maxContextSize": 32000,
+    "maxRequestsPerMinute": 60,
+    "maxConcurrentRequests": 5,
+    "tokenBudgetPerRequest": 8192
+  },
+
+  "errorHandling": {
+    "retryAttempts": 3,
+    "retryDelay": 1000,
+    "fallbackMode": "reduced-context",
+    "logErrors": true
+  }
+}

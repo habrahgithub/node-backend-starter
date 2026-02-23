@@ -1,0 +1,49 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "DocSmith Pulse";
+}
+
+<div class="text-center">
+    <h1 class="display-5">DocSmith Pulse</h1>
+    <p>Local-first LinkedIn marketing assistant with manual copy/paste workflow.</p>
+</div>
+
+<div class="row g-3 mt-2">
+    <div class="col-md-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Ideas</h5>
+                <p class="card-text">Capture topics and generate three post drafts.</p>
+                <a asp-page="/Ideas" class="btn btn-primary btn-sm">Open Ideas</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Engagement</h5>
+                <p class="card-text">Paste post summaries and draft useful comments.</p>
+                <a asp-page="/Engagement" class="btn btn-primary btn-sm">Open Engagement</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Daily Pulse</h5>
+                <p class="card-text">See what to post and comment on today.</p>
+                <a asp-page="/DailyPulse" class="btn btn-primary btn-sm">Open Daily Pulse</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Logs</h5>
+                <p class="card-text">Track actions and edit performance metrics.</p>
+                <a asp-page="/Logs" class="btn btn-primary btn-sm">Open Logs</a>
+            </div>
+        </div>
+    </div>
+</div>

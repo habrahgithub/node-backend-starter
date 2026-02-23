@@ -1,0 +1,89 @@
+@page
+@model DocSmith.Pulse.Pages.IdeasModel
+@{
+    ViewData["Title"] = "Ideas";
+}
+
+<h2>Post Ideas</h2>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="post" asp-page-handler="Add" class="row g-3">
+            <div class="col-md-12">
+                <label asp-for="Input.Topic" class="form-label">Topic</label>
+                <input asp-for="Input.Topic" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Input.Persona" class="form-label">Persona</label>
+                <input asp-for="Input.Persona" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Input.PostType" class="form-label">Post Type</label>
+                <select asp-for="Input.PostType" class="form-select">
+                    <option>Tip</option>
+                    <option>Checklist</option>
+                    <option>Insight</option>
+                    <option>Case</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Input.CtaStyle" class="form-label">CTA Style</label>
+                <select asp-for="Input.CtaStyle" class="form-select">
+                    <option>None</option>
+                    <option>Soft</option>
+                    <option>Neutral</option>
+                </select>
+            </div>
+            <div class="col-md-12">
+                <label asp-for="Input.KeyPoint" class="form-label">Key Point</label>
+                <input asp-for="Input.KeyPoint" class="form-control" />
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Add Idea</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table table-striped table-sm align-middle">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Topic</th>
+        <th>Persona</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Created (UTC)</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.Ideas.Count == 0)
+    {
+        <tr>
+            <td colspan="7">No ideas yet.</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var idea in Model.Ideas)
+        {
+            <tr>
+                <td>@idea.Id</td>
+                <td>@idea.Topic</td>
+                <td>@idea.Persona</td>
+                <td>@idea.PostType</td>
+                <td>@idea.Status</td>
+                <td>@idea.CreatedAtUtc.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>
+                    <form method="post" asp-page-handler="Generate" class="d-inline">
+                        <input type="hidden" name="id" value="@idea.Id" />
+                        <button type="submit" class="btn btn-sm btn-outline-primary">Generate 3 Drafts</button>
+                    </form>
+                    <a asp-page="/Drafts" asp-route-id="@idea.Id" class="btn btn-sm btn-outline-secondary ms-1">View Drafts</a>
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>

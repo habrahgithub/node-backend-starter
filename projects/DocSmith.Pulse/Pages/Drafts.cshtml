@@ -1,0 +1,45 @@
+@page
+@model DocSmith.Pulse.Pages.DraftsModel
+@{
+    ViewData["Title"] = "Drafts";
+}
+
+@if (Model.Idea == null)
+{
+    <p>Idea not found. <a asp-page="/Ideas">Back to Ideas</a></p>
+}
+else
+{
+    <h2>Drafts for Idea #@Model.Idea.Id</h2>
+    <p><strong>Topic:</strong> @Model.Idea.Topic</p>
+    <p><strong>Status:</strong> @Model.Idea.Status</p>
+    <p><a asp-page="/Ideas">&larr; Back to Ideas</a></p>
+
+    <hr/>
+
+    @if (Model.Drafts.Count == 0)
+    {
+        <p>No drafts found. Generate drafts from the Ideas page.</p>
+    }
+    else
+    {
+        foreach (var draft in Model.Drafts)
+        {
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>Variant @draft.VariantNo @(draft.IsApproved ? "(Approved)" : "")</h5>
+
+                    <label class="form-label">Draft</label>
+                    <textarea class="form-control mb-2" rows="10" readonly>@draft.DraftText
+
+@draft.Hashtags</textarea>
+
+                    <form method="post" asp-page-handler="Approve">
+                        <input type="hidden" name="draftId" value="@draft.Id" />
+                        <button type="submit" class="btn btn-outline-primary" disabled="@draft.IsApproved">Approve This Variant</button>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+}

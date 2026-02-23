@@ -1,0 +1,87 @@
+@page
+@model DocSmith.Pulse.Pages.EngagementModel
+@{
+    ViewData["Title"] = "Engagement";
+}
+
+<h2>Engagement Queue</h2>
+<p>Paste a LinkedIn post summary to generate comment drafts for manual copy/paste.</p>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="post" asp-page-handler="Generate" class="row g-3">
+            <div class="col-md-8">
+                <label asp-for="Input.PostUrl" class="form-label">Post URL</label>
+                <input asp-for="Input.PostUrl" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Input.AuthorName" class="form-label">Author Name</label>
+                <input asp-for="Input.AuthorName" class="form-control" />
+            </div>
+            <div class="col-12">
+                <label asp-for="Input.PostSummary" class="form-label">Post Summary</label>
+                <textarea asp-for="Input.PostSummary" class="form-control" rows="5"></textarea>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Generate Comments</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (Model.GeneratedTarget != null)
+{
+    <div class="card border-success mb-4">
+        <div class="card-body">
+            <h5 class="text-success">Generated Comments for @Model.GeneratedTarget.AuthorName</h5>
+
+            <label class="form-label">Short Comment</label>
+            <textarea class="form-control mb-2" rows="3" readonly>@Model.GeneratedTarget.DraftCommentShort</textarea>
+
+            <label class="form-label">Medium Comment</label>
+            <textarea class="form-control" rows="5" readonly>@Model.GeneratedTarget.DraftCommentMedium</textarea>
+        </div>
+    </div>
+}
+
+<table class="table table-striped table-sm align-middle">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Author</th>
+        <th>Status</th>
+        <th>Created (UTC)</th>
+        <th>Post URL</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.Targets.Count == 0)
+    {
+        <tr>
+            <td colspan="5">No engagement targets yet.</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var target in Model.Targets)
+        {
+            <tr>
+                <td>@target.Id</td>
+                <td>@target.AuthorName</td>
+                <td>@target.Status</td>
+                <td>@target.CreatedAtUtc.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>
+                    @if (string.IsNullOrWhiteSpace(target.PostUrl))
+                    {
+                        <span>-</span>
+                    }
+                    else
+                    {
+                        <a href="@target.PostUrl" target="_blank" rel="noopener noreferrer">Open</a>
+                    }
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
