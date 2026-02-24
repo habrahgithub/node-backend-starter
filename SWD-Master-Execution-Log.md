@@ -3,6 +3,19 @@
 Canonical merged execution log for the workspace.
 Last normalized: 2026-02-23 20:49:34Z.
 
+## Recent Updates
+
+### 2026-02-24
+- Project: `projects/SWD-dev-ec`
+- Commit: `b9e6847` (`main`, pushed to `origin`)
+- Completed:
+  - Fixed DEV EC `/Devices` runtime fault by removing `IHttpContextAccessor` dependency in Razor page scope and using `HttpContext.Request`.
+  - Finalized Windows packaging flow for EXE installer delivery (Inno Setup branded pipeline + publish script hardening).
+  - Rebuilt and reinstalled EXE setup package and re-ran Playwright capture across core routes (`/`, `/Settings`, `/Sync`, `/Devices`, `/Policies`, `/Reports`, `/Audit`).
+- Evidence:
+  - Commit ref: `projects/SWD-dev-ec` -> `b9e6847`
+  - Playwright bundle: `output/playwright/rerun-20260224-202227/`
+
 ## Source Index
 
 - Notion-Execution-Log.md
@@ -766,4 +779,3 @@ Entries
   - Next action:
 
 ---
-
