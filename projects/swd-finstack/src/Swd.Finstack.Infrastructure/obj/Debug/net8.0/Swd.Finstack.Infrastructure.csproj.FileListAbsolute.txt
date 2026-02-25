@@ -1,0 +1,6 @@
+\\wsl.localhost\Ubuntu\home\habib\workspace\projects\swd-finstack\src\Swd.Finstack.Infrastructure\obj\Debug\net8.0\Swd.Finstack.Infrastructure.csproj.AssemblyReference.cache
+\\wsl.localhost\Ubuntu\home\habib\workspace\projects\swd-finstack\src\Swd.Finstack.Infrastructure\obj\Debug\net8.0\Swd.Finstack.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+\\wsl.localhost\Ubuntu\home\habib\workspace\projects\swd-finstack\src\Swd.Finstack.Infrastructure\obj\Debug\net8.0\Swd.Finstack.Infrastructure.AssemblyInfoInputs.cache
+\\wsl.localhost\Ubuntu\home\habib\workspace\projects\swd-finstack\src\Swd.Finstack.Infrastructure\obj\Debug\net8.0\Swd.Finstack.Infrastructure.AssemblyInfo.cs
+\\wsl.localhost\Ubuntu\home\habib\workspace\projects\swd-finstack\src\Swd.Finstack.Infrastructure\obj\Debug\net8.0\Swd.Finstack.Infrastructure.csproj.CoreCompileInputs.cache
+\\wsl.localhost\Ubuntu\home\habib\workspace\projects\swd-finstack\src\Swd.Finstack.Infrastructure\obj\Debug\net8.0\Swd.Finstack.Infrastructure.sourcelink.json

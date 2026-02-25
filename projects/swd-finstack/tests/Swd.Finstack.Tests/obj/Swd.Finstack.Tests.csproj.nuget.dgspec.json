@@ -1,20 +1,216 @@
 {
   "format": 1,
   "restore": {
-    "/home/habib/workspace/swd-finstack/tests/Swd.Finstack.Tests/Swd.Finstack.Tests.csproj": {}
+    "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\tests\\Swd.Finstack.Tests\\Swd.Finstack.Tests.csproj": {}
   },
   "projects": {
-    "/home/habib/workspace/swd-finstack/tests/Swd.Finstack.Tests/Swd.Finstack.Tests.csproj": {
+    "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Api\\Swd.Finstack.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/habib/workspace/swd-finstack/tests/Swd.Finstack.Tests/Swd.Finstack.Tests.csproj",
-        "projectName": "Swd.Finstack.Tests",
-        "projectPath": "/home/habib/workspace/swd-finstack/tests/Swd.Finstack.Tests/Swd.Finstack.Tests.csproj",
-        "packagesPath": "/home/habib/.nuget/packages/",
-        "outputPath": "/home/habib/workspace/swd-finstack/tests/Swd.Finstack.Tests/obj/",
+        "projectUniqueName": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Api\\Swd.Finstack.Api.csproj",
+        "projectName": "Swd.Finstack.Api",
+        "projectPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Api\\Swd.Finstack.Api.csproj",
+        "packagesPath": "C:\\Users\\habib\\.nuget\\packages\\",
+        "outputPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/habib/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\habib\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Application\\Swd.Finstack.Application.csproj": {
+                "projectPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Application\\Swd.Finstack.Application.csproj"
+              },
+              "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Infrastructure\\Swd.Finstack.Infrastructure.csproj": {
+                "projectPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Infrastructure\\Swd.Finstack.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.1, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.24, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Application\\Swd.Finstack.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Application\\Swd.Finstack.Application.csproj",
+        "projectName": "Swd.Finstack.Application",
+        "projectPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Application\\Swd.Finstack.Application.csproj",
+        "packagesPath": "C:\\Users\\habib\\.nuget\\packages\\",
+        "outputPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\habib\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Domain\\Swd.Finstack.Domain.csproj": {
+                "projectPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Domain\\Swd.Finstack.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[12.1.1, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[14.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Domain\\Swd.Finstack.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Domain\\Swd.Finstack.Domain.csproj",
+        "projectName": "Swd.Finstack.Domain",
+        "projectPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Domain\\Swd.Finstack.Domain.csproj",
+        "packagesPath": "C:\\Users\\habib\\.nuget\\packages\\",
+        "outputPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\habib\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -37,7 +233,162 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Infrastructure\\Swd.Finstack.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Infrastructure\\Swd.Finstack.Infrastructure.csproj",
+        "projectName": "Swd.Finstack.Infrastructure",
+        "projectPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Infrastructure\\Swd.Finstack.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\habib\\.nuget\\packages\\",
+        "outputPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\habib\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Application\\Swd.Finstack.Application.csproj": {
+                "projectPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Application\\Swd.Finstack.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\tests\\Swd.Finstack.Tests\\Swd.Finstack.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\tests\\Swd.Finstack.Tests\\Swd.Finstack.Tests.csproj",
+        "projectName": "Swd.Finstack.Tests",
+        "projectPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\tests\\Swd.Finstack.Tests\\Swd.Finstack.Tests.csproj",
+        "packagesPath": "C:\\Users\\habib\\.nuget\\packages\\",
+        "outputPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\tests\\Swd.Finstack.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\habib\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Api\\Swd.Finstack.Api.csproj": {
+                "projectPath": "\\\\wsl.localhost\\Ubuntu\\home\\habib\\workspace\\projects\\swd-finstack\\src\\Swd.Finstack.Api\\Swd.Finstack.Api.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -71,12 +422,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
