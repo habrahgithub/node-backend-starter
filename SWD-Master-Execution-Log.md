@@ -5,6 +5,46 @@ Last normalized: 2026-02-23 20:49:34Z.
 
 ## Recent Updates
 
+### 2026-02-25
+- Project: `projects/SWD-dev-ec`
+- Completed:
+  - Finished DEV EC v0.2 packaging closure with SQLite local runtime and native desktop launcher flow.
+  - Fixed startup bug on restricted hosts by adding writable data-root fallback when `CommonApplicationData` is unavailable.
+  - Built final single-file installer with bundled WebView2 dependency bootstrap:
+    - `dist/exe-installer/DEV-EC-Setup-v0.2.exe`
+    - mirrored to `C:\Users\habib\dist\exe-installer\DEV-EC-Setup-v0.2.exe`
+  - Re-ran Playwright route capture with all core pages returning `200`.
+- Verification:
+  - `dotnet build DevEc.sln -c Release -p:EnableWindowsTargeting=true` passed.
+  - `dotnet test DevEc.sln -c Release -p:EnableWindowsTargeting=true` passed (3/3).
+  - Playwright summary: `output/playwright/rerun-20260225-235512/summary.json`
+- Evidence:
+  - Installer: `projects/SWD-dev-ec/dist/exe-installer/DEV-EC-Setup-v0.2.exe`
+  - Playwright bundle: `output/playwright/rerun-20260225-235512/`
+
+### 2026-02-25
+- Project: `swd-os`
+- Completed:
+  - Added Forge governance metadata policy file for versioned audit trail:
+    - `vault/policies/FORGE_GOVERNANCE.toml`
+  - Updated Codex local config scope safely:
+    - set explicit writable root to `/home/habib/workspace`
+    - removed redundant nested trusted project entry
+  - Added canonical software development workflow/SOP schema:
+    - `docs/SOFTWARE_DEVELOPMENT_WORKFLOW_SOP.md`
+  - Recorded governance decision entry:
+    - `docs/DECISIONS.md` (new 2026-02-25 decision row)
+- Verification:
+  - No runtime or behavior changes (documentation/policy/config scope updates only).
+  - No test suite required for this change set.
+  - Vault append/verification events recorded: `377`, `378`, `381`, `382`, `383`, `384`.
+  - Chain integrity verified after reseal (`seal_event_chain`, updated events: 3).
+- Evidence:
+  - `vault/policies/FORGE_GOVERNANCE.toml`
+  - `docs/SOFTWARE_DEVELOPMENT_WORKFLOW_SOP.md`
+  - `docs/DECISIONS.md`
+  - `/home/habib/.codex/config.toml`
+
 ### 2026-02-24
 - Project: `projects/SWD-dev-ec`
 - Commit: `b9e6847` (`main`, pushed to `origin`)

@@ -6,6 +6,8 @@ Template:
 - YYYY-MM-DD: Decision statement. Rationale.
 
 Entries:
+- 2026-02-25: `projects/SWD-dev-ec` v0.2 packaging baseline switched runtime persistence to SQLite with auto-migrate, desktop launcher as primary entrypoint, bundled WebView2 dependency bootstrap, and writable data-root fallback (`CommonApplicationData` preferred, user-local fallback) to prevent startup failures on restricted hosts.
+- 2026-02-25: Added canonical `docs/SOFTWARE_DEVELOPMENT_WORKFLOW_SOP.md` defining deterministic P0-P5 delivery schema, fail-closed gates, DoR contract, evidence bundle schema, and no-back-and-forth control rules for software development execution.
 - 2026-02-06: Established governance docs, skills baseline, and stricter ignore rules. Keeps changes small and audit friendly.
 - 2026-02-19: Standardized `social-marketing-content-studio` as a deterministic v1.0 pipeline with required inputs, QA gates, and platform export contract.
 - 2026-02-19: Upgraded `operations-control-plane` to governance-grade deterministic flow with context snapshot, housekeeping blocks, telemetry triage, Warden logs, and release-check mode.
