@@ -1,0 +1,5 @@
+HAS_DIRUX=true
+DIRUX_ACTIONS=status,list,browse,grant,grant_selected,revoke,clear
+STATUS_RESULT=ok
+BROWSE_RESULT=Browse failed: path not found
+GRANT_SELECTED_RESULT=Grant failed: selection not found or expired

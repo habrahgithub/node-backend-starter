@@ -1,0 +1,4 @@
+DATE=2026-03-05T18:00:34Z
+NODE=v20.11.1
+NPM=10.2.4
+NODE_PATH=/home/habib/.nvm/versions/node/v20.11.1/bin/node

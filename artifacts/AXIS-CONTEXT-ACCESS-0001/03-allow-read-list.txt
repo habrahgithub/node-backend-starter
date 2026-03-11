@@ -1,0 +1,31 @@
+DATE=2026-03-06T17:48:52Z
+SESSION_ID=79309ed5-ae4e-49f0-a761-c9a700cfbedf
+CORRELATION_ALLOW_LIST=acc-allow-list-174854
+CORRELATION_ALLOW_READ=acc-allow-read-174854
+-- allow list --
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 17:48:54 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::dm6qk-1772819334528-5628bae926a1
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"allow-list","result":{"status":"ok","operation":"list","directive_id":"AXIS-CONTEXT-ACCESS-0001","path":"/workspace/projects/swd-landing","entries":[{"path":"/workspace/projects/swd-landing/app","type":"dir"},{"path":"/workspace/projects/swd-landing/public","type":"dir"},{"path":"/workspace/projects/swd-landing/README.md","type":"file"},{"path":"/workspace/projects/swd-landing/package.json","type":"file"}],"entry_count":4}}-- allow read --
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 17:48:55 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::z6wdv-1772819335269-d464a13307c3
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"allow-read","result":{"status":"ok","operation":"read","directive_id":"AXIS-CONTEXT-ACCESS-0001","path":"/workspace/projects/swd-landing/README.md","content_preview":"redacted:sha256:0ce69a91ff62","redacted":true}}

@@ -1,0 +1,14 @@
+DATE=2026-03-05T19:17:16Z
+URL_REDACTED=https://www.starwealthdynamics.org/mcp/<connector_key>
+-- ping --
+HTTP=200
+{"content":[{"type":"text","text":"MCP server is alive"}]}
+-- health_check --
+HTTP=200
+{"content":[{"type":"text","text":"{\n  \"status\": \"healthy\",\n  \"timestamp\": \"2026-03-05T19:17:18.067Z\",\n  \"server\": {\n    \"uptime\": 0,\n    \"requestCount\": 2\n  },\n  \"gateway\": \"vercel-edge\"\n}"}]}
+-- get_metrics --
+HTTP=200
+{"content":[{"type":"text","text":"{\n  \"server\": {\n    \"uptime\": 1,\n    \"requestCount\": 4\n  },\n  \"system\": {\n    \"nodeVersion\": \"v24.13.0\",\n    \"platform\": \"linux\"\n  },\n  \"gateway\": \"vercel-edge\"\n}"}]}
+-- vault.ping --
+HTTP=200
+{"ok":true,"query_only":true,"event_count":null,"source":"vercel-gateway-local","timestamp":"2026-03-05T19:17:19.454Z"}

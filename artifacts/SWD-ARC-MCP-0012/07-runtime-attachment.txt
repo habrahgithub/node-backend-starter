@@ -1,0 +1,14 @@
+DATE=2026-03-06T17:34:55Z
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 17:34:58 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::lrqmb-1772818498685-2a1544861aa9
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"attach-0012","result":{"content":[{"type":"text","text":"{\"status\":\"ok\",\"gateway\":\"vercel-edge\",\"attachment\":\"gateway_local\",\"upstream_configured\":false,\"upstream_fingerprint\":\"none\",\"upstream_auth\":\"none\",\"timestamp\":\"2026-03-06T17:34:58.790Z\"}"}],"structuredContent":{"status":"ok","gateway":"vercel-edge","attachment":"gateway_local","upstream_configured":false,"upstream_fingerprint":"none","upstream_auth":"none","timestamp":"2026-03-06T17:34:58.790Z"}}}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ODrXGO0m6s4=",
+  "success": true,
+  "projectFilePath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Audit/Swd.Finstack.Audit.Domain/Swd.Finstack.Audit.Domain.csproj",
+  "expectedPackageFiles": [
+    "/home/habib/.nuget/packages/system.collections.immutable/10.0.3/system.collections.immutable.10.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

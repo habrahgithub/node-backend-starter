@@ -1,0 +1,5 @@
+GRANTED_MASKED_PATH=/workspace/~
+GRANTED_REAL_PATH=/home/habib/workspace/~
+READ_GRANTED_STATUS=ok
+READ_GRANTED_COUNT=26
+READ_ROOT_STATUS=Access denied: path_out_of_scope

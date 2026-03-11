@@ -1,0 +1,5 @@
+DATE_UTC=2026-03-08T09:25:12Z
+--- GET /.well-known/oauth-authorization-server ---
+{"issuer":"http://127.0.0.1:4310","authorization_endpoint":"http://127.0.0.1:4310/api/auth/github/start","token_endpoint":"http://127.0.0.1:4310/api/auth/token","scopes_supported":["openid","profile","email","mcp:broker","mcp:agent"],"response_types_supported":["code"],"grant_types_supported":["authorization_code"],"token_endpoint_auth_methods_supported":["none"],"code_challenge_methods_supported":["S256","plain"]}
+--- GET /.well-known/openid-configuration ---
+{"issuer":"http://127.0.0.1:4310","authorization_endpoint":"http://127.0.0.1:4310/api/auth/github/start","token_endpoint":"http://127.0.0.1:4310/api/auth/token","userinfo_endpoint":"http://127.0.0.1:4310/api/auth/userinfo","jwks_uri":"http://127.0.0.1:4310/.well-known/jwks.json","response_types_supported":["code"],"grant_types_supported":["authorization_code"],"subject_types_supported":["public"],"id_token_signing_alg_values_supported":["HS256"],"scopes_supported":["openid","profile","email","mcp:broker","mcp:agent"],"claims_supported":["sub","name","email","preferred_username","provider"]}

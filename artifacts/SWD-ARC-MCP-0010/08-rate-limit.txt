@@ -1,0 +1,10 @@
+DATE=2026-03-05T19:18:34Z
+URL_REDACTED=https://www.starwealthdynamics.org/mcp/<connector_key>
+-- burst 30 parallel GET /mcp/<key> requests --
+      1 000
+     21 200
+      8 429
+
+-- burst 30 parallel GET /api/health (header auth) requests --
+      2 000
+     28 200

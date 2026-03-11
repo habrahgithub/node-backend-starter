@@ -1,0 +1,23 @@
+DATE=2026-03-06T19:16:15Z
+439:## 2026-03-06T19:15:43Z - SWD-ARC-MCP-0013 Upstream Attachment State Disambiguation
+## 2026-03-06T19:15:43Z - SWD-ARC-MCP-0013 Upstream Attachment State Disambiguation
+- Scope: expose and validate deterministic upstream attachment state signals on the Vercel edge gateway without enabling writes.
+- Result: PASS
+- Verified:
+  - Tool discovery includes `compliance.runtime_attachment`, `compliance.upstream_probe`, `compliance.upstream_mode`.
+  - `compliance.runtime_attachment` reports explicit mode metadata with redaction.
+  - `compliance.upstream_probe` is deterministic and returns `probe_status=skipped_no_upstream` when upstream is not configured.
+  - `compliance.upstream_mode` cleanly distinguishes states: `gateway_local=true`, `upstream_configured=false`, `upstream_attached=false`.
+  - Regression checks unchanged for read tools (`ping`, `health_check`, `get_metrics`, `vault.ping`).
+  - Regression checks unchanged for Axis context-access tools (`axis.context_access.check`, `axis.context_access.read`, `axis.context_access.write_artifact`, `axis.context_access.read_logs`, `axis.context_access.audit`).
+- Governance interpretation:
+  - Read-path readiness: PASS
+  - Upstream attachment status: DETERMINISTIC (`gateway_local`)
+  - Upstream-backed write-plane readiness: NOT VERIFIED (no upstream configured)
+- Evidence:
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0013/01-scope-and-surface.txt
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0013/02-route-change.txt
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0013/03-tool-discovery.txt
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0013/04-runtime-attachment.txt
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0013/05-upstream-probe.txt
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0013/06-upstream-mode.txt

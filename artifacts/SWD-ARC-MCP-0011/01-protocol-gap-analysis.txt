@@ -1,0 +1,16 @@
+DATE=2026-03-06T15:43:12Z
+DIRECTIVE=SWD-ARC-MCP-0011
+TARGET=/home/habib/workspace/projects/swd-landing/app/api/_gateway/mcpGateway.js
+
+Root cause confirmed from R2:
+- GET /mcp/<connector_key> served SSE and remained open.
+- POST /mcp/<connector_key> was reachable but rejected connector RPC payloads with
+  {"error":"tool name required"} because handler expected direct payload.params.tool.
+
+Protocol gap fixed in this change:
+- Added JSON-RPC MCP method handling for initialize, notifications/initialized,
+  ping, tools/list, tools/call.
+- Added MCP session header support (mcp-session-id) for initialize + follow-up calls.
+- Preserved allowlist policy and 403 blocked write semantics.
+- Preserved /mcp header-token mode and /mcp/<connector_key> mode.
+- Removed forced 55s SSE close to avoid avoidable connection-closed behavior.

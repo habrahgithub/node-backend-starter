@@ -1,0 +1,12 @@
+
+> swd-landing@1.0.0 test:axis-hardgate
+> node scripts/axis-hard-gate-regression.mjs
+
+AXIS hard-gate regression results
+- allow_with_valid_cache: expected=allow actual=allow http=200 result=PASS
+- deny_preflight_missing: expected=preflight_missing actual=preflight_missing http=403 result=PASS
+- deny_preflight_failed: expected=preflight_failed actual=preflight_failed http=403 result=PASS
+- deny_preflight_expired: expected=preflight_expired actual=preflight_expired http=403 result=PASS
+- deny_scope_ambiguous: expected=scope_ambiguous actual=scope_ambiguous http=403 result=PASS
+Summary: passed=5 failed=0 total=5
+Structured summary written to /home/habib/workspace/projects/swd-landing/artifacts/axis-hard-gate-regression-summary.json

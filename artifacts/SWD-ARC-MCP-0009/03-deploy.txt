@@ -1,0 +1,169 @@
+DATE=2026-03-05T18:44:37Z
+PROJECT_DIR=/home/habib/workspace/projects/swd-landing
+-- local build summary --
+
+> swd-landing@1.0.0 build
+> next build
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /home/habib/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /home/habib/workspace/projects/swd-landing/package-lock.json
+   * /home/habib/workspace/package-lock.json
+
+▲ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 10.5s
+  Running TypeScript ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/20) ...
+  Generating static pages using 11 workers (5/20) 
+  Generating static pages using 11 workers (10/20) 
+  Generating static pages using 11 workers (15/20) 
+✓ Generating static pages using 11 workers (20/20) in 1025.9ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/health
+├ ○ /ar
+├ ○ /ar/company
+├ ○ /ar/contact
+├ ○ /ar/docsmith
+├ ○ /ar/products
+├ ○ /ar/solutions
+├ ○ /company
+├ ○ /contact
+├ ○ /cookies
+├ ○ /docsmith
+├ ○ /dpa
+├ ○ /eula
+├ ƒ /mcp
+├ ○ /products
+├ ○ /prototype
+├ ○ /refund-policy
+├ ○ /security
+└ ○ /solutions
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+-- latest deploy log --
+Retrieving project…
+Deploying habib-rahmans-projects-9dd558a7/swd-landing
+Uploading [--------------------] (0.0B/6.5KB)
+Uploading [====================] (6.5KB/6.5KB)
+Inspect: https://vercel.com/habib-rahmans-projects-9dd558a7/swd-landing/9QnyH9eHUdQ2SsGE67PHfKurX1Rf [3s]
+Production: https://swd-landing-lwsiuqtdy-habib-rahmans-projects-9dd558a7.vercel.app [3s]
+https://swd-landing-lwsiuqtdy-habib-rahmans-projects-9dd558a7.vercel.appBuilding...
+Building...
+Building: Running build in Washington, D.C., USA (East) – iad1
+Building: Build machine configuration: 2 cores, 8 GB
+Building: Retrieving list of deployment files...
+Building: Downloading 70 deployment files...
+Building: Restored build cache from previous deployment (GvzRgxzbiT9jxPFRexkG4ieBY6nF)
+Building: Running "vercel build"
+Building: Vercel CLI 50.27.1
+Building: Installing dependencies...
+Building: up to date in 1s
+Building: 169 packages are looking for funding
+Building: run `npm fund` for details
+Building: Detected Next.js version: 16.1.6
+Building: Running "npm run build"
+Building: > swd-landing@1.0.0 build
+Building: > next build
+Building: ▲ Next.js 16.1.6 (Turbopack)
+Building: Creating an optimized production build ...
+Building: ✓ Compiled successfully in 6.3s
+Building: Running TypeScript ...
+Building: Collecting page data using 1 worker ...
+Building: Generating static pages using 1 worker (0/20) ...
+Building: Generating static pages using 1 worker (5/20)
+Building: Generating static pages using 1 worker (10/20)
+Building: Generating static pages using 1 worker (15/20)
+Building: ✓ Generating static pages using 1 worker (20/20) in 322.5ms
+Building: Finalizing page optimization ...
+Building: Route (app)
+Building: ┌ ○ /
+Building: ├ ○ /_not-found
+Building: ├ ƒ /api/health
+Building: ├ ○ /ar
+Building: ├ ○ /ar/company
+Building: ├ ○ /ar/contact
+Building: ├ ○ /ar/docsmith
+Building: ├ ○ /ar/products
+Building: ├ ○ /ar/solutions
+Building: ├ ○ /company
+Building: ├ ○ /contact
+Building: ├ ○ /cookies
+Building: ├ ○ /docsmith
+Building: ├ ○ /dpa
+Building: ├ ○ /eula
+Building: ├ ƒ /mcp
+Building: ├ ○ /products
+Building: ├ ○ /prototype
+Building: ├ ○ /refund-policy
+Building: ├ ○ /security
+Building: └ ○ /solutions
+Building: ○  (Static)   prerendered as static content
+Building: ƒ  (Dynamic)  server-rendered on demand
+Building: Traced Next.js server files in: 35.551ms
+Building: Created all serverless functions in: 187.109ms
+Building: Collected static files (public/, static/, .next/static): 5.373ms
+Building: Build Completed in /vercel/output [14s]
+Building: Deploying outputs...
+[2K[1A[2K[GProduction: https://swd-landing-lwsiuqtdy-habib-rahmans-projects-9dd558a7.vercel.app [29s]
+Completing...
+Aliased: https://swd-landing.vercel.app [29s]
+-- deployment list --
+Fetching deployments in habib-rahmans-projects-9dd558a7
+> Deployments for habib-rahmans-projects-9dd558a7/swd-landing [376ms]
+
+  Age     Project                                         Deployment                                                                   Status      Environment     Duration     Username         
+  1m      habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-lwsiuqtdy-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      24s          habrahgithub     
+  7m      habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-6xjn3ameb-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      24s          habrahgithub     
+  11m     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-11x8drg61-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      25s          habrahgithub     
+  13m     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-bs7ivieon-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      25s          habrahgithub     
+  10d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-b9xc4o3dd-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      24s          habrahgithub     
+  14d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-fwfdf2o9h-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      21s          habrahgithub     
+  15d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-53b5xo2oj-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      22s          habrahgithub     
+  20d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-8z7rw5xg9-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      21s          habrahgithub     
+  27d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-d98vh4f8t-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      23s          habrahgithub     
+  27d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-jrgnjwxml-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      21s          habrahgithub     
+  27d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-4du694gkl-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      31s          habrahgithub     
+  27d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-e790ud3ri-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      22s          habrahgithub     
+  27d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-pyg2b7an3-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      22s          habrahgithub     
+  27d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-f4ffe9ao6-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      22s          habrahgithub     
+  27d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-q6luchf41-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      29s          habrahgithub     
+  28d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-7gch1h36k-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      26s          habrahgithub     
+  28d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-nee7tnigq-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      27s          habrahgithub     
+  28d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-cwk6egxrf-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      25s          habrahgithub     
+  28d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-720ieagut-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Preview         38s          habrahgithub     
+  28d     habib-rahmans-projects-9dd558a7/swd-landing     https://swd-landing-4nylsnk0p-habib-rahmans-projects-9dd558a7.vercel.app     ● Ready     Production      26s          habrahgithub     
+
+> To display the next page, run `vercel ls swd-landing --yes --next 1770320884561`
+https://swd-landing-lwsiuqtdy-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-6xjn3ameb-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-11x8drg61-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-bs7ivieon-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-b9xc4o3dd-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-fwfdf2o9h-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-53b5xo2oj-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-8z7rw5xg9-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-d98vh4f8t-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-jrgnjwxml-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-4du694gkl-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-e790ud3ri-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-pyg2b7an3-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-f4ffe9ao6-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-q6luchf41-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-7gch1h36k-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-nee7tnigq-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-cwk6egxrf-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-720ieagut-habib-rahmans-projects-9dd558a7.vercel.app
+https://swd-landing-4nylsnk0p-habib-rahmans-projects-9dd558a7.vercel.app

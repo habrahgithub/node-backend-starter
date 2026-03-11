@@ -1,0 +1,33 @@
+Fetching deployment "swd-landing-r9f0sswcn-habib-rahmans-projects-9dd558a7.vercel.app" in habib-rahmans-projects-9dd558a7
+> Fetched deployment "swd-landing-r9f0sswcn-habib-rahmans-projects-9dd558a7.vercel.app" in habib-rahmans-projects-9dd558a7 [491ms]
+
+  General
+
+    id		dpl_3SZaikvErgQhThmqCdogyhSXZH3f
+    name	swd-landing
+    target	production
+    status	● Ready
+    url		https://swd-landing-r9f0sswcn-habib-rahmans-projects-9dd558a7.vercel.app
+    created	Sat Mar 07 2026 06:29:39 GMT+0400 (Gulf Standard Time) [2m ago]
+
+
+  Aliases
+
+    ╶ https://swd-landing.vercel.app
+    ╶ https://www.starwealthdynamics.org
+    ╶ https://swd-landing-habib-rahmans-projects-9dd558a7.vercel.app
+    ╶ https://swd-landing-habrahgithub-habib-rahmans-projects-9dd558a7.vercel.app
+    ╶ https://starwealthdynamics.org
+    
+
+  Builds
+
+    ┌ .        [0ms]
+    ├── λ api/health (3.12MB) [iad1]
+    ├── λ api/health.rsc (3.12MB) [iad1]
+    ├── λ mcp/[connector_key] (3.12MB) [iad1]
+    ├── λ mcp/[connector_key].rsc (3.12MB) [iad1]
+    ├── λ mcp (3.12MB) [iad1]
+    └── 166 output items hidden
+    
+

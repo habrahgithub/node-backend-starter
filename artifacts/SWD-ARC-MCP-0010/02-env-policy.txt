@@ -1,0 +1,17 @@
+DATE=2026-03-05T19:13:25Z
+ENV_VAR_NAMES
+- SWD_MCP_CONNECTOR_KEY
+- SWD_MCP_GATEWAY_TOKEN
+- SWD_MCP_RATE_LIMIT_RPS
+CONNECTOR_KEY_SHA256=92fe4f50fc142b9db952cb904c56863c323a6959efe519a41a4d63fc16ac068c
+CONNECTOR_KEY_REDACTED=<redacted>
+
+Retrieving project…
+Saving
+Overrode Environment Variable SWD_MCP_CONNECTOR_KEY to Project swd-landing [412ms]
+
+ name                       value               environments        created    
+ SWD_MCP_CONNECTOR_KEY      Encrypted           Production          42s ago    
+ SWD_MCP_RATE_LIMIT_RPS     Encrypted           Production          40m ago    
+ SWD_MCP_GATEWAY_TOKEN      Encrypted           Production          40m ago    
+

@@ -1,0 +1,20 @@
+No local diff at capture time; route already committed/deployed.
+Captured markers from app/api/_gateway/mcpGateway.js:
+10:  "compliance.runtime_attachment",
+11:  "compliance.upstream_probe",
+12:  "compliance.upstream_mode",
+22:  "compliance.runtime_attachment",
+23:  "compliance.upstream_probe",
+24:  "compliance.upstream_mode",
+102:    name: "compliance.runtime_attachment",
+111:    name: "compliance.upstream_probe",
+122:    name: "compliance.upstream_mode",
+419:function describeUpstreamMode(cfg, probeAttached = null) {
+539:  if (tool === "compliance.runtime_attachment") {
+542:      ...describeUpstreamMode(cfg),
+549:  if (tool === "compliance.upstream_mode") {
+552:      ...describeUpstreamMode(cfg),
+1200:  if (toolCall.name === "compliance.upstream_probe") {
+1210:        ...describeUpstreamMode(cfg),
+1239:        ...describeUpstreamMode(cfg, attached),
+1258:        ...describeUpstreamMode(cfg, false),

@@ -1,0 +1,13 @@
+DATE=2026-03-05T19:31:25Z
+STATUS=MANUAL_UI_REQUIRED
+CONNECTOR_MODE=NoAuth
+SERVER_URL=https://www.starwealthdynamics.org/mcp/<connector_key>
+CONNECTOR_KEY_SHA256=f01033f69018c409349802fae887a1ac83c398b6347785e43f2275cfff65d4d7
+
+Manual ChatGPT checks to run in UI:
+1) Create/update connector with NoAuth and signed URL
+2) list tools -> expect ping, health_check, get_metrics, vault.ping
+3) run health_check -> expect success
+4) run vault.write -> expect blocked/403
+
+Terminal-equivalent protocol checks already PASS in artifacts 03-07.

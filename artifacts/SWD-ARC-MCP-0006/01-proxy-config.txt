@@ -1,0 +1,11 @@
+DATE=2026-03-05T17:20:29Z
+mode=SWD-ARC-MCP-0006-hardened-gateway
+endpoint=https://127.0.0.1:8443
+tls_subject=CN=mcp.starwealthdynamics.local
+gateway_auth_header=X-Gateway-Token: <token>
+backend_auth_header=Authorization: Bearer <mcp-api-key> (injected by gateway)
+rate_limit=10 req/s per client IP
+upstream=http://127.0.0.1:3000
+mcp_allowlist=["ping","health_check","get_metrics","vault.ping"]
+gateway_token_sha256=778fadb70255da219b49bb14af507915f95992af34512ed6ce9f7dec65bc8400
+mcp_api_key_sha256=d36f964a45539f477284bd268ec9d9709e8fbd4a64aba59ed1372823ae208e19

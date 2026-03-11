@@ -1,0 +1,1 @@
+{"jsonrpc":"2.0","id":"axis-write-0014","result":{"status":"ok","operation":"write_artifact","directive_id":"AXIS-CONTEXT-ACCESS-0001","path":"/workspace/artifacts/SWD-ARC-MCP-0012/0014-regression.txt","written_at":"2026-03-06T19:20:31.127Z","bytes":24,"content_hash":"sha256:1cf9a3737833","actor":"axis"}}

@@ -1,0 +1,7 @@
+DATE=2026-03-05T19:29:38Z
+-- GET /mcp without header --
+HTTP=401
+{"error":"unauthorized"}
+-- GET /mcp with X-Gateway-Token --
+HTTP=200
+{"tools":[{"name":"ping"},{"name":"health_check"},{"name":"get_metrics"},{"name":"vault.ping"}]}

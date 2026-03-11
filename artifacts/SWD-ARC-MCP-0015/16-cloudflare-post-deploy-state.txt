@@ -1,0 +1,7 @@
+DATE_UTC=2026-03-08T06:59:48Z
+HOST=https://www.starwealthdynamics.org
+agent_register_initial_live_code=401
+agent_register_initial_body={"error":"broker_auth_invalid"}
+--- runtime_attachment via connector key ---
+{"jsonrpc":"2.0","id":"state","result":{"content":[{"type":"text","text":"{\"status\":\"ok\",\"gateway\":\"vercel-edge\",\"current_mode\":\"gateway_local\",\"states\":{\"gateway_local\":true,\"upstream_configured\":false,\"upstream_attached\":false},\"upstream_metadata\":{\"url_fingerprint\":\"none\",\"auth\":\"none\",\"redacted\":true},\"timestamp\":\"2026-03-08T06:59:48.940Z\",\"broker\":{\"broker_auth\":\"none\",\"routing\":\"direct\",\"live_agents\":0,\"agents\":[]}}"}],"structuredContent":{"status":"ok","gateway":"vercel-edge","current_mode":"gateway_local","states":{"gateway_local":true,"upstream_configured":false,"upstream_attached":false},"upstream_metadata":{"url_fingerprint":"none","auth":"none","redacted":true},"timestamp":"2026-03-08T06:59:48.940Z","broker":{"broker_auth":"none","routing":"direct","live_agents":0,"agents":[]}}}}
+HTTP_CODE=200

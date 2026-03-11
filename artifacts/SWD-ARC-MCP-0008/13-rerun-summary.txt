@@ -1,0 +1,7 @@
+DATE=2026-03-05T18:46:17Z
+SWD-ARC-MCP-0008 verification-only rerun against stable Vercel host: PASS
+Host: https://www.starwealthdynamics.org
+Auth gate: /api/health unauth=401, auth=200
+MCP handshake: /mcp manifest=200
+Allowlist: ping, health_check, get_metrics, vault.ping = 200
+Blocked write: vault.write = 403

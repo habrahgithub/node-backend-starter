@@ -1,0 +1,48 @@
+DATE=2026-03-06T17:50:08Z
+FILE=/home/habib/workspace/projects/swd-landing/app/api/_gateway/mcpGateway.js
+-- git status snippet --
+ M .gitignore
+?? app/api/
+?? app/mcp/
+-- axis context surface lines --
+    11	  "axis.context_access.check",
+    12	  "axis.context_access.read",
+    13	  "axis.context_access.write_artifact",
+    14	  "axis.context_access.read_logs",
+    15	  "axis.context_access.audit",
+    21	  "axis.context_access.check",
+    22	  "axis.context_access.read",
+    23	  "axis.context_access.write_artifact",
+    24	  "axis.context_access.read_logs",
+    25	  "axis.context_access.audit",
+    27	const AXIS_ALLOWED_OPERATIONS = new Set(["read", "list", "write_artifact", "read_redacted_logs"]);
+   107	    name: "axis.context_access.check",
+   123	    name: "axis.context_access.read",
+   139	    name: "axis.context_access.write_artifact",
+   155	    name: "axis.context_access.read_logs",
+   171	    name: "axis.context_access.audit",
+   221	function axisPolicyConfig() {
+   610	function buildAxisDecision(args, requestedOperation, state) {
+   611	  const policy = axisPolicyConfig();
+   621	    args?.path || (operation === "read_redacted_logs" ? policy.logRoot : "")
+   629	  else if (!AXIS_ALLOWED_OPERATIONS.has(operation)) denyReason = "unsupported_operation";
+   633	  else if (operation === "write_artifact" && !pathWithin(providedPath, policy.artifactRoot))
+   635	  else if (operation === "read_redacted_logs" && !pathWithin(providedPath, policy.logRoot))
+   654	    route: "axis.context_access",
+   657	    outcome: denyReason ? "axis_deny" : "axis_allow",
+   693	function handleAxisContextTool(toolName, args, state) {
+   694	  if (toolName === "axis.context_access.check") {
+   696	    const decision = buildAxisDecision(args, operation, state);
+   712	  if (toolName === "axis.context_access.read") {
+   714	    const decision = buildAxisDecision(args, mode, state);
+   751	  if (toolName === "axis.context_access.write_artifact") {
+   752	    const decision = buildAxisDecision(args, "write_artifact", state);
+   776	        operation: "write_artifact",
+   784	  if (toolName === "axis.context_access.read_logs") {
+   785	    const decision = buildAxisDecision(args, "read_redacted_logs", state);
+   819	        operation: "read_redacted_logs",
+   830	  if (toolName === "axis.context_access.audit") {
+   833	      path: args?.path || axisPolicyConfig().logRoot,
+   835	    const decision = buildAxisDecision(auditArgs, "read_redacted_logs", state);
+  1133	  if (toolCall.name.startsWith("axis.context_access.")) {
+  1134	    const axis = handleAxisContextTool(toolCall.name, toolCall.arguments || {}, state);

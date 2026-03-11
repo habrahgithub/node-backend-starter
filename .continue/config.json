@@ -1,0 +1,120 @@
+{
+  "name": "Prime Multi-Model Free Setup",
+  "version": "1.0.0",
+  "schema": "v1",
+  "models": [
+    {
+      "title": "OpenRouter Free Llama 3",
+      "provider": "openrouter",
+      "model": "meta-llama/llama-3-8b-instruct:free",
+      "apiKey": "${OPENROUTER_API_KEY}"
+    },
+    {
+      "title": "OpenRouter Free Qwen Coder",
+      "provider": "openrouter",
+      "model": "qwen/qwen-2-5-coder-32b-instruct:free",
+      "apiKey": "${OPENROUTER_API_KEY}"
+    },
+    {
+      "title": "Google Gemini Flash Lite",
+      "provider": "google",
+      "model": "gemini-2.5-flash-lite",
+      "apiKey": "${GOOGLE_API_KEY}"
+    },
+    {
+      "title": "Groq Llama 3.1 70B",
+      "provider": "groq",
+      "model": "llama-3.1-70b-versatile",
+      "apiKey": "${GROQ_API_KEY}"
+    },
+    {
+      "title": "OpenAI GPT-4o Mini",
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "apiKey": "${OPENAI_API_KEY}"
+    },
+    {
+      "title": "Ollama Qwen Coder",
+      "provider": "ollama",
+      "model": "qwen2.5-coder:latest",
+      "apiKey": "${OLLAMA_API_KEY}",
+      "apiBase": "http://localhost:11434"
+    }
+  ],
+  "context": [
+    {
+      "provider": "codebase",
+      "exclude_patterns": [
+        "*.log",
+        "node_modules/**",
+        ".git/**",
+        "dist/**",
+        "build/**",
+        "*.min.js",
+        "*.min.css"
+      ]
+    },
+    {
+      "provider": "file_tree"
+    },
+    {
+      "provider": "current_dir"
+    },
+    {
+      "provider": "url"
+    },
+    {
+      "provider": "docs"
+    }
+  ],
+  "slash_commands": [
+    {
+      "name": "test",
+      "description": "Generate unit tests for selected code",
+      "prompt": "Generate comprehensive unit tests for the following code. Include edge cases and mock any dependencies. Use the testing framework that's already in the project.\n\n{{clipboard}}"
+    },
+    {
+      "name": "explain",
+      "description": "Explain how the selected code works",
+      "prompt": "Explain the following code in simple terms. Include what it does, how it works, and any important considerations.\n\n{{clipboard}}"
+    },
+    {
+      "name": "refactor",
+      "description": "Refactor selected code for better quality",
+      "prompt": "Refactor the following code to improve: - Readability - Performance - Best practices - Error handling\n\n{{clipboard}}"
+    },
+    {
+      "name": "docs",
+      "description": "Generate documentation for selected code",
+      "prompt": "Generate documentation for the following code. Include JSDoc comments and explain parameters and return values.\n\n{{clipboard}}"
+    },
+    {
+      "name": "fix",
+      "description": "Fix bugs or issues in selected code",
+      "prompt": "Analyze the following code for potential bugs or issues. Provide a fixed version with explanations.\n\n{{clipboard}}"
+    }
+  ],
+  "autocomplete": {
+    "enabled": true
+  },
+  "ui": {
+    "show_model_in_status_bar": true,
+    "enable_code_lens": true,
+    "theme": "system"
+  },
+  "experimental": {
+    "streaming": true,
+    "context_caching": true
+  },
+  "api": {
+    "timeout_ms": 120000,
+    "max_retries": 3,
+    "retry_delay_ms": 1000,
+    "connection_pooling": true
+  },
+  "mcpServers": [
+    {
+      "uses": "anthropic/memory-mcp"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "DtYaiSnnEMY=",
+  "success": true,
+  "projectFilePath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj",
+  "expectedPackageFiles": [
+    "/home/habib/.nuget/packages/system.io.pipelines/10.0.3/system.io.pipelines.10.0.3.nupkg.sha512",
+    "/home/habib/.nuget/packages/system.text.encodings.web/10.0.3/system.text.encodings.web.10.0.3.nupkg.sha512",
+    "/home/habib/.nuget/packages/system.text.json/10.0.3/system.text.json.10.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

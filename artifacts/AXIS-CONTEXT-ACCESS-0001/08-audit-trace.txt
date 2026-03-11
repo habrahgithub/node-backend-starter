@@ -1,0 +1,15 @@
+DATE=2026-03-06T17:48:52Z
+SESSION_ID=79309ed5-ae4e-49f0-a761-c9a700cfbedf
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 17:48:58 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::xtbsm-1772819338376-f429978a4868
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"audit-trace","result":{"status":"ok","redacted":true,"correlation_id":null,"returned":7,"entries":[{"ts":"2026-03-06T17:48:54.881Z","actor":"axis","directive_id":"AXIS-CONTEXT-ACCESS-0001","operation":"list","path":"/workspace/projects/swd-landing","result":"allow","deny_reason":null,"correlation_id":"acc-allow-list-174854"},{"ts":"2026-03-06T17:48:55.606Z","actor":"axis","directive_id":"AXIS-CONTEXT-ACCESS-0001","operation":"read","path":"/workspace/projects/swd-landing/README.md","result":"allow","deny_reason":null,"correlation_id":"acc-allow-read-174854"},{"ts":"2026-03-06T17:48:56.329Z","actor":"axis","directive_id":"AXIS-CONTEXT-ACCESS-0001","operation":"write_artifact","path":"/workspace/artifacts/SWD-ARC-MCP-0012/axis-context-access-proof.txt","result":"allow","deny_reason":null,"correlation_id":"acc-allow-write-174854"},{"ts":"2026-03-06T17:48:57.062Z","actor":"axis","directive_id":"AXIS-CONTEXT-ACCESS-0001","operation":"read","path":"/workspace/projects/SWD-ARC/mcp/server/src/server.js","result":"deny","deny_reason":"path_out_of_scope","correlation_id":"acc-deny-path-174854"},{"ts":"2026-03-06T17:48:57.547Z","actor":"axis","directive_id":"AXIS-CONTEXT-ACCESS-0001","operation":"shell_exec","path":"/workspace/projects/swd-landing","result":"deny","deny_reason":"unsupported_operation","correlation_id":"acc-deny-op-174854"},{"ts":"2026-03-06T17:48:58.008Z","actor":"axis","directive_id":"AXIS-CONTEXT-ACCESS-0001","operation":"read_redacted_logs","path":"/workspace/artifacts/SWD-ARC-MCP-0012","result":"allow","deny_reason":null,"correlation_id":"acc-deny-path-174854"},{"ts":"2026-03-06T17:48:58.494Z","actor":"axis","directive_id":"AXIS-CONTEXT-ACCESS-0001","operation":"read_redacted_logs","path":"/workspace/artifacts/SWD-ARC-MCP-0012","result":"allow","deny_reason":null,"correlation_id":"axis-1772819338494"}]}}

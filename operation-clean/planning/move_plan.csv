@@ -1,0 +1,17 @@
+current_path,proposed_path,project_name,priority,status,action,risk_level,dependencies_affected,notes
+.,services/,swd-pulse,P0,ACTIVE,keep_in_place,HIGH,"@vercel/speed-insights, express, mongoose, ollama",May stay if normalized root is deferred
+projects/SWD-ARC/Lab Template/files,templates/files,arc-axis-adapter,P3,TEMPLATE,propose_move,LOW,"express, openai",ASSUMED target group based on current evidence
+projects/SWD-ARC/apps/controls-center,applications/controls-center,swd-vault-dashboard,P0,ACTIVE,keep_in_place,HIGH,"better-sqlite3, next, react, react-dom",May stay if normalized root is deferred
+projects/SWD-ARC/mcp/server,tooling/server,swd-mcp-server,P2,ACTIVE,keep_in_place,MEDIUM,"@modelcontextprotocol/sdk, better-sqlite3",May stay if normalized root is deferred
+projects/_archive/2026-03-03-workspace-reorg/absorbed-projects/SWD-mcp-server,archive/SWD-mcp-server,swd-mcp-server,P4,ARCHIVE,archive,LOW,"@modelcontextprotocol/sdk, better-sqlite3",ASSUMED target group based on current evidence
+projects/_archive/2026-03-03-workspace-reorg/user-requested/wps-sif-tool,archive/wps-sif-tool,wps-sif-tool,P4,ARCHIVE,archive,LOW,"decimal.js, next, papaparse, prop-types, react",ASSUMED target group based on current evidence
+projects/docsmith-licensing-service,docs/docsmith-licensing-service,docsmith-licensing-service,P1,ACTIVE,keep_in_place,MEDIUM,"@azure/identity, @microsoft/microsoft-graph-client, isomorphic-fetch, next, pg",May stay if normalized root is deferred
+projects/docsmith-payment-gateway,docs/docsmith-payment-gateway,docsmith-payment-gateway,P1,ACTIVE,keep_in_place,MEDIUM,"next, pg, react, react-dom",May stay if normalized root is deferred
+projects/node-backend-starter,templates/node-backend-starter,swd-pulse,P3,TEMPLATE,propose_move,LOW,"@vercel/speed-insights, express, mongoose",ASSUMED target group based on current evidence
+projects/node-backend-starter-v2,templates/node-backend-starter-v2,node-backend-starter-v2,P3,TEMPLATE,propose_move,LOW,"@prisma/client, cors, express, express-rate-limit, helmet",ASSUMED target group based on current evidence
+projects/swd-docsmith-sif-extension,extensions/swd-docsmith-sif-extension,swd-docsmith-sif-extension,P1,ACTIVE,keep_in_place,MEDIUM,"decimal.js, next, papaparse, prop-types, react",May stay if normalized root is deferred
+projects/swd-docsmith_brand-website,applications/swd-docsmith_brand-website,swd-docsmith_brand-website,P2,ACTIVE,keep_in_place,MEDIUM,"@vercel/analytics, @vercel/sandbox, @vercel/speed-insights, decimal.js, next",May stay if normalized root is deferred
+projects/swd-finstack/mcp/server,tooling/server,swd-finstack-mcp-server,P2,ACTIVE,keep_in_place,MEDIUM,"@modelcontextprotocol/sdk, axios, dotenv, winston",May stay if normalized root is deferred
+projects/swd-landing,applications/swd-landing,swd-landing,P1,ACTIVE,keep_in_place,MEDIUM,"@fontsource/inter, framer-motion, next, react, react-dom",May stay if normalized root is deferred
+projects/wps-hr-core,services/wps-hr-core,wps-hr-core,P2,ACTIVE,keep_in_place,MEDIUM,"next, react, react-dom",May stay if normalized root is deferred
+vault/dashboard,applications/dashboard,swd-vault-dashboard,P0,ACTIVE,keep_in_place,HIGH,"better-sqlite3, next, react, react-dom",May stay if normalized root is deferred

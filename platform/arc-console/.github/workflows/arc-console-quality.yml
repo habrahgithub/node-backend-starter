@@ -1,0 +1,41 @@
+name: arc-console-quality
+
+on:
+  pull_request:
+    paths:
+      - "platform/arc-console/**"
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - "platform/arc-console/**"
+
+jobs:
+  quality-gates:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: platform/arc-console
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: platform/arc-console/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test
+
+      - name: Dashboard build
+        run: npm run dashboard:build

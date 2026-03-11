@@ -1,0 +1,47 @@
+DATE=2026-03-06T17:49:25Z
+WAR_ROOM_FILE=/home/habib/workspace/projects/SWD-ARC/ops/logs/2026-03.md
+- Scope: expose verification-only compliance tools and execute deterministic write-safe gate on production MCP route.
+- Result: PASS
+- Verified:
+  - Tool discovery now includes compliance.write_deny_probe, compliance.audit_probe, compliance.runtime_attachment.
+  - Deterministic deny-path proof: compliance.write_deny_probe returned HTTP 403 for attempted vault.write with no side effects.
+  - Redacted audit proof: compliance.audit_probe returned matching correlation id entry with route redacted.
+  - Runtime attachment signal: gateway_local, upstream_configured=false (ambiguity removed).
+  - Regression checks: ping, health_check, get_metrics, vault.ping all returned 200.
+- Governance interpretation:
+  - Read-path readiness: PASS
+  - Write policy enforcement gate: PASS
+  - Upstream-backed write-plane readiness: NOT VERIFIED (explicitly gateway_local).
+- Evidence:
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0012/01-scope-and-surface.txt
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0012/02-route-change.txt
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0012/03-deploy.txt
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0012/04-tool-discovery.txt
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0012/05-write-deny-probe.txt
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0012/06-audit-probe.txt
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0012/07-runtime-attachment.txt
+  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0012/08-regression-read-tools.txt
+
+## 2026-03-06T17:49:25Z - AXIS-CONTEXT-ACCESS-0001 Scoped Context Access Rollout
+- Scope: implement directive-bound, path-scoped, operation-limited Axis access with artifact-only writes and fail-closed enforcement.
+- Result: PASS
+- Verified controls:
+  - Allowed read/list under `/home/habib/workspace/projects/swd-landing/**` returns `200`.
+  - Allowed artifact write under `/home/habib/workspace/artifacts/SWD-ARC-MCP-0012/**` returns `200`.
+  - Out-of-scope path denied deterministically (`403`, `path_out_of_scope`).
+  - Unsupported operation denied deterministically (`403`, `unsupported_operation`).
+  - Redacted log read returns filtered audit evidence only.
+  - Audit trace records all allow/deny attempts with correlation id, actor, directive id, operation, path, result.
+- Constraints preserved:
+  - No changes under `projects/SWD-ARC/mcp/server/**`.
+  - No OAuth changes.
+  - No broad workspace access; no shell-exec capability.
+- Evidence:
+  - /home/habib/workspace/artifacts/AXIS-CONTEXT-ACCESS-0001/01-policy-scope.txt
+  - /home/habib/workspace/artifacts/AXIS-CONTEXT-ACCESS-0001/02-implementation-diff.txt
+  - /home/habib/workspace/artifacts/AXIS-CONTEXT-ACCESS-0001/03-allow-read-list.txt
+  - /home/habib/workspace/artifacts/AXIS-CONTEXT-ACCESS-0001/04-allow-artifact-write.txt
+  - /home/habib/workspace/artifacts/AXIS-CONTEXT-ACCESS-0001/05-deny-out-of-scope-path.txt
+  - /home/habib/workspace/artifacts/AXIS-CONTEXT-ACCESS-0001/06-deny-unsupported-op.txt
+  - /home/habib/workspace/artifacts/AXIS-CONTEXT-ACCESS-0001/07-redacted-log-read.txt
+  - /home/habib/workspace/artifacts/AXIS-CONTEXT-ACCESS-0001/08-audit-trace.txt

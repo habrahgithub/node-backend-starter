@@ -1,0 +1,26 @@
+           check_name            | pass 
+---------------------------------+------
+ licensing_unique_payment_intent | t
+(1 row)
+
+          check_name           | pass 
+-------------------------------+------
+ licensing_unique_license_hash | t
+(1 row)
+
+              conname               | contype | confdeltype 
+------------------------------------+---------+-------------
+ license_devices_license_id_fkey    | f       | c
+ md_audit_events_actor_user_id_fkey | f       | n
+ md_audit_events_tenant_id_fkey     | f       | r
+ md_customers_tenant_id_fkey        | f       | r
+ md_number_sequences_tenant_id_fkey | f       | r
+ md_payment_methods_tenant_id_fkey  | f       | r
+ md_plans_tenant_id_fkey            | f       | r
+ md_roles_tenant_id_fkey            | f       | r
+ md_user_roles_role_id_fkey         | f       | c
+ md_user_roles_tenant_id_fkey       | f       | r
+ md_user_roles_user_id_fkey         | f       | c
+ md_users_tenant_id_fkey            | f       | r
+(12 rows)
+

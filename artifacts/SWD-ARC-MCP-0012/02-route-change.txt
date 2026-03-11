@@ -1,0 +1,30 @@
+DATE=2026-03-06T17:35:27Z
+FILE=/home/habib/workspace/projects/swd-landing/app/api/_gateway/mcpGateway.js
+-- git status snippet --
+ M .gitignore
+?? app/api/
+?? app/mcp/
+-- compliance surface lines --
+     8	  "compliance.write_deny_probe",
+     9	  "compliance.audit_probe",
+    10	  "compliance.runtime_attachment",
+    12	const LOCAL_ONLY_TOOLS = new Set([
+    13	  "compliance.write_deny_probe",
+    14	  "compliance.audit_probe",
+    15	  "compliance.runtime_attachment",
+    63	    name: "compliance.write_deny_probe",
+    75	    name: "compliance.audit_probe",
+    87	    name: "compliance.runtime_attachment",
+   112	      auditTrail: [],
+   149	  state.auditTrail.push(redacted);
+   150	  if (state.auditTrail.length > 300) {
+   151	    state.auditTrail.shift();
+   328	  if (tool === "compliance.audit_probe") {
+   334	    const filtered = state.auditTrail.filter((entry) =>
+   359	  if (tool === "compliance.runtime_attachment") {
+   364	      attachment: attached ? "upstream_attached" : "gateway_local",
+   718	  if (toolCall.name === "compliance.write_deny_probe") {
+   733	      outcome: "write_deny_probe",
+   744	        probe: "compliance.write_deny_probe",
+   748	        side_effects: "none",
+   753	  if (cfg.upstreamUrl && !LOCAL_ONLY_TOOLS.has(toolCall.name)) {

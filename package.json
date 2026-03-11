@@ -4,6 +4,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "drill:sandbox": "node scripts/drill-sandbox.js",
     "checkup:runtime": "bash tools/check-runtime-contract.sh",
     "checkup:run:js": "npm --prefix projects/docsmith-licensing-service run checkup:run && npm --prefix projects/docsmith-payment-gateway run checkup:run && npm --prefix projects/node-backend-starter run checkup:run && npm --prefix projects/node-backend-starter-v2 run checkup:run && npm --prefix projects/swd-docsmith-sif-extension run checkup:run && npm --prefix projects/swd-docsmith_brand-website run checkup:run && npm --prefix projects/swd-landing run checkup:run",
     "checkup:run": "npm run checkup:runtime && npm run checkup:run:js && npm run checkup:run:dotnet",
@@ -12,13 +16,15 @@
   "dependencies": {
     "@vercel/speed-insights": "^1.3.1",
     "express": "^5.2.1",
-    "mongoose": "^9.2.1"
+    "mongoose": "^9.2.1",
+    "ollama": "^0.6.3"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "supertest": "^7.2.2"
   },
   "overrides": {
     "minimatch": "^10.2.2",
-    "glob": "^10.5.1"
+    "glob": "^10.4.5"
   }
 }

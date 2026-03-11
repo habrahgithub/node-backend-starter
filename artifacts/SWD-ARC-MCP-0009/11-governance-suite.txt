@@ -1,0 +1,123 @@
+
+> swd-landing@1.0.0 checkup:full
+> npm run checkup:run && npm run checkup:regression && npm run checkup:integration
+
+
+> swd-landing@1.0.0 checkup:run
+> npm run checkup:lint && npm run checkup:unit && npm run checkup:sanity
+
+
+> swd-landing@1.0.0 checkup:lint
+> npm run lint --if-present
+
+
+> swd-landing@1.0.0 lint
+> eslint .
+
+
+> swd-landing@1.0.0 checkup:unit
+> npm run test --if-present
+
+
+> swd-landing@1.0.0 test
+> jest --passWithNoTests
+
+PASS __tests__/smoke.test.js
+  smoke
+    ✓ runs a basic assertion (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.302 s, estimated 1 s
+Ran all test suites.
+
+> swd-landing@1.0.0 checkup:sanity
+> npm run build --if-present
+
+
+> swd-landing@1.0.0 build
+> next build
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /home/habib/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /home/habib/workspace/projects/swd-landing/package-lock.json
+   * /home/habib/workspace/package-lock.json
+
+▲ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 14.7s
+  Running TypeScript ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/20) ...
+  Generating static pages using 11 workers (5/20) 
+  Generating static pages using 11 workers (10/20) 
+  Generating static pages using 11 workers (15/20) 
+✓ Generating static pages using 11 workers (20/20) in 2.4s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/health
+├ ○ /ar
+├ ○ /ar/company
+├ ○ /ar/contact
+├ ○ /ar/docsmith
+├ ○ /ar/products
+├ ○ /ar/solutions
+├ ○ /company
+├ ○ /contact
+├ ○ /cookies
+├ ○ /docsmith
+├ ○ /dpa
+├ ○ /eula
+├ ƒ /mcp
+├ ○ /products
+├ ○ /prototype
+├ ○ /refund-policy
+├ ○ /security
+└ ○ /solutions
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+> swd-landing@1.0.0 checkup:regression
+> npm run test --if-present
+
+
+> swd-landing@1.0.0 test
+> jest --passWithNoTests
+
+PASS __tests__/smoke.test.js
+  smoke
+    ✓ runs a basic assertion (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.281 s, estimated 1 s
+Ran all test suites.
+
+> swd-landing@1.0.0 checkup:integration
+> npm run test --if-present
+
+
+> swd-landing@1.0.0 test
+> jest --passWithNoTests
+
+PASS __tests__/smoke.test.js
+  smoke
+    ✓ runs a basic assertion (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.247 s, estimated 1 s
+Ran all test suites.

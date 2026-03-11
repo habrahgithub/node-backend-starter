@@ -1,0 +1,1029 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/habib/workspace/projects/swd-finstack/src/Host/Swd.Finstack.Api/Swd.Finstack.Api.csproj": {}
+  },
+  "projects": {
+    "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj",
+        "projectName": "Swd.Finstack.Abstractions",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj",
+        "projectName": "Swd.Finstack.Contracts",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[10.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj",
+        "projectName": "Swd.Finstack.SharedKernel",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "System.Collections.Immutable": {
+              "target": "Package",
+              "version": "[10.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/Host/Swd.Finstack.Api/Swd.Finstack.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/Host/Swd.Finstack.Api/Swd.Finstack.Api.csproj",
+        "projectName": "Swd.Finstack.Api",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Host/Swd.Finstack.Api/Swd.Finstack.Api.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/Host/Swd.Finstack.Api/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/Modules/Audit/Swd.Finstack.Audit.Application/Swd.Finstack.Audit.Application.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Audit/Swd.Finstack.Audit.Application/Swd.Finstack.Audit.Application.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/Modules/Billing/Swd.Finstack.Billing.Application/Swd.Finstack.Billing.Application.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Billing/Swd.Finstack.Billing.Application/Swd.Finstack.Billing.Application.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/Modules/Customers/Swd.Finstack.Customers.Application/Swd.Finstack.Customers.Application.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Customers/Swd.Finstack.Customers.Application/Swd.Finstack.Customers.Application.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/Modules/LicensingBridge/Swd.Finstack.LicensingBridge.Application/Swd.Finstack.LicensingBridge.Application.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/LicensingBridge/Swd.Finstack.LicensingBridge.Application/Swd.Finstack.LicensingBridge.Application.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/Modules/Payments/Swd.Finstack.Payments.Application/Swd.Finstack.Payments.Application.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Payments/Swd.Finstack.Payments.Application/Swd.Finstack.Payments.Application.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/Modules/Sales/Swd.Finstack.Sales.Application/Swd.Finstack.Sales.Application.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Sales/Swd.Finstack.Sales.Application/Swd.Finstack.Sales.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.24, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.14, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/Modules/Audit/Swd.Finstack.Audit.Application/Swd.Finstack.Audit.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/Modules/Audit/Swd.Finstack.Audit.Application/Swd.Finstack.Audit.Application.csproj",
+        "projectName": "Swd.Finstack.Audit.Application",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Audit/Swd.Finstack.Audit.Application/Swd.Finstack.Audit.Application.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Audit/Swd.Finstack.Audit.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/Modules/Audit/Swd.Finstack.Audit.Domain/Swd.Finstack.Audit.Domain.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Audit/Swd.Finstack.Audit.Domain/Swd.Finstack.Audit.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/Modules/Audit/Swd.Finstack.Audit.Domain/Swd.Finstack.Audit.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/Modules/Audit/Swd.Finstack.Audit.Domain/Swd.Finstack.Audit.Domain.csproj",
+        "projectName": "Swd.Finstack.Audit.Domain",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Audit/Swd.Finstack.Audit.Domain/Swd.Finstack.Audit.Domain.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Audit/Swd.Finstack.Audit.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/Modules/Billing/Swd.Finstack.Billing.Application/Swd.Finstack.Billing.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/Modules/Billing/Swd.Finstack.Billing.Application/Swd.Finstack.Billing.Application.csproj",
+        "projectName": "Swd.Finstack.Billing.Application",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Billing/Swd.Finstack.Billing.Application/Swd.Finstack.Billing.Application.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Billing/Swd.Finstack.Billing.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/Modules/Billing/Swd.Finstack.Billing.Domain/Swd.Finstack.Billing.Domain.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Billing/Swd.Finstack.Billing.Domain/Swd.Finstack.Billing.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/Modules/Billing/Swd.Finstack.Billing.Domain/Swd.Finstack.Billing.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/Modules/Billing/Swd.Finstack.Billing.Domain/Swd.Finstack.Billing.Domain.csproj",
+        "projectName": "Swd.Finstack.Billing.Domain",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Billing/Swd.Finstack.Billing.Domain/Swd.Finstack.Billing.Domain.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Billing/Swd.Finstack.Billing.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/Modules/Customers/Swd.Finstack.Customers.Application/Swd.Finstack.Customers.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/Modules/Customers/Swd.Finstack.Customers.Application/Swd.Finstack.Customers.Application.csproj",
+        "projectName": "Swd.Finstack.Customers.Application",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Customers/Swd.Finstack.Customers.Application/Swd.Finstack.Customers.Application.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Customers/Swd.Finstack.Customers.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/Modules/Customers/Swd.Finstack.Customers.Domain/Swd.Finstack.Customers.Domain.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Customers/Swd.Finstack.Customers.Domain/Swd.Finstack.Customers.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/Modules/Customers/Swd.Finstack.Customers.Domain/Swd.Finstack.Customers.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/Modules/Customers/Swd.Finstack.Customers.Domain/Swd.Finstack.Customers.Domain.csproj",
+        "projectName": "Swd.Finstack.Customers.Domain",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Customers/Swd.Finstack.Customers.Domain/Swd.Finstack.Customers.Domain.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Customers/Swd.Finstack.Customers.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/Modules/LicensingBridge/Swd.Finstack.LicensingBridge.Application/Swd.Finstack.LicensingBridge.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/Modules/LicensingBridge/Swd.Finstack.LicensingBridge.Application/Swd.Finstack.LicensingBridge.Application.csproj",
+        "projectName": "Swd.Finstack.LicensingBridge.Application",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/LicensingBridge/Swd.Finstack.LicensingBridge.Application/Swd.Finstack.LicensingBridge.Application.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/LicensingBridge/Swd.Finstack.LicensingBridge.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/Modules/Payments/Swd.Finstack.Payments.Application/Swd.Finstack.Payments.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/Modules/Payments/Swd.Finstack.Payments.Application/Swd.Finstack.Payments.Application.csproj",
+        "projectName": "Swd.Finstack.Payments.Application",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Payments/Swd.Finstack.Payments.Application/Swd.Finstack.Payments.Application.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Payments/Swd.Finstack.Payments.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/Modules/Payments/Swd.Finstack.Payments.Domain/Swd.Finstack.Payments.Domain.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Payments/Swd.Finstack.Payments.Domain/Swd.Finstack.Payments.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/Modules/Payments/Swd.Finstack.Payments.Domain/Swd.Finstack.Payments.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/Modules/Payments/Swd.Finstack.Payments.Domain/Swd.Finstack.Payments.Domain.csproj",
+        "projectName": "Swd.Finstack.Payments.Domain",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Payments/Swd.Finstack.Payments.Domain/Swd.Finstack.Payments.Domain.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Payments/Swd.Finstack.Payments.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/Modules/Sales/Swd.Finstack.Sales.Application/Swd.Finstack.Sales.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/Modules/Sales/Swd.Finstack.Sales.Application/Swd.Finstack.Sales.Application.csproj",
+        "projectName": "Swd.Finstack.Sales.Application",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Sales/Swd.Finstack.Sales.Application/Swd.Finstack.Sales.Application.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Sales/Swd.Finstack.Sales.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Abstractions/Swd.Finstack.Abstractions.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.Contracts/Swd.Finstack.Contracts.csproj"
+              },
+              "/home/habib/workspace/projects/swd-finstack/src/Modules/Sales/Swd.Finstack.Sales.Domain/Swd.Finstack.Sales.Domain.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Sales/Swd.Finstack.Sales.Domain/Swd.Finstack.Sales.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/habib/workspace/projects/swd-finstack/src/Modules/Sales/Swd.Finstack.Sales.Domain/Swd.Finstack.Sales.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/habib/workspace/projects/swd-finstack/src/Modules/Sales/Swd.Finstack.Sales.Domain/Swd.Finstack.Sales.Domain.csproj",
+        "projectName": "Swd.Finstack.Sales.Domain",
+        "projectPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Sales/Swd.Finstack.Sales.Domain/Swd.Finstack.Sales.Domain.csproj",
+        "packagesPath": "/home/habib/.nuget/packages/",
+        "outputPath": "/home/habib/workspace/projects/swd-finstack/src/Modules/Sales/Swd.Finstack.Sales.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/habib/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj": {
+                "projectPath": "/home/habib/workspace/projects/swd-finstack/src/BuildingBlocks/Swd.Finstack.SharedKernel/Swd.Finstack.SharedKernel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

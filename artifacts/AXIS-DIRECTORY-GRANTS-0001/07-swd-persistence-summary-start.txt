@@ -1,0 +1,8 @@
+grant_no_token=Access denied: approval_token_required
+grant_ok=ok
+read_after_grant=ok
+granted_after_restart=1
+read_after_expiry=Access denied: path_out_of_scope
+status_after_expiry=0
+status_bad_store=Grant store unavailable
+read_bad_store=Access denied: grant_store_load_failed

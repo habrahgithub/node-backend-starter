@@ -1,0 +1,2 @@
+nginx: the configuration file /home/habib/workspace/artifacts/SWD-ARC-MCP-0006/nginx-user.conf syntax is ok
+nginx: configuration file /home/habib/workspace/artifacts/SWD-ARC-MCP-0006/nginx-user.conf test is successful

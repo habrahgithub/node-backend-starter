@@ -1,0 +1,16 @@
+DATE=2026-03-06T17:48:52Z
+SESSION_ID=79309ed5-ae4e-49f0-a761-c9a700cfbedf
+CORRELATION_DENY_PATH=acc-deny-path-174854
+HTTP/1.1 403 Forbidden
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 17:48:57 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::w4t92-1772819336715-d83a12cc114b
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"deny-path","error":{"code":-32003,"message":"Access denied: path_out_of_scope","data":{"correlation_id":"acc-deny-path-174854","actor":"axis","directive_id":"AXIS-CONTEXT-ACCESS-0001","expected_directive_id":"AXIS-CONTEXT-ACCESS-0001","operation":"read","path":"/workspace/projects/SWD-ARC/mcp/server/src/server.js","context_active":true,"expires_at":null,"result":"deny","deny_reason":"path_out_of_scope","ts":"2026-03-06T17:48:57.062Z"}}}

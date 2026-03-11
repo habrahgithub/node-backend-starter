@@ -1,9 +1,106 @@
 # SWD Master Execution Log
 
 Canonical merged execution log for the workspace.
-Last normalized: 2026-02-23 20:49:34Z.
+Last normalized: 2026-02-26 03:02:09Z.
 
 ## Recent Updates
+
+### 2026-02-27
+- Chore: `CHORE-20260227-001`
+- Project:
+  - `projects/swd-docsmith_brand-website`
+- Completed:
+  - Finalized marketing refactor closure on branch `feat/docsmith-sif-tool-page`.
+  - Replaced hero/carousel media with CWS submission screenshots and distinct slide sequence.
+  - Fixed mobile overflow issues across primary marketing routes by tightening responsive grid/container behavior.
+  - Added factual trust strip enhancements (published listing, whitepaper, policy-linked support).
+  - Completed release operations:
+    - Commit: `2829d67` (`feat(marketing): align hero and carousel with CWS assets`)
+    - Push: `origin/feat/docsmith-sif-tool-page`
+    - Production deploy completed on Vercel and aliased to `https://www.docsmith.tools`
+- Verification:
+  - `npm run build` passed.
+  - Playwright checks executed for `/`, `/product`, `/pricing`, `/docs`, `/support`.
+  - Mobile 390px overflow check passed for all five primary routes (`hasOverflow: false`).
+  - Live alias health check: `https://www.docsmith.tools` returned `HTTP 200`.
+- Housekeeping:
+  - Confirmed clean project git state after push/deploy.
+  - Removed local transient verification noise from release scope and retained only production assets under `public/marketing/cws/`.
+- Evidence:
+  - Commit: `projects/swd-docsmith_brand-website` -> `2829d67`
+  - Production alias: `https://www.docsmith.tools`
+  - Deployment inspect: `https://vercel.com/habib-rahmans-projects-9dd558a7/swd-docsmith-website/Cmr6uqcnXrRnM6Zo4K85LpLiSuwb`
+
+### 2026-02-26
+- Chore: `CHORE-20260226-002`
+- Scope:
+  - Post-hardening housekeeping pass
+  - Sandbox readiness re-verification
+  - Warden append-only logging update
+- Completed:
+  - Verified sandbox service runtime state:
+    - `gateway-sandbox` -> `SUCCESS`
+    - `licensing-sandbox` -> `SUCCESS`
+  - Re-ran sandbox health checks:
+    - `https://gateway-sandbox-production.up.railway.app/api/health` -> `200`
+    - `https://licensing-sandbox-production.up.railway.app/api/health` -> `200`
+  - Updated ops control-plane log:
+    - `ops/logs/2026-02.md` with new Warden entry for `CHORE-20260226-002`
+  - Completed documentation/update commit:
+    - Root commit `b8b5b3c` (drill runner wiring + sandbox evidence pack + master log sync)
+- Housekeeping classification:
+  - Persistent evidence (tracked): `artifacts/security-drills/20260226T024859Z/`
+  - Temporary/noise (untracked failed attempts): `20260226T022453Z`, `20260226T024001Z`, `20260226T024545Z`
+  - Unrelated existing dirty nested repo preserved: `projects/swd-docsmith-sif-extension`
+- Evidence:
+  - `artifacts/security-drills/20260226T024859Z/final_security_sweep_summary.md`
+  - `artifacts/security-drills/20260226T024859Z/sandbox_provisioning.md`
+  - `artifacts/security-drills/20260226T024859Z/sandbox_env_matrix.md`
+  - `ops/logs/2026-02.md`
+
+### 2026-02-26
+- Chore: `CHORE-20260226-001`
+- Projects:
+  - `projects/docsmith-payment-gateway`
+  - `projects/docsmith-licensing-service`
+- Incident:
+  - Post-payment success flow intermittently failed to load activation details when checkout return carried placeholder `pi` and tokenized delivery context.
+  - Install claim generation path failed in production until claim tables migration was applied.
+  - Activation delivery drift could occur under concurrent reconcile/reissue paths.
+- Completed:
+  - Gateway hardening:
+    - resolved success delivery by token (`dt`) when `pi` is placeholder
+    - reconciled pending paid callbacks against Ziina before delivery
+    - preserved compatibility for camelCase/snake_case entitlement key shapes
+    - added delivery reconcile row lock to prevent concurrent key drift
+    - made claim consume idempotent for same install context
+    - ensured manual-intent schema compatibility/self-heal protections
+  - Licensing hardening:
+    - added controlled reissue path in license core
+    - propagated `reissueIfExists` through issue and entitlements issue APIs
+  - Production data correction:
+    - applied `projects/docsmith-payment-gateway/db/migrations/20260215_payment_gateway_v9_license_claims.sql`
+    - regenerated delivery row for affected paid intent and verified active activation record.
+- Verification:
+  - `projects/docsmith-payment-gateway`: `npm run test:worker-behavior` passed.
+  - `projects/docsmith-licensing-service`: `npm run test:issue-concurrency` passed.
+  - `https://licensing.docsmith.tools/api/health` returned `200` (`{"ok":true,"service":"licensing"}`).
+  - `https://buy.docsmith.tools/api/health` returned `200` (`{"ok":true,"service":"payment-gateway"}`).
+  - Live flow validation confirmed:
+    - success page returns activation key
+    - install claim code generation works
+    - extension redeem path activates successfully.
+- Evidence:
+  - Gateway HEAD: `37ad6e2`
+  - Licensing HEAD: `58a9011`
+  - Applied migration: `projects/docsmith-payment-gateway/db/migrations/20260215_payment_gateway_v9_license_claims.sql`
+  - Hardened success path: `projects/docsmith-payment-gateway/app/buy/success/page.js`
+  - Hardened delivery/claim routes:
+    - `projects/docsmith-payment-gateway/app/api/licenses/delivery/route.js`
+    - `projects/docsmith-payment-gateway/app/api/internal/claims/consume/route.js`
+  - Reissue propagation:
+    - `projects/docsmith-licensing-service/app/api/licenses/issue/route.js`
+    - `projects/docsmith-licensing-service/app/api/entitlements/issue/route.js`
 
 ### 2026-02-25
 - Project: `projects/SWD-dev-ec`
@@ -819,3 +916,16 @@ Entries
   - Next action:
 
 ---
+
+## Source: projects/swd-docsmith_brand-website/EXECUTION_LOG.md
+
+# Execution Log (Repo)
+
+## Entries
+
+### 2026-03-03
+- Updated website install CTA source to Microsoft Edge Add-ons listing: `dmgkinegbjjhgbhpgacdclcibcjdmpkj`.
+- Commit pushed to feature branch: `e0b8e73`.
+- Cherry-picked and pushed to `main`: `1b731ff`.
+- Production deployment trigger: Vercel Git integration (triggered by `main` push).
+- Note: live-domain HTML check did not yet reflect this repository output during verification window.

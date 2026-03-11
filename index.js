@@ -6,6 +6,11 @@ app.get('/', (req, res) => {
   res.send('Hello World from SWD Pulse!');
 });
 
-app.listen(port, () => {
-  console.log(`SWD Pulse app listening on port ${port}`);
-});
+// Only start the server if this file is run directly (not required as a module)
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`SWD Pulse app listening on port ${port}`);
+  });
+}
+
+module.exports = app;
