@@ -1,0 +1,15 @@
+# Repo inventory and health
+./projects/SWD-ARC|branch=main|head=5228cd587bea5120e84450348ae4ad8b56c495ac|origin=https://github.com/habrahgithub/SWD-ARC|ahead=0|behind=0|dirty=33
+./projects/SWD-dev-ec|branch=main|head=2fa73d54bd1ae8049056b203e6d5137f809783a6|origin=https://github.com/habrahgithub/SWD-dev-ec|ahead=0|behind=0|dirty=0
+./projects/_archive/2026-03-03-workspace-reorg/absorbed-projects/SWD-mcp-server|branch=main|head=63015c3040d74b0c754a9c1a52bb650eb9407efa|origin=https://github.com/habrahgithub/swd-mcp-server|ahead=0|behind=0|dirty=0
+./projects/_archive/2026-03-03-workspace-reorg/absorbed-projects/swd-os-governance|branch=main|head=c87d0b9c6d5f93223af4b0b37887f3ff2f21b6b4|origin=https://github.com/habrahgithub/swd-os-governance|ahead=0|behind=0|dirty=0
+./projects/_archive/2026-03-03-workspace-reorg/user-requested/wps-sif-tool|branch=main|head=df2b3655dfeae6a927bf29a637cdf9549d8329f4|origin=https://github.com/habrahgithub/wps-sif-tool|ahead=0|behind=0|dirty=0
+./projects/docsmith-licensing-service|branch=main|head=fe2a670535ab3cdf35f258f9d28dbd42181be164|origin=https://github.com/habrahgithub/docsmith-licensing-service|ahead=0|behind=0|dirty=0
+./projects/docsmith-payment-gateway|branch=main|head=a60b2da4558d2e1ffc6244a1cd39960676bded93|origin=https://github.com/habrahgithub/docsmith-payment-gateway|ahead=0|behind=0|dirty=0
+./projects/node-backend-starter-v2|branch=main|head=cabfc818717e0e9ab3844d146a3b6389e56c10f8|origin=https://github.com/habrahgithub/node-backend-starter-v2|ahead=0|behind=0|dirty=0
+./projects/node-backend-starter|branch=main|head=e0304f71ae3914184c1d6f83628e735abb06ceca|origin=https://github.com/habrahgithub/node-backend-starter|ahead=0|behind=1|dirty=0
+./projects/swd-docsmith-sif-extension|branch=main|head=5a8c9783aba231a59e9367e8ed8eed5cce828180|origin=https://github.com/habrahgithub/swd-docsmith-sif-extension|ahead=0|behind=0|dirty=0
+./projects/swd-docsmith_brand-website|branch=main|head=c568c74c732cefe0a35871da4a0c734fe8b26aa8|origin=https://github.com/habrahgithub/swd-docsmith-website|ahead=0|behind=0|dirty=0
+./projects/swd-landing|branch=main|head=472cbca17904803f14565064bace5cb83e93912d|origin=https://github.com/habrahgithub/swd-landing|ahead=0|behind=0|dirty=0
+./projects/wps-hr-core|branch=main|head=c8a23c2de7a6935f42452eb20ceaa10dee0f4927|origin=https://github.com/habrahgithub/wps-hr-core|ahead=0|behind=0|dirty=0
+.|branch=main|head=ce3edd9b92838b5d59f95c9a62833b93343ad4bd|origin=https://github.com/habrahgithub/node-backend-starter|ahead=0|behind=0|dirty=17

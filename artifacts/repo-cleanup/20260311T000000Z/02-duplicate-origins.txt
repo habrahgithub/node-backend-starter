@@ -1,0 +1,5 @@
+# Duplicate origin mappings
+https://github.com/habrahgithub/node-backend-starter:
+.
+./projects/node-backend-starter
+

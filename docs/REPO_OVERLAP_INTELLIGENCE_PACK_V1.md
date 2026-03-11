@@ -106,3 +106,28 @@ Note: `projects/swd-docsmith_brand-website` contains extension `manifest.json` o
 - Add overlap drift checks in CI for selected canonical relpaths.
 - Fail only on protected paths at first; report-only for all others.
 - Append Vault `decision` event when canonical ownership is changed.
+
+## Operational Update — 2026-03-11
+
+- Audit scope expanded to all visible git roots in the workspace, including the workspace root and archived project clones.
+- Evidence bundle: `artifacts/repo-cleanup/20260311T000000Z/`
+- Verified duplicate origin mapping:
+  - `https://github.com/habrahgithub/node-backend-starter`
+    - `.`
+    - `projects/node-backend-starter`
+- Non-destructive reconciliation completed:
+  - Fast-forwarded `projects/node-backend-starter` from `0b1b177` to `e0304f7`.
+  - Reconciled the parent gitlink pointer and pushed root commit `ce3edd9`.
+- Current operational state:
+  - Duplicate clone still exists locally and remains the primary trim candidate.
+  - The shared root/nested remote creates self-referential pointer churn: each root gitlink-sync commit advances the same remote used by `projects/node-backend-starter`, which can make the nested clone appear behind again immediately after reconciliation.
+  - `projects/node-backend-starter` is currently `behind=1` versus the latest remote for that reason.
+  - Unrelated dirty working trees were present during the audit and were not modified by this cleanup pass:
+    - `.`
+    - `projects/SWD-ARC`
+
+### Recommended immediate handling
+
+- Treat the workspace root (`.`) as the current aggregate source of truth for gitlink reconciliation.
+- Treat `projects/node-backend-starter` as a duplicate working clone pending explicit trim, archive, or structural migration approval.
+- Do not perform destructive removal while unrelated dirty working trees remain in the workspace.

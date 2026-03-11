@@ -1,0 +1,11 @@
+# Recent root commits relevant to repo pointer cleanup
+ce3edd9 (HEAD -> main, origin/main, origin/HEAD) chore: reconcile node-backend-starter gitlink pointer
+e0304f7 chore: reconcile swd-docsmith_brand-website gitlink pointer
+d428316 chore: reconcile node-backend-starter gitlink pointer
+0b1b177 chore: sanitize tracked runtime/build artifacts in root
+72771f3 chore: reconcile branch merges and repo pointers
+ef3d62e Merge remote-tracking branch 'origin/main'
+5102a39 Merge remote-tracking branch 'origin/hardening/sprint-1'
+6c4ae94 Merge remote-tracking branch 'origin/audit/swd-mcp-server-20260221'
+518e75f Merge branch 'hardening/sprint-1'
+56522f8 Merge branch 'audit/swd-mcp-server-20260221'
