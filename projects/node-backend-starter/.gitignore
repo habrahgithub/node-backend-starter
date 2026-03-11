@@ -1,3 +1,67 @@
-node_modules
-.env
+# Logs
+logs/
+*.log
+*.log.*
+*.pid
+*.seed
+*.pid.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Debug output
+*.stackdump
+
+# Coverage
+coverage/
+.nyc_output/
+*.lcov
+
+# Build outputs
+build/
+dist/
+out/
+.next/
+.nuxt/
+.svelte-kit/
+.vite/
+.esbuild/
+.parcel-cache/
+.turbo/
+.cache/
+.cache-loader/
+*.tsbuildinfo
+
+# Dependencies
+node_modules/
+
+# Artifacts
+*.tgz
+*.tar.gz
+*.zip
+*.map
+
+# Runtime files
+pids/
+*.pid
+*.pid.lock
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Repo-local caches
+.npm-cache/
+
+# Env files
+.env
+.env.*
+!.env.example

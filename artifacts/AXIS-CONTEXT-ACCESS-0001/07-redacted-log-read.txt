@@ -1,0 +1,16 @@
+DATE=2026-03-06T17:48:52Z
+SESSION_ID=79309ed5-ae4e-49f0-a761-c9a700cfbedf
+CORRELATION_READ_LOGS=acc-deny-path-174854
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 17:48:58 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::sssvr-1772819337888-836fb1a0dbf2
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"read-logs","result":{"status":"ok","operation":"read_redacted_logs","directive_id":"AXIS-CONTEXT-ACCESS-0001","path":"/workspace/artifacts/SWD-ARC-MCP-0012","redacted":true,"correlation_id":"acc-deny-path-174854","returned":2,"entries":[{"ts":"2026-03-06T17:48:57.062Z","route":"axis.context_access","method":"read","status":403,"outcome":"axis_deny","correlation_id":"acc-deny-path-174854"},{"ts":"2026-03-06T17:48:58.008Z","route":"axis.context_access","method":"read_redacted_logs","status":200,"outcome":"axis_allow","correlation_id":"acc-deny-path-174854"}]}}

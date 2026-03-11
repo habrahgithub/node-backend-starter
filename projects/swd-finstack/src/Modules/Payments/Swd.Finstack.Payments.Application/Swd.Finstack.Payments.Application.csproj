@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Swd.Finstack.Payments.Domain\Swd.Finstack.Payments.Domain.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Swd.Finstack.Contracts\Swd.Finstack.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Swd.Finstack.Abstractions\Swd.Finstack.Abstractions.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

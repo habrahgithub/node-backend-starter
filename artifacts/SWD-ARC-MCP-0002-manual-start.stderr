@@ -1,0 +1,4 @@
+API keys file not found, using development key only
+{"timestamp":"2026-03-05T16:31:42.337Z","level":"info","message":"Starting SWD MCP Server","data":{"name":"swd-mcp-server","version":"1.0.0"}}
+{"timestamp":"2026-03-05T16:31:42.343Z","level":"info","message":"SWD MCP Server started successfully","data":{"stdio":true,"http":"http://localhost:3000","mcpEndpoint":"http://localhost:3000/mcp"}}
+{"timestamp":"2026-03-05T16:31:42.344Z","level":"error","message":"Uncaught Exception","data":{"error":"listen EPERM: operation not permitted 0.0.0.0:3000","stack":"Error: listen EPERM: operation not permitted 0.0.0.0:3000\n    at Server.setupListenHandle [as _listen2] (node:net:1855:21)\n    at listenInCluster (node:net:1920:12)\n    at Server.listen (node:net:2008:7)\n    at HttpTransport.start (file:///home/habib/workspace/projects/SWD-ARC/mcp/server/src/server.js:371:16)\n    at main (file:///home/habib/workspace/projects/SWD-ARC/mcp/server/src/server.js:823:38)"}}

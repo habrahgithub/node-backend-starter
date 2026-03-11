@@ -1,0 +1,6 @@
+DATE=2026-03-05T17:32:00Z
+sudo_noninteractive_check=sudo: a password is required
+sudo_nginx_test=sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+sudo_systemctl_nginx=sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required

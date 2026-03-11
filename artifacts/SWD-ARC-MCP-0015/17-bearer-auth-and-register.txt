@@ -1,0 +1,8 @@
+DATE_UTC=2026-03-08T06:59:49Z
+TOKEN_FP_SHA256=0b72adb1c697262376d1d604bd9e590bdac781dcf826afc32cd0d078420765ab
+--- /api/agent/register no bearer ---
+{"error":"broker_auth_invalid"}
+HTTP_CODE=401
+--- /api/agent/register bearer ---
+{"error":"broker_auth_invalid"}
+HTTP_CODE=401

@@ -1,0 +1,27 @@
+DATE=2026-03-05T18:19:41Z
+VERCEL_HOST=www.starwealthdynamics.org
+REMOTE_BASE=https://www.starwealthdynamics.org
+REMOTE_MCP=https://www.starwealthdynamics.org/mcp
+AUTH_HEADER_NAME=X-Gateway-Token
+AUTH_TOKEN_SHA256=d0bf01e972689232aab8132a2631bcf69f98302ac689c4ee4b50b532051df131
+
+root_http=200
+health_unauth_http=404
+health_auth_http=404
+mcp_auth_http=404
+
+[health_unauth_body_head]
+<!DOCTYPE html><!--8rBWnxlf9h_aeo5RqiPAh--><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" as="image" href="/brand/logo-light.svg"/><link rel="preload" as="image" href="/brand/logo-dark.svg"/><link rel="stylesheet" href="/_next/static/chunks/ef21eea8c9c0d2e6.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/7262920b81433816.js"/><script src="/_next/static/chunks/82abf2d65f5428ae.js" async=""></script><script src="/_next/static/chunks/f2f58a7e93290fbb.js" async=""></script><script src="/_next/static/chunks/38eb66a58ed5ffd7.js" async=""></script><script src="/_next/static/chunks/turbopack-7dc09fdb139ae6e9.js" async=""></script><script src="/_next/static/chunks/01b2f9723da50b7d.js" async=""></script><script src="/_next/static/chunks/d2be314c3ece3fbe.js" async=""></script><meta name="robots" content="noindex"/><title>404: This page could not be found.</title><title>Star Wealth Dynamics</title><meta name="description" content="Star Wealth Dynamics builds office productivity and workflow tools for modern businesses."/><script src="/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="theme-transition"><div hidden=""><!--$--><!--/$--></div><script>(() => {
+  try {
+    const stored = localStorage.getItem('swd-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = stored || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') {
+
+[mcp_auth_body_head]
+<!DOCTYPE html><!--8rBWnxlf9h_aeo5RqiPAh--><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" as="image" href="/brand/logo-light.svg"/><link rel="preload" as="image" href="/brand/logo-dark.svg"/><link rel="stylesheet" href="/_next/static/chunks/ef21eea8c9c0d2e6.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/7262920b81433816.js"/><script src="/_next/static/chunks/82abf2d65f5428ae.js" async=""></script><script src="/_next/static/chunks/f2f58a7e93290fbb.js" async=""></script><script src="/_next/static/chunks/38eb66a58ed5ffd7.js" async=""></script><script src="/_next/static/chunks/turbopack-7dc09fdb139ae6e9.js" async=""></script><script src="/_next/static/chunks/01b2f9723da50b7d.js" async=""></script><script src="/_next/static/chunks/d2be314c3ece3fbe.js" async=""></script><meta name="robots" content="noindex"/><title>404: This page could not be found.</title><title>Star Wealth Dynamics</title><meta name="description" content="Star Wealth Dynamics builds office productivity and workflow tools for modern businesses."/><script src="/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="theme-transition"><div hidden=""><!--$--><!--/$--></div><script>(() => {
+  try {
+    const stored = localStorage.getItem('swd-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = stored || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') {

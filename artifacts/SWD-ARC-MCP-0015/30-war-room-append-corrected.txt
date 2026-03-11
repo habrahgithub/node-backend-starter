@@ -1,0 +1,91 @@
+DATE=2026-03-08T08:11:42Z
+   494	- Readiness position:
+   495	  - GO for controlled read-only control plane operations.
+   496	  - NO-GO for privileged phase mutation enablement until audit-append persistence + adapter execution chain activation are completed server-side.
+   497	- Advisory findings:
+   498	  - runtime workflow metadata loaders still default to `Lab Template/files` paths in controls-center libs.
+   499	- Evidence:
+   500	  - `/home/habib/workspace/projects/SWD-ARC/ops/logs/2026-03-08-arc-sdlc-01-operational-readiness.md`
+   501	  - `/home/habib/workspace/projects/SWD-ARC/tests/integration/mcp-guard.spec.ts`
+   502	  - `/home/habib/workspace/projects/SWD-ARC/scripts/ci-governance-guardrails.sh`
+   503	
+   504	## 2026-03-08T10:25:00Z - ARC-SDLC-01 UI/UX Completion Verification
+   505	- Scope: verify prototype fallback removal and SDLC dashboard operational completeness.
+   506	- Result: YELLOW (operational read-only, UX partial)
+   507	- Verified:
+   508	  - runtime fallback removed from SDLC metadata loaders; canonical catalog sources active.
+   509	  - `/sdlc` route renders `PhaseRail`, `ChecklistEngine`, and `DebugEngine` in live runtime.
+   510	  - SDLC read APIs return governed read-only payloads.
+   511	  - tests and build pass.
+   512	- Remaining UI/UX gaps:
+   513	  - no `app/sdlc/layout.tsx` route shell file in current tree.
+   514	  - advanced SDLC UI modules (e.g., phase meta/event emitter surfaces) are not present.
+   515	- Evidence:
+   516	  - `/home/habib/workspace/projects/SWD-ARC/ops/logs/2026-03-08-arc-sdlc-01-ui-ux-verification.md`
+   517	
+   518	## 2026-03-08T10:30:00Z - ARC-SDLC-01 Audit-Append Persistence Layer
+   519	- Scope: implement append-only audit persistence gate for SDLC phase write path before any mutation execution.
+   520	- Result: PASS (control integration complete, mutation remains disabled)
+   521	- Delivered:
+   522	  - `arc/security/audit/audit-append-store.ts`
+   523	  - `arc/governance/audit-append/phase-write-audit-gate.ts`
+   524	  - `apps/controls-center/app/api/sdlc/phase/write-route.ts`
+   525	  - route integration update in `apps/controls-center/app/api/sdlc/phase/route.ts`
+   526	- Validation:
+   527	  - targeted tests: PASS (`8/8`)
+   528	  - full ARC SDLC suite: PASS (`33/33`)
+   529	  - strict governance guardrails: PASS
+   530	- Enforcement outcome:
+   531	  - write attempts are denied when audit append fails (`503 audit_append_failed`).
+   532	  - privileged mutation remains non-operational (`phase_mutation_not_implemented`) even after successful audit append.
+   533	
+   534	## 2026-03-08T10:40:00Z - ARC Debugging Runbook Maintenance Directive
+   535	- Date: 2026-03-08
+   536	- Event: ARC debugging runbook established and governance directive issued for ongoing maintenance.
+   537	- Artifact: `ops/runbooks/arc-debugging-workflow.md`
+   538	- Status: Operational troubleshooting reference active.
+   539	- Notes:
+   540	  - Runbook maintenance contract added with explicit update triggers and checklist.
+   541	  - Ongoing updates must be appended to `ops/logs/YYYY-MM.md`.
+   542	
+   543	## 2026-03-08T08:10:57Z - SWD-ARC-MCP-0015 Unified Authenticated Broker Live Validation
+   544	- Scope: closeout validation for unified authenticated MCP broker (Cloudflare/Vercel edge + local agent execution plane).
+   545	- Result: PASS
+   546	- Verified:
+   547	  - Forced production deploy applied and active (, ).
+   548	  -  returns  without bearer and  with bearer.
+   549	  - Live local agent registration/heartbeat observed ().
+   550	  - Host-bound tools route to agent and execute (, ).
+   551	  - Deterministic deny preserved for wrong directive (, ).
+   552	  - Deterministic deny preserved when bridge stops (, ; ).
+   553	- Constraints preserved:
+   554	  - No changes under .
+   555	  - No tool-surface expansion beyond approved MCP set.
+   556	  - Token/secret values redacted from evidence artifacts.
+   557	- Evidence:
+   558	  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0015/23-vercel-deploy-prod-force.txt
+   559	  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0015/24-post-force-runtime-check.txt
+   560	  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0015/25-agent-routing-success.txt
+   561	  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0015/26-agent-unavailable-after-stop-live.txt
+   562	
+   563	## 2026-03-08T08:20:00Z - SWD-ARC-MCP-0015 Unified Authenticated Broker Live Validation (Corrected Closeout)
+   564	- Scope: closeout validation for unified authenticated MCP broker (Cloudflare/Vercel edge + local agent execution plane).
+   565	- Result: PASS
+   566	- Verified:
+   567	  - Forced production deploy applied and active (`broker_auth=bearer`, `routing=brokered`).
+   568	  - `/api/agent/register` returns `401` without bearer and `200` with bearer.
+   569	  - Live local agent registration/heartbeat observed (`live_agents=1`).
+   570	  - Host-bound tools route to agent and execute (`axis.context_access.diagnose`, `axis.context_access.read`).
+   571	  - Deterministic deny preserved for wrong directive (`agent_scope_mismatch`, `403`).
+   572	  - Deterministic deny preserved when bridge stops (`agent_unavailable`, `503`; `live_agents=0`).
+   573	- Constraints preserved:
+   574	  - No changes under `projects/SWD-ARC/mcp/server/**`.
+   575	  - No tool-surface expansion beyond approved MCP set.
+   576	  - Token/secret values redacted from evidence artifacts.
+   577	- Evidence:
+   578	  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0015/23-vercel-deploy-prod-force.txt
+   579	  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0015/24-post-force-runtime-check.txt
+   580	  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0015/25-agent-routing-success.txt
+   581	  - /home/habib/workspace/artifacts/SWD-ARC-MCP-0015/26-agent-unavailable-after-stop-live.txt
+   582	- Note:
+   583	  - This entry supersedes the malformed `2026-03-08T08:10:57Z` block caused by shell interpolation during first append attempt.

@@ -1,0 +1,3 @@
+## host-bound tool before agent registration
+{"jsonrpc":"2.0","id":"forge-0015","error":{"code":-32003,"message":"Access denied: agent_unavailable","data":{"deny_reason":"agent_unavailable"}}}
+HTTP_CODE=503

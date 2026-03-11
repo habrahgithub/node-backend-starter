@@ -1,0 +1,3 @@
+DATE=2026-03-05T16:57:22Z
+LOCAL_CHATGPT_CONFIG_DIR=absent
+LOCAL_FILE_HINT=~/.config/chatgpt/mcp_servers.json

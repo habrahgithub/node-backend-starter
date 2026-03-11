@@ -1,0 +1,8 @@
+DATE_UTC=2026-03-08T07:34:59Z
+TOKEN_FP_SHA256=e0927c393ab8b3a920ca16c9c6e5359d4b2a36fdcc5aef7d40aea34796d83e43
+--- host-bound diagnose after bridge stop ---
+{"jsonrpc":"2.0","id":"final","error":{"code":-32003,"message":"Access denied: agent_unavailable","data":{"deny_reason":"agent_unavailable"}}}
+HTTP_CODE=503
+--- runtime_attachment after bridge stop ---
+{"jsonrpc":"2.0","id":"final","result":{"content":[{"type":"text","text":"{\"status\":\"ok\",\"gateway\":\"vercel-edge\",\"current_mode\":\"gateway_local\",\"states\":{\"gateway_local\":true,\"upstream_configured\":false,\"upstream_attached\":false},\"upstream_metadata\":{\"url_fingerprint\":\"none\",\"auth\":\"none\",\"redacted\":true},\"timestamp\":\"2026-03-08T07:35:00.251Z\",\"broker\":{\"broker_auth\":\"bearer\",\"routing\":\"brokered\",\"live_agents\":0,\"agents\":[]}}"}],"structuredContent":{"status":"ok","gateway":"vercel-edge","current_mode":"gateway_local","states":{"gateway_local":true,"upstream_configured":false,"upstream_attached":false},"upstream_metadata":{"url_fingerprint":"none","auth":"none","redacted":true},"timestamp":"2026-03-08T07:35:00.251Z","broker":{"broker_auth":"bearer","routing":"brokered","live_agents":0,"agents":[]}}}}
+HTTP_CODE=200

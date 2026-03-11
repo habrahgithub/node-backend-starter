@@ -1,0 +1,4 @@
+DATE=2026-03-05T18:09:04Z
+blocked_probe=vault.write
+blocked_http=403
+{"error":"Access denied: developer cannot execute vault.write","auditId":"1cb3c88d-a41a-43f3-8009-3212bf42a016"}

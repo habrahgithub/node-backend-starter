@@ -1,0 +1,8 @@
+# ping
+{"jsonrpc":"2.0","id":"reg-ping","result":{"content":[{"type":"text","text":"MCP server is alive"}]}}
+# health_check
+{"jsonrpc":"2.0","id":"reg-health","result":{"content":[{"type":"text","text":"{\n  \"status\": \"healthy\",\n  \"timestamp\": \"2026-03-06T19:10:53.347Z\",\n  \"server\": {\n    \"uptime\": 140,\n    \"requestCount\": 8\n  },\n  \"gateway\": \"vercel-edge\"\n}"}]}}
+# get_metrics
+{"jsonrpc":"2.0","id":"reg-metrics","result":{"content":[{"type":"text","text":"{\n  \"server\": {\n    \"uptime\": 140,\n    \"requestCount\": 9\n  },\n  \"system\": {\n    \"nodeVersion\": \"v24.13.0\",\n    \"platform\": \"linux\"\n  },\n  \"gateway\": \"vercel-edge\"\n}"}]}}
+# vault.ping
+{"jsonrpc":"2.0","id":"reg-vault","result":{"content":[{"type":"text","text":"{\"ok\":true,\"query_only\":true,\"event_count\":null,\"source\":\"vercel-gateway-local\",\"timestamp\":\"2026-03-06T19:10:54.364Z\"}"}],"structuredContent":{"ok":true,"query_only":true,"event_count":null,"source":"vercel-gateway-local","timestamp":"2026-03-06T19:10:54.364Z"}}}

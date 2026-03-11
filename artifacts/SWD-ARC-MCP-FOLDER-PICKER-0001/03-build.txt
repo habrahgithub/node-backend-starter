@@ -1,0 +1,53 @@
+
+> swd-landing@1.0.0 build
+> next build
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /home/habib/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /home/habib/workspace/projects/swd-landing/package-lock.json
+   * /home/habib/workspace/package-lock.json
+
+▲ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 18.2s
+  Running TypeScript ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/20) ...
+  Generating static pages using 11 workers (5/20) 
+  Generating static pages using 11 workers (10/20) 
+  Generating static pages using 11 workers (15/20) 
+✓ Generating static pages using 11 workers (20/20) in 1311.1ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/health
+├ ○ /ar
+├ ○ /ar/company
+├ ○ /ar/contact
+├ ○ /ar/docsmith
+├ ○ /ar/products
+├ ○ /ar/solutions
+├ ○ /company
+├ ○ /contact
+├ ○ /cookies
+├ ○ /docsmith
+├ ○ /dpa
+├ ○ /eula
+├ ƒ /mcp
+├ ƒ /mcp/[connector_key]
+├ ○ /products
+├ ○ /prototype
+├ ○ /refund-policy
+├ ○ /security
+└ ○ /solutions
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

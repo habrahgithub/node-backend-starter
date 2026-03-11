@@ -1,7 +1,11 @@
 {
   "chat.mcp.serverSampling": {
     "workspace/.vscode/mcp.json: io.github.vercel/next-devtools-mcp": {
-      "allowedModels": ["copilot/auto"]
+      "allowedModels": [
+        "copilot/auto"
+      ]
     }
-  }
+  },
+  "yaml.completion": false,
+  "dotnet.defaultSolution": "projects/SWD-ARC/swd-core/swd-pulse/SWD.Pulse.sln"
 }

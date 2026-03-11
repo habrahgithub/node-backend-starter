@@ -1,0 +1,11 @@
+[forge_governance]
+role = "external_production_builder"
+org_boundary = "forge_external_to_arc_core"
+sop_scope = "external_production_environment_only"
+temperature = 0
+max_recursion_attempts = 3
+handshake_required = true
+handshake_hash_alg = "md5"
+handshake_scope_fail_closed = true
+evidence_required = true
+evidence_min_fields = ["changes", "tests", "paths", "directive_hash"]

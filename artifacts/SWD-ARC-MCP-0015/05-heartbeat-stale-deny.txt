@@ -1,0 +1,9 @@
+NOTE=Expected post-heartbeat deny after stopping agent.
+## host-bound tool after stopping agent
+{"jsonrpc":"2.0","id":"forge-0015c","error":{"code":-32003,"message":"Access denied: agent_unavailable","data":{"deny_reason":"agent_unavailable"}}}
+HTTP_CODE=503
+## runtime attachment after stopping agent
+{"jsonrpc":"2.0","id":"forge-0015c","result":{"content":[{"type":"text","text":"{\"status\":\"ok\",\"gateway\":\"vercel-edge\",\"current_mode\":\"gateway_local\",\"states\":{\"gateway_local\":true,\"upstream_configured\":false,\"upstream_attached\":false},\"upstream_metadata\":{\"url_fingerprint\":\"none\",\"auth\":\"none\",\"redacted\":true},\"timestamp\":\"2026-03-08T06:51:40.167Z\",\"broker\":{\"broker_auth\":\"bearer\",\"routing\":\"brokered\",\"live_agents\":0,\"agents\":[]}}"}],"structuredContent":{"status":"ok","gateway":"vercel-edge","current_mode":"gateway_local","states":{"gateway_local":true,"upstream_configured":false,"upstream_attached":false},"upstream_metadata":{"url_fingerprint":"none","auth":"none","redacted":true},"timestamp":"2026-03-08T06:51:40.167Z","broker":{"broker_auth":"bearer","routing":"brokered","live_agents":0,"agents":[]}}}}
+HTTP_CODE=200
+## broker log deny markers
+{"kind":"swd_mcp_gateway_audit","ts":"2026-03-08T06:51:40.154Z","route":"/mcp","method":"POST","status":503,"ip":"::ffff:127.0.0.1","tool":"axis.context_access.diagnose","outcome":"agent_unavailable","auth_mode":"bearer_token","token_fp":"sha256:d761bd29169d"}

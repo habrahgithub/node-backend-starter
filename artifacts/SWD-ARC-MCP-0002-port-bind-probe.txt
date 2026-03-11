@@ -1,0 +1,4 @@
+node listen probe results (Node 20.11.1)
+3000 0.0.0.0 -> EPERM
+3000 127.0.0.1 -> EPERM
+37821 127.0.0.1 -> EPERM

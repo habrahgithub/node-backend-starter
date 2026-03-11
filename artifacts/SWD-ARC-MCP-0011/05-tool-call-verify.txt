@@ -1,0 +1,41 @@
+DATE=2026-03-06T15:50:41Z
+SESSION_ID=63123346-91ac-4c7a-9d8f-33ea1b4c0c53
+-- notifications/initialized --
+HTTP/1.1 202 Accepted
+Cache-Control: public, max-age=0, must-revalidate
+Content-Length: 0
+Date: Fri, 06 Mar 2026 15:50:42 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::qgmtr-1772812242255-2512470f2c3f
+
+-- tools/list --
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 15:50:43 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::jbrt4-1772812243444-868161b614c1
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"list-1","result":{"tools":[{"name":"ping","description":"Reachability probe for the SWD MCP edge gateway.","inputSchema":{"type":"object","additionalProperties":false,"properties":{}}},{"name":"health_check","description":"Returns gateway and local runtime health status.","inputSchema":{"type":"object","additionalProperties":false,"properties":{}}},{"name":"get_metrics","description":"Returns runtime metrics from the gateway runtime.","inputSchema":{"type":"object","additionalProperties":false,"properties":{}}},{"name":"vault.ping","description":"Read-only vault reachability probe.","inputSchema":{"type":"object","additionalProperties":false,"properties":{}}}]}}-- tools/call health_check --
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 15:50:44 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::79w5b-1772812244800-c331338eb5e8
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"call-1","result":{"content":[{"type":"text","text":"{\n  \"status\": \"healthy\",\n  \"timestamp\": \"2026-03-06T15:50:44.911Z\",\n  \"server\": {\n    \"uptime\": 23,\n    \"requestCount\": 5\n  },\n  \"gateway\": \"vercel-edge\"\n}"}]}}

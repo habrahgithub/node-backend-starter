@@ -1,0 +1,15 @@
+DATE=2026-03-06T17:34:55Z
+CORRELATION_ID=0012-20260306T173455Z
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 17:34:58 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::dm6qk-1772818498192-0e5c9cbc5474
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"audit-0012","result":{"content":[{"type":"text","text":"{\"status\":\"ok\",\"redacted\":true,\"correlation_id\":\"0012-20260306T173455Z\",\"match_count\":1,\"returned\":1,\"entries\":[{\"ts\":\"2026-03-06T17:34:57.809Z\",\"route\":\"/mcp/<redacted>\",\"method\":\"POST\",\"status\":403,\"outcome\":\"write_deny_probe\",\"correlation_id\":\"0012-20260306T173455Z\",\"tool\":\"vault.write\"}]}"}],"structuredContent":{"status":"ok","redacted":true,"correlation_id":"0012-20260306T173455Z","match_count":1,"returned":1,"entries":[{"ts":"2026-03-06T17:34:57.809Z","route":"/mcp/<redacted>","method":"POST","status":403,"outcome":"write_deny_probe","correlation_id":"0012-20260306T173455Z","tool":"vault.write"}]}}}

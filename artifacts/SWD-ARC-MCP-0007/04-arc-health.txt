@@ -1,0 +1,7 @@
+DATE=2026-03-05T18:09:03Z
+arc_health_route=/api/health
+arc_health_http=200
+{"status":"healthy","timestamp":"2026-03-05T18:09:01.779Z","server":{"uptime":458,"requestCount":168}}
+arc_health_tool_equivalent=health_check
+health_check_http=200
+{"content":[{"type":"text","text":"{\n  \"status\": \"healthy\",\n  \"timestamp\": \"2026-03-05T18:09:02.877Z\",\n  \"server\": {\n    \"uptime\": 459,\n    \"requestCount\": 171\n  }\n}"}]}

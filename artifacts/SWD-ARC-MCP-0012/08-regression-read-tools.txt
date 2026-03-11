@@ -1,0 +1,54 @@
+DATE=2026-03-06T17:34:55Z
+-- ping --
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 17:34:59 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::74mrv-1772818499169-a3fcafdc40d2
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"ping-0012","result":{"content":[{"type":"text","text":"MCP server is alive"}]}}-- health_check --
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 17:34:59 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::dz7cm-1772818499669-a95bc6158449
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"health-0012","result":{"content":[{"type":"text","text":"{\n  \"status\": \"healthy\",\n  \"timestamp\": \"2026-03-06T17:34:59.774Z\",\n  \"server\": {\n    \"uptime\": 129,\n    \"requestCount\": 8\n  },\n  \"gateway\": \"vercel-edge\"\n}"}]}}-- get_metrics --
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 17:35:00 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::p98tx-1772818500166-e6351579ef8e
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"metrics-0012","result":{"content":[{"type":"text","text":"{\n  \"server\": {\n    \"uptime\": 129,\n    \"requestCount\": 9\n  },\n  \"system\": {\n    \"nodeVersion\": \"v24.13.0\",\n    \"platform\": \"linux\"\n  },\n  \"gateway\": \"vercel-edge\"\n}"}]}}-- vault.ping --
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 17:35:00 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::smlwp-1772818500654-6643c3a182e3
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"vault-0012","result":{"content":[{"type":"text","text":"{\"ok\":true,\"query_only\":true,\"event_count\":null,\"source\":\"vercel-gateway-local\",\"timestamp\":\"2026-03-06T17:35:00.783Z\"}"}],"structuredContent":{"ok":true,"query_only":true,"event_count":null,"source":"vercel-gateway-local","timestamp":"2026-03-06T17:35:00.783Z"}}}

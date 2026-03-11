@@ -1,0 +1,15 @@
+DATE=2026-03-06T17:34:55Z
+CORRELATION_ID=0012-20260306T173455Z
+HTTP/1.1 403 Forbidden
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Fri, 06 Mar 2026 17:34:57 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /mcp/[connector_key]
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::iad1::76brh-1772818497491-58ff13d8576e
+Transfer-Encoding: chunked
+
+{"jsonrpc":"2.0","id":"deny-0012","error":{"code":-32003,"message":"Access denied: developer cannot execute vault.write","data":{"probe":"compliance.write_deny_probe","correlation_id":"0012-20260306T173455Z","denied_tool":"vault.write","deterministic":true,"side_effects":"none"}}}

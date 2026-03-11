@@ -1,0 +1,8 @@
+DATE_UTC=2026-03-08T09:25:12Z
+STATUS=MANUAL_UI_REQUIRED
+DETAIL=ChatGPT OAuth UI login success must be executed in ChatGPT connector UI with real GitHub OAuth App credentials and callback URL.
+Prepared endpoints:
+- /api/auth/github/start
+- /api/auth/github/callback
+- /api/auth/token
+- /.well-known/oauth-authorization-server

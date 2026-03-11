@@ -1,0 +1,5 @@
+DATE=2026-03-05T19:29:38Z
+URL_REDACTED=https://www.starwealthdynamics.org/mcp/<connector_key>
+-- blocked write --
+HTTP=403
+{"error":"Access denied: developer cannot execute vault.write"}

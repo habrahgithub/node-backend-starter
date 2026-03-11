@@ -1,0 +1,1 @@
+/usr/lib/postgresql/16/bin/postgres "-D" "/home/habib/workspace/.local-pg/data" "-p" "55432" "-h" "0.0.0.0" "-k" "/home/habib/workspace/.local-pg"

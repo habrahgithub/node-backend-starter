@@ -1,0 +1,4 @@
+date=2026-03-07T19:50:47Z
+endpoint=http://127.0.0.1:4010/mcp/<connector_key>
+probe_read_list_workspace=status_ok
+probe_diagnose_node_version=status_ok

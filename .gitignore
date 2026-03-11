@@ -43,6 +43,8 @@ node_modules/
 *.tar.gz
 *.zip
 *.map
+artifacts/**/tls.key
+artifacts/**/tls.crt
 
 # Runtime files
 pids/
@@ -66,6 +68,8 @@ venv/
 .env
 .env.*
 !.env.example
+.continue/*.local.yaml
+.continue/secrets.local.yaml
 
 # Vault runtime data
 vault/db/

@@ -1,0 +1,287 @@
+DATE=2026-03-05T18:44:37Z
+PROJECT=/home/habib/workspace/projects/swd-landing
+CHANGED_FILES
+?? app/api/_gateway/mcpGateway.js
+?? app/api/health/route.js
+?? app/mcp/route.js
+
+ROUTE: app/api/health/route.js
+import { handleHealth } from "../_gateway/mcpGateway";
+
+export const dynamic = "force-dynamic";
+
+export async function GET(request) {
+  return handleHealth(request);
+}
+
+ROUTE: app/mcp/route.js
+import { handleMcp } from "../api/_gateway/mcpGateway";
+
+export const dynamic = "force-dynamic";
+
+export async function GET(request) {
+  return handleMcp(request);
+}
+
+export async function POST(request) {
+  return handleMcp(request);
+}
+
+GATEWAY_SNIPPET
+const ALLOWED_TOOLS = ["ping", "health_check", "get_metrics", "vault.ping"];
+
+function getClientIp(request) {
+  const forwarded = request.headers.get("x-forwarded-for");
+  if (forwarded) return forwarded.split(",")[0].trim();
+  return "unknown";
+}
+
+function nowIso() {
+  return new Date().toISOString();
+}
+
+function getState() {
+  if (!globalThis.__swdGatewayState) {
+    globalThis.__swdGatewayState = {
+      buckets: new Map(),
+      startedAt: Date.now(),
+      requests: 0,
+    };
+  }
+  return globalThis.__swdGatewayState;
+}
+
+function gatewayConfig() {
+  return {
+    token: process.env.SWD_MCP_GATEWAY_TOKEN || "",
+    rateRps: Number(process.env.SWD_MCP_RATE_LIMIT_RPS || 10),
+    upstreamUrl: process.env.SWD_MCP_UPSTREAM_URL || "",
+    upstreamApiKey: process.env.SWD_MCP_UPSTREAM_API_KEY || "",
+  };
+}
+
+function audit(event) {
+  // Vercel-safe append-only audit signal; do not log secrets.
+  console.log(
+    JSON.stringify({
+      kind: "swd_mcp_gateway_audit",
+      ts: nowIso(),
+      ...event,
+    })
+  );
+}
+
+function json(body, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { "content-type": "application/json" },
+  });
+}
+
+function checkRateLimit(request, limitPerSec) {
+  const ip = getClientIp(request);
+  const state = getState();
+  const now = Date.now();
+  const prev = state.buckets.get(ip) || [];
+  const kept = prev.filter((t) => now - t < 1000);
+  if (kept.length >= limitPerSec) {
+    state.buckets.set(ip, kept);
+    return { allowed: false, ip };
+  }
+  kept.push(now);
+  state.buckets.set(ip, kept);
+  return { allowed: true, ip };
+}
+
+function checkAuth(request, token) {
+  const provided = request.headers.get("x-gateway-token") || "";
+  return Boolean(token) && provided === token;
+}
+
+function toolManifest() {
+  return {
+    tools: ALLOWED_TOOLS.map((name) => ({ name })),
+  };
+}
+
+function localToolResponse(tool) {
+  const state = getState();
+  const uptimeSec = Math.floor((Date.now() - state.startedAt) / 1000);
+
+  if (tool === "ping") {
+    return { content: [{ type: "text", text: "MCP server is alive" }] };
+  }
+  if (tool === "health_check") {
+    return {
+      content: [
+        {
+          type: "text",
+          text: JSON.stringify(
+            {
+              status: "healthy",
+              timestamp: nowIso(),
+              server: { uptime: uptimeSec, requestCount: state.requests },
+              gateway: "vercel-edge",
+            },
+            null,
+            2
+          ),
+        },
+      ],
+    };
+  }
+  if (tool === "get_metrics") {
+    return {
+      content: [
+        {
+          type: "text",
+          text: JSON.stringify(
+            {
+              server: {
+                uptime: uptimeSec,
+                requestCount: state.requests,
+              },
+              system: {
+                nodeVersion: process.version,
+                platform: process.platform,
+              },
+              gateway: "vercel-edge",
+            },
+            null,
+            2
+          ),
+        },
+      ],
+    };
+  }
+  if (tool === "vault.ping") {
+    return {
+      ok: true,
+      query_only: true,
+      event_count: null,
+      source: "vercel-gateway-local",
+      timestamp: nowIso(),
+    };
+  }
+  return null;
+}
+
+async function proxyToUpstream(request, config, payload) {
+  const upstream = `${config.upstreamUrl.replace(/\/$/, "")}/mcp`;
+  const headers = { "content-type": "application/json" };
+  if (config.upstreamApiKey) {
+    headers.authorization = `Bearer ${config.upstreamApiKey}`;
+  }
+
+  const resp = await fetch(upstream, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(payload),
+    cache: "no-store",
+  });
+
+  const text = await resp.text();
+  let parsed;
+  try {
+    parsed = JSON.parse(text);
+  } catch {
+    parsed = { error: "Invalid upstream response", detail: text.slice(0, 500) };
+  }
+  return { status: resp.status, body: parsed };
+}
+
+export async function handleHealth(request) {
+  const state = getState();
+  state.requests += 1;
+  const cfg = gatewayConfig();
+  const rate = checkRateLimit(request, cfg.rateRps);
+  if (!rate.allowed) {
+    audit({ route: "/api/health", status: 429, ip: rate.ip, outcome: "rate_limited" });
+    return json({ error: "rate limit exceeded" }, 429);
+  }
+
+  if (!checkAuth(request, cfg.token)) {
+    audit({ route: "/api/health", status: 401, ip: rate.ip, outcome: "unauthorized" });
+    return json({ error: "unauthorized" }, 401);
+  }
+
+  audit({ route: "/api/health", status: 200, ip: rate.ip, outcome: "ok" });
+  return json({
+    status: "ok",
+    timestamp: nowIso(),
+    gateway: "vercel-edge",
+    allowlist: ALLOWED_TOOLS,
+  });
+}
+
+export async function handleMcp(request) {
+  const state = getState();
+  state.requests += 1;
+  const cfg = gatewayConfig();
+  const rate = checkRateLimit(request, cfg.rateRps);
+  const ip = rate.ip;
+
+  if (!rate.allowed) {
+    audit({ route: "/mcp", status: 429, ip, outcome: "rate_limited" });
+    return json({ error: "rate limit exceeded" }, 429);
+  }
+
+  if (!checkAuth(request, cfg.token)) {
+    audit({ route: "/mcp", status: 401, ip, outcome: "unauthorized" });
+    return json({ error: "unauthorized" }, 401);
+  }
+
+  if (request.method === "GET") {
+    audit({ route: "/mcp", method: "GET", status: 200, ip, outcome: "manifest" });
+    return json(toolManifest(), 200);
+  }
+
+  let payload;
+  try {
+    payload = await request.json();
+  } catch {
+    audit({ route: "/mcp", method: "POST", status: 400, ip, outcome: "invalid_json" });
+    return json({ error: "invalid json" }, 400);
+  }
+
+  const tool = payload?.params?.tool;
+  if (!tool) {
+    audit({ route: "/mcp", method: "POST", status: 400, ip, outcome: "missing_tool" });
+    return json({ error: "tool name required" }, 400);
+  }
+
+  if (!ALLOWED_TOOLS.includes(tool)) {
+    audit({ route: "/mcp", method: "POST", status: 403, ip, tool, outcome: "blocked" });
+    return json({ error: `Access denied: developer cannot execute ${tool}` }, 403);
+  }
+
+  if (cfg.upstreamUrl) {
+    try {
+      const upstream = await proxyToUpstream(request, cfg, payload);
+      audit({
+        route: "/mcp",
+        method: "POST",
+        status: upstream.status,
+        ip,
+        tool,
+        outcome: "proxied",
+      });
+      return json(upstream.body, upstream.status);
+    } catch (error) {
+      audit({
+        route: "/mcp",
+        method: "POST",
+        status: 502,
+        ip,
+        tool,
+        outcome: "upstream_error",
+        detail: error?.message || "unknown",
+      });
+      return json({ error: "upstream error" }, 502);
+    }
+  }
+
+  const local = localToolResponse(tool);
+  audit({ route: "/mcp", method: "POST", status: 200, ip, tool, outcome: "local_fallback" });
+  return json(local, 200);
+}

@@ -1,0 +1,16 @@
+# Rate Limit Flood Drill
+generated_at_utc=2026-02-26T02:41:33.876Z
+
+pass=false
+request_count=160
+issue_status_distribution={"200":38,"429":40,"ERR":2}
+claim_status_distribution={"200":20,"429":56,"ERR":4}
+issue_429_count=40
+claim_429_count=56
+issue_db_rows_before=0
+issue_db_rows_after=39
+issue_db_mutation_delta=39
+issue_success_2xx_count=38
+claim_redeem_success_events_before=0
+claim_redeem_success_events_after=1
+claim_redeemed_rows=1

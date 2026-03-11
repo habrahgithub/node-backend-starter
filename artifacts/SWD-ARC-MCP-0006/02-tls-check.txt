@@ -1,0 +1,3 @@
+TLS_ENDPOINT=https://127.0.0.1:8443
+openssl_s_client_subject=CN = mcp.starwealthdynamics.local
+curl_tls_http=401

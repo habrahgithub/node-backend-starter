@@ -1,0 +1,18 @@
+REMOTE_ENDPOINT=https://major-nights-kick.loca.lt/mcp
+ALLOWLIST=ping,health_check,get_metrics,vault.ping
+NOTE=Validated via authenticated remote MCP POST calls
+ping => HTTP 200
+{"content":[{"type":"text","text":"MCP server is alive ✅"}]}
+---
+health_check => HTTP 200
+{"content":[{"type":"text","text":"{\n  \"status\": \"healthy\",\n  \"timestamp\": \"2026-03-05T17:11:18.847Z\",\n  \"server\": {\n    \"uptime\": 10,\n    \"requestCount\": 6\n  }\n}"}]}
+---
+get_metrics => HTTP 200
+{"content":[{"type":"text","text":"{\n  \"server\": {\n    \"uptime\": 11,\n    \"requestCount\": 7\n  },\n  \"system\": {\n    \"nodeVersion\": \"v20.11.1\",\n    \"platform\": \"linux\",\n    \"arch\": \"x64\",\n    \"memoryUsage\": {\n      \"rss\": 77266944,\n      \"heapTotal\": 35201024,\n      \"heapUsed\": 20838256,\n      \"external\": 2251412,\n      \"arrayBuffers\": 82300\n    },\n    
+---
+vault.ping => HTTP 200
+{"ok":true,"event_count":20905,"last_event_ts":"2026-03-05 16:54:00","query_only":true}
+---
+blocked_probe=vault.write
+blocked_http=403
+{"error":"Access denied: reviewer cannot execute vault.write","auditId":"dba03837-b174-4d08-a86c-622acb33f54a"}

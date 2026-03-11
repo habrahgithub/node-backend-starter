@@ -1,0 +1,4 @@
+DATE=2026-03-05T18:19:41Z
+blocked_probe=vault.write
+blocked_write_http=405
+status=blocked

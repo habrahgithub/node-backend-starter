@@ -1,0 +1,183 @@
+{
+  "name": "AI Skills Registry",
+  "version": "1.0.0",
+  "description": "Centralized registry of all AI skills available across extensions",
+
+  "skillsDirectory": "~/.agents/skills",
+
+  "skills": [
+    {
+      "id": "railway",
+      "name": "Railway Deployment",
+      "path": "~/.agents/skills/railway-docs",
+      "category": "deployment",
+      "enabled": true,
+      "extensions": ["continue", "cline", "copilot", "gemini"],
+      "description": "Deploy to Railway, manage environments, configure services",
+      "tags": ["deployment", "infrastructure", "cloud"]
+    },
+
+    {
+      "id": "database",
+      "name": "Database Management",
+      "path": "~/.agents/skills/database",
+      "category": "data",
+      "enabled": true,
+      "extensions": ["continue", "cline", "copilot", "gemini"],
+      "description": "Add databases (Postgres, Redis, MySQL, MongoDB)",
+      "tags": ["database", "sql", "nosql", "migration"]
+    },
+
+    {
+      "id": "deploy",
+      "name": "Deployment Procedures",
+      "path": "~/.agents/skills/deploy",
+      "category": "deployment",
+      "enabled": true,
+      "extensions": ["continue", "cline"],
+      "description": "Push code to Railway, ship, deploy",
+      "tags": ["deployment", "git", "ci-cd"]
+    },
+
+    {
+      "id": "deployment",
+      "name": "Deployment Lifecycle",
+      "path": "~/.agents/skills/deployment",
+      "category": "deployment",
+      "enabled": true,
+      "extensions": ["continue", "cline", "copilot"],
+      "description": "Manage Railway deployments, view logs, debug issues",
+      "tags": ["deployment", "logs", "debugging", "troubleshooting"]
+    },
+
+    {
+      "id": "domain",
+      "name": "Domain Management",
+      "path": "~/.agents/skills/domain",
+      "category": "infrastructure",
+      "enabled": true,
+      "extensions": ["continue", "cline"],
+      "description": "Add domains, generate Railway domains, manage URLs",
+      "tags": ["domain", "dns", "routing"]
+    },
+
+    {
+      "id": "environment",
+      "name": "Environment Configuration",
+      "path": "~/.agents/skills/environment",
+      "category": "configuration",
+      "enabled": true,
+      "extensions": ["continue", "cline", "copilot", "gemini"],
+      "description": "Manage environment variables, service config, scaling",
+      "tags": ["environment", "variables", "configuration"]
+    },
+
+    {
+      "id": "metrics",
+      "name": "Resource Metrics",
+      "path": "~/.agents/skills/metrics",
+      "category": "monitoring",
+      "enabled": true,
+      "extensions": ["continue", "cline"],
+      "description": "Monitor CPU, memory, network, disk usage",
+      "tags": ["monitoring", "performance", "metrics"]
+    },
+
+    {
+      "id": "new",
+      "name": "Project Setup",
+      "path": "~/.agents/skills/new",
+      "category": "initialization",
+      "enabled": true,
+      "extensions": ["continue", "cline", "copilot"],
+      "description": "Setup projects, deploy from GitHub, initialize services",
+      "tags": ["setup", "initialization", "scaffolding"]
+    },
+
+    {
+      "id": "projects",
+      "name": "Project Management",
+      "path": "~/.agents/skills/projects",
+      "category": "project",
+      "enabled": true,
+      "extensions": ["continue", "cline"],
+      "description": "List projects, switch, rename, manage settings",
+      "tags": ["project", "workspace", "management"]
+    },
+
+    {
+      "id": "railway-docs",
+      "name": "Railway Documentation",
+      "path": "~/.agents/skills/railway-docs",
+      "category": "documentation",
+      "enabled": true,
+      "extensions": ["continue", "cline", "copilot", "gemini"],
+      "description": "Railway features, docs, best practices",
+      "tags": ["documentation", "reference", "learning"]
+    },
+
+    {
+      "id": "service",
+      "name": "Service Management",
+      "path": "~/.agents/skills/service",
+      "category": "infrastructure",
+      "enabled": true,
+      "extensions": ["continue", "cline"],
+      "description": "Service status, rename, configure, Docker images",
+      "tags": ["service", "configuration", "docker"]
+    },
+
+    {
+      "id": "status",
+      "name": "Deployment Status",
+      "path": "~/.agents/skills/status",
+      "category": "monitoring",
+      "enabled": true,
+      "extensions": ["continue", "cline"],
+      "description": "Check deployment status, uptime, health",
+      "tags": ["status", "monitoring", "health"]
+    },
+
+    {
+      "id": "templates",
+      "name": "Template Services",
+      "path": "~/.agents/skills/templates",
+      "category": "scaffolding",
+      "enabled": true,
+      "extensions": ["continue", "cline", "copilot"],
+      "description": "Deploy templates (Ghost, Strapi, n8n, etc.)",
+      "tags": ["templates", "plugins", "applications"]
+    },
+
+    {
+      "id": "central-station",
+      "name": "Central Station Community",
+      "path": "~/.agents/skills/central-station",
+      "category": "community",
+      "enabled": true,
+      "extensions": ["continue", "cline"],
+      "description": "Search Railway community, find discussions, support",
+      "tags": ["community", "support", "knowledge-base"]
+    }
+  ],
+
+  "skillsByCategory": {
+    "deployment": ["railway", "deploy", "deployment"],
+    "data": ["database"],
+    "infrastructure": ["domain", "service"],
+    "configuration": ["environment"],
+    "monitoring": ["metrics", "status"],
+    "initialization": ["new"],
+    "project": ["projects"],
+    "documentation": ["railway-docs"],
+    "community": ["central-station"],
+    "scaffolding": ["templates"]
+  },
+
+  "skillsByExtension": {
+    "continue": ["railway", "database", "deploy", "deployment", "domain", "environment", "metrics", "new", "projects", "railway-docs", "service", "status", "templates", "central-station"],
+    "cline": ["railway", "database", "deploy", "deployment", "domain", "environment", "metrics", "new", "projects", "railway-docs", "service", "status", "templates", "central-station"],
+    "copilot": ["railway", "database", "deployment", "environment", "new", "railway-docs", "templates"],
+    "gemini": ["railway", "database", "environment", "railway-docs"]
+  }
+}

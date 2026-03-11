@@ -1,0 +1,10 @@
+DATE_UTC=2026-03-08T09:25:12Z
+--- GET /api/auth/github/start (valid params) ---
+HTTP/1.1 302 Found
+vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+location: https://github.com/login/oauth/authorize?client_id=dummy_github_client_id&redirect_uri=http%3A%2F%2F127.0.0.1%3A4310%2Fapi%2Fauth%2Fgithub%2Fcallback&scope=read%3Auser+user%3Aemail&state=5aa14e0e-489a-49b6-abdd-333358b8fb3c
+Date: Sun, 08 Mar 2026 09:25:12 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+

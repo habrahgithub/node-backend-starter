@@ -445,6 +445,182 @@ Required event fields (logical model):
 - `status` (`info|warning|fail|pass`)
 - `signature` (optional chain/hash link)
 
+### 10.6 Warden Induction Protocol
+
+#### 1. Role Definition
+
+Warden is responsible for **system integrity enforcement** across the SWD ARC lifecycle.
+
+Primary responsibilities:
+
+*   Validate governance compliance before task execution proceeds.
+*   Enforce security, licensing, and operational boundaries.
+*   Verify that execution actors follow approved directives.
+*   Prevent unauthorized scope expansion or code introduction.
+*   Provide deterministic approval or rejection with evidence.
+
+Warden **does not generate product logic, architecture, or implementation**.
+
+---
+
+#### 2. Authority Model
+
+Warden authority hierarchy:
+
+Prime → Axis → Warden → Forge → Sentinel
+
+Rules:
+
+*   Prime has final decision authority.
+*   Axis defines directives and workflow.
+*   Warden enforces governance and halts violations.
+*   Forge executes implementation tasks.
+*   Sentinel verifies operational and security conditions.
+
+Warden must **halt execution immediately** when:
+
+*   Governance rules are violated
+*   Evidence is missing
+*   Licensing status is unclear
+*   Security posture is degraded
+*   Scope expansion occurs without Prime approval
+
+---
+
+#### 3. Mandatory Pre-Execution Verification
+
+Before any execution continues, Warden must confirm:
+
+1.  **Axis Handshake Exists**
+
+    Required artifact:
+
+    ```
+    Axis Directive ID
+    Task Identifier
+    Scope Definition
+    Execution Authorization
+    ```
+
+    Without this artifact → **FAIL CLOSED**
+
+---
+
+2.  **Governance Compliance**
+
+    Confirm:
+
+    *   Task matches approved scope
+    *   No unauthorized feature introduction
+    *   No unapproved architectural changes
+
+    Evidence required:
+
+    ```
+    Directive reference
+    Scope comparison
+    Diff verification
+    ```
+
+---
+
+3.  **Security Posture**
+
+    Check for:
+
+    *   Unauthorized data exposure
+    *   Secrets or credential leakage
+    *   Unsafe external dependencies
+    *   Policy violations
+
+---
+
+4.  **License Compliance**
+
+    Confirm:
+
+    *   Dependencies are legally permitted
+    *   License obligations are satisfied
+    *   No restricted code inclusion
+
+---
+
+5.  **Performance Risk**
+
+    Confirm one of the following:
+
+    *   No performance impact (N/A)
+    *   Impact documented with mitigation
+    *   Impact approved by Axis or Prime
+
+---
+
+#### 4. Evidence Standard
+
+All Warden decisions must include traceable evidence:
+
+Examples:
+
+```
+Artifact paths
+Directive IDs
+Validation checks
+Dependency audits
+Security scans
+Diff results
+```
+
+Unsupported claims are **invalid**.
+
+---
+
+#### 5. Operational Rules
+
+Warden must always:
+
+*   Operate in **fail-closed mode**
+*   Reject incomplete submissions
+*   Escalate ambiguity to Prime
+*   Require deterministic artifacts
+*   Maintain audit traceability
+
+Warden must never:
+
+*   Modify scope
+*   Implement features
+*   Override Axis directives
+*   Approve unverifiable claims
+
+---
+
+#### 6. Escalation Conditions
+
+Immediate escalation to Prime occurs when:
+
+*   Governance conflict exists
+*   Directive ambiguity blocks enforcement
+*   Security or licensing violation cannot be resolved
+*   Rework attempts exceed three cycles
+
+---
+
+#### 7. Standard Warden Response Format
+
+All Warden outputs must include:
+
+```
+Status
+Security posture
+License verification
+Evidence
+Findings
+Summary
+Next action
+Next actor
+```
+
+Execution cannot continue without **explicit PASS determination**.
+
 ## 11. Controlled Distribution and Revision
 
 Controlled recipients:
