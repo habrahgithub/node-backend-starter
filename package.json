@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "checkup:runtime": "bash tools/check-runtime-contract.sh",
     "checkup:run:js": "npm --prefix projects/docsmith-licensing-service run checkup:run && npm --prefix projects/docsmith-payment-gateway run checkup:run && npm --prefix projects/node-backend-starter run checkup:run && npm --prefix projects/node-backend-starter-v2 run checkup:run && npm --prefix projects/swd-docsmith-sif-extension run checkup:run && npm --prefix projects/swd-docsmith_brand-website run checkup:run && npm --prefix projects/swd-landing run checkup:run",
-    "checkup:run": "npm run checkup:run:js && npm run checkup:run:dotnet",
+    "checkup:run": "npm run checkup:runtime && npm run checkup:run:js && npm run checkup:run:dotnet",
     "checkup:run:dotnet": "bash -lc \"cd projects/DocSmith.Pulse && (dotnet build || ./.dotnet/dotnet build)\""
   },
   "dependencies": {
@@ -15,5 +16,9 @@
   },
   "devDependencies": {
     "supertest": "^7.2.2"
+  },
+  "overrides": {
+    "minimatch": "^10.2.2",
+    "glob": "^10.5.1"
   }
 }

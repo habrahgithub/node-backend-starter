@@ -16,6 +16,21 @@ function getProvenance(event) {
   };
 }
 
+function getSeverityIcon(severity) {
+  const s = String(severity || "").toLowerCase();
+  if (s === "critical" || s === "fatal" || s === "blocker") return "🔴";
+  if (s === "warning" || s === "warn") return "🟡";
+  if (s === "info") return "🔵";
+  return "⚙";
+}
+
+function truncateSummary(summary, maxLength = 80) {
+  if (!summary) return "";
+  const str = String(summary);
+  if (str.length <= maxLength) return str;
+  return str.slice(0, maxLength) + "...";
+}
+
 export default function TimelinePage({ searchParams }) {
   const project = searchParams?.project || "";
   const type = searchParams?.type || "";
@@ -129,11 +144,21 @@ export default function TimelinePage({ searchParams }) {
                           <td>{event.project}</td>
                           <td>{event.type}</td>
                           <td>
-                            <span className={`severity severity-${event.severity}`}>{event.severity}</span>
+                            <span className={`severity severity-${event.severity}`}>
+                              {getSeverityIcon(event.severity)} {event.severity}
+                            </span>
                           </td>
                           <td>{event.details?.event_class || "-"}</td>
                           <td>
-                            <div>{event.summary}</div>
+                            <div>
+                              {truncateSummary(event.summary)}
+                              {event.summary && event.summary.length > 80 && (
+                                <details className="small">
+                                  <summary>Read more</summary>
+                                  <p>{event.summary}</p>
+                                </details>
+                              )}
+                            </div>
                             {provenance ? (
                               <details className="small">
                                 <summary>Provenance</summary>

@@ -2,6 +2,8 @@
 
 Local Next.js War Room for SWD Vault.
 
+Runtime baseline: Node `20.11.1` (minimum `>=20.9.0`).
+
 ## Run
 
 ```bash

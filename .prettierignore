@@ -1,0 +1,27 @@
+# Exclude configuration files that shouldn't be formatted
+.aiexclude
+.editorconfig
+.env
+.env.*
+.gitignore
+.prettierignore
+
+# Exclude build and dependency directories
+node_modules/
+dist/
+build/
+.next/
+out/
+coverage/
+
+# Exclude logs and cache
+*.log
+.cache/
+.npm-cache/
+
+# Exclude documentation and config files
+*.md
+*.json
+*.yaml
+*.yml
+*.toml
