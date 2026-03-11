@@ -1,2 +1,0 @@
-Chain OK: events=20912 head=84cfbba8cd5affc8aba6b8ad1bce58e0080df45b53c5edfe2f89e3734f252748
-VerifyEventId=20913

@@ -1,4 +1,3 @@
 interface:
   display_name: "Social Marketing Content Studio"
   short_description: "Help with Social Marketing Content Studio tasks"
-  default_prompt: "Use $social-marketing-content-studio to generate a campaign brief and produce a platform-ready bundle using Goal, Audience, Platforms, Core Message, and CTA."

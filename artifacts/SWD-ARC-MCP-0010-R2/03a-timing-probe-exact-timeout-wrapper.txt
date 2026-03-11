@@ -1,2 +1,0 @@
-CMD: timeout 22s curl -s -o /dev/null -w "code=%{http_code} connect=%{time_connect} start=%{time_starttransfer} total=%{time_total}" https://www.starwealthdynamics.org/mcp/<connector_key>
-exit_code=124

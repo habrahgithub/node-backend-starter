@@ -1,6 +1,0 @@
-# Malformed Payload Drill
-generated_at_utc=2026-02-26T02:49:01.703Z
-
-pass=true
-request_count=3
-status_distribution={"400":2,"401":1}

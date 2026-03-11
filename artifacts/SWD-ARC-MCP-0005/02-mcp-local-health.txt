@@ -1,2 +1,0 @@
-LOCAL_HEALTH_HTTP=200
-{"status":"healthy","timestamp":"2026-03-05T17:11:08.544Z","server":{"uptime":0,"requestCount":1}}

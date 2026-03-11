@@ -1,7 +1,0 @@
-# Concurrency Drill
-generated_at_utc=2026-02-26T02:50:13.318Z
-
-pass=true
-request_count=100
-status_distribution={"200":40,"429":56,"ERR":4}
-db_license_rows_for_intent=1

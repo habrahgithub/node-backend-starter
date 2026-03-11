@@ -1,6 +1,0 @@
-DATE=2026-03-06T19:06:40Z
-DIRECTIVE_ID=SWD-ARC-MCP-0013
-TARGET=/home/habib/workspace/projects/swd-landing
-INTENT=Remove ambiguity around upstream attachment state without enabling writes
-REQUIRED_SURFACES=compliance.runtime_attachment,compliance.upstream_probe,compliance.upstream_mode
-SIGNED_ENDPOINT=https://www.starwealthdynamics.org/mcp/<connector_key>

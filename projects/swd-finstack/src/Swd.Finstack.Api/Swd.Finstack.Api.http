@@ -1,6 +1,0 @@
-@Swd.Finstack.Api_HostAddress = http://localhost:5098
-
-GET {{Swd.Finstack.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

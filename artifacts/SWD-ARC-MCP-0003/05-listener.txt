@@ -1,2 +1,0 @@
-DATE=2026-03-05T20:45:13+04:00
-node      3989 habib   21u  IPv6 427845      0t0  TCP *:3000 (LISTEN)

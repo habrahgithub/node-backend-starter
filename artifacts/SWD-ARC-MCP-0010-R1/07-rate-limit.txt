@@ -1,6 +1,0 @@
-DATE=2026-03-05T19:29:49Z
-URL_REDACTED=https://www.starwealthdynamics.org/mcp/<connector_key>
--- burst 30 parallel requests to /mcp/<key> --
-      4 000
-     21 200
-      5 429

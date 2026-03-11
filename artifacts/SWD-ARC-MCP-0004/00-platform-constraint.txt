@@ -1,4 +1,0 @@
-ChatGPT connector integration baseline (planning):
-- ChatGPT custom connectors currently support remote MCP servers.
-- Local MCP connector declaration via ~/.config/chatgpt/mcp_servers.json is not the active supported path for ChatGPT connector setup.
-- Source: https://help.openai.com/en/articles/12584461-developer-mode-apps-and-full-mcp-connectors-in-chatgpt-beta

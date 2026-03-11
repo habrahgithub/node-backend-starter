@@ -1,4 +1,0 @@
-unauth_http=401
-{"error":"unauthorized"}
-auth_http=200
-{"status":"healthy","timestamp":"2026-03-05T17:20:30.985Z","server":{"uptime":0,"requestCount":2}}

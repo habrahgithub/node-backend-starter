@@ -1,6 +1,0 @@
-DATE=2026-03-05T19:28:59Z
-POLICY=24h rotation; immediate rotation on suspected leakage
-CONNECTOR_KEY_SHA256=f01033f69018c409349802fae887a1ac83c398b6347785e43f2275cfff65d4d7
-CONNECTOR_KEY_REDACTED=<redacted>
-MISMATCH_POLICY=/mcp/<wrong_key> => 401; no header fallback
-LOG_POLICY=route redaction (/mcp/:key) + key fingerprint only

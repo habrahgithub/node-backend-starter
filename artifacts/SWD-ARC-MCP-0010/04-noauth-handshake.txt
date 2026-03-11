@@ -1,9 +1,0 @@
-DATE=2026-03-05T19:17:16Z
-URL_REDACTED=https://www.starwealthdynamics.org/mcp/<connector_key>
-CONNECTOR_KEY_SHA256=92fe4f50fc142b9db952cb904c56863c323a6959efe519a41a4d63fc16ac068c
--- GET /mcp/<key> (NoAuth) --
-HTTP=200 TIME=1.697891
-{"tools":[{"name":"ping"},{"name":"health_check"},{"name":"get_metrics"},{"name":"vault.ping"}]}
--- POST /mcp/<key> ping --
-HTTP=200
-{"content":[{"type":"text","text":"MCP server is alive"}]}

@@ -1,8 +1,0 @@
-^C{"timestamp":"2026-03-05T17:43:14.944Z","level":"info","message":"Received SIGINT, starting graceful shutdown..."}
-{"timestamp":"2026-03-05T17:43:15.113Z","level":"info","message":"Closing HTTP server..."}
-{"timestamp":"2026-03-05T17:43:15.173Z","level":"info","message":"HTTP server closed successfully"}
-{"timestamp":"2026-03-05T17:43:15.176Z","level":"info","message":"Closing stdio transport..."}
-{"timestamp":"2026-03-05T17:43:15.233Z","level":"info","message":"Stdio transport closed successfully"}
-{"timestamp":"2026-03-05T17:43:15.234Z","level":"info","message":"Closing MCP server..."}
-{"timestamp":"2026-03-05T17:43:15.237Z","level":"info","message":"MCP server closed successfully"}
-{"timestamp":"2026-03-05T17:43:15.237Z","level":"info","message":"Cleanup operations completed"}

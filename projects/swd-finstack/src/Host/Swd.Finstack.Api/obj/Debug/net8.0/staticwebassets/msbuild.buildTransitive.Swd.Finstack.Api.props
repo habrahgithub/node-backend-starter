@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../buildMultiTargeting/Swd.Finstack.Api.props" />
-</Project>

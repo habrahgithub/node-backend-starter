@@ -1,8 +1,0 @@
-DATE=2026-03-05T18:46:17Z
-RERUN_MODE=verification-only
-TARGET_HOST=https://www.starwealthdynamics.org
--- /api/health unauth --
-HTTP=401 TIME=0.659379
-{"error":"unauthorized"}-- /api/health auth --
-HTTP=200 TIME=0.511011
-{"status":"ok","timestamp":"2026-03-05T18:46:17.545Z","gateway":"vercel-edge","allowlist":["ping","health_check","get_metrics","vault.ping"]}

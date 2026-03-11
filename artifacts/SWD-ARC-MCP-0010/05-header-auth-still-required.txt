@@ -1,7 +1,0 @@
-DATE=2026-03-05T19:17:16Z
--- /mcp without header --
-HTTP=401 TIME=1.932103
-{"error":"unauthorized"}
--- /mcp with X-Gateway-Token --
-HTTP=200 TIME=0.461551
-{"tools":[{"name":"ping"},{"name":"health_check"},{"name":"get_metrics"},{"name":"vault.ping"}]}

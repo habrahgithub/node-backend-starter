@@ -1,7 +1,0 @@
-DATE=2026-03-05T18:08:56Z
-status=prepared
-connector_url=https://tidy-mirrors-hammer.loca.lt/mcp
-auth_header_name=X-Gateway-Token
-auth_header_value=<REDACTED>
-auth_token_sha256=cfdb1083dfb0a6dffb64433b0da9dc0637c28ba939b739bd4d64b89529890f72
-note=Connector creation is a ChatGPT UI action; this artifact records the deterministic values used for handshake tests.

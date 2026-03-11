@@ -1,5 +1,0 @@
-{"level":"info","message":"Tool execution audit","data":{"id":"8b92cc22-d0bd-4bc2-9169-d8a83911950e","timestamp":"2026-03-05T17:39:01.231Z","userId":"dev-user","role":"developer","tool":"ping","error":null}}
-{"level":"info","message":"Tool execution audit","data":{"id":"521069fd-d4fa-4a30-a560-d5caa500d68e","timestamp":"2026-03-05T17:39:01.300Z","userId":"dev-user","role":"developer","tool":"health_check","error":null}}
-{"level":"info","message":"Tool execution audit","data":{"id":"fd6066ef-b8fc-4395-a846-6f8029eb9931","timestamp":"2026-03-05T17:39:01.372Z","userId":"dev-user","role":"developer","tool":"get_metrics","error":null}}
-{"level":"info","message":"Tool execution audit","data":{"id":"f8b2e7d3-097e-434c-98ee-97ade1ef7502","timestamp":"2026-03-05T17:39:01.494Z","userId":"dev-user","role":"developer","tool":"vault.ping","error":null}}
-{"level":"info","message":"Tool execution audit","data":{"id":"4463ff2b-0c3d-40ae-a023-e84df289deb5","timestamp":"2026-03-05T17:39:01.535Z","userId":"dev-user","role":"developer","tool":"vault.write","error":"Access denied: developer cannot execute vault.write"}}

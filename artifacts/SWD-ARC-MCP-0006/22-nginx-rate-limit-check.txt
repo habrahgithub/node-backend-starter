@@ -1,7 +1,0 @@
-requests=120
-parallel_batches=30
-http_200=19
-http_429=101
-http_401=0
-other_codes=0
-rate_limit=active

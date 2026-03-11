@@ -1,4 +1,0 @@
-DATE=2026-03-05T17:25:21Z
-install_mode=user-local
-binary=/home/habib/.local/bin/caddy
-version=v2.11.1 h1:C7sQpsFOC5CH+31KqJc7EoOf8mXrOEkFyYd6GpIqm/s=

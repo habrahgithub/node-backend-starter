@@ -1,8 +1,0 @@
-DATE_UTC=2026-03-08T07:02:51Z
-TOKEN_FP_SHA256=0b72adb1c697262376d1d604bd9e590bdac781dcf826afc32cd0d078420765ab
---- bearer host-bound diagnose after bridge stop ---
-{"error":"unauthorized"}
-HTTP_CODE=401
---- bearer runtime_attachment after bridge stop ---
-{"error":"unauthorized"}
-HTTP_CODE=401

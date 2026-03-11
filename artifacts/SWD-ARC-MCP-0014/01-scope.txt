@@ -1,6 +1,0 @@
-DATE=2026-03-06T19:17:08Z
-DIRECTIVE_ID=SWD-ARC-MCP-0014
-TARGET=/home/habib/workspace/projects/swd-landing
-INTENT=Validate downstream verification chains under confirmed control-plane mode
-SIGNED_ENDPOINT=https://www.starwealthdynamics.org/mcp/<connector_key>
-REQUIRED_SURFACES=ping,health_check,get_metrics,vault.ping,axis.context_access.check,axis.context_access.read,axis.context_access.write_artifact,axis.context_access.read_logs,axis.context_access.audit

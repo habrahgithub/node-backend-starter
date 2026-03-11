@@ -1,5 +1,0 @@
-DATE=2026-03-05T19:29:38Z
-URL_REDACTED=https://www.starwealthdynamics.org/mcp/<wrong_key>
-WRONG_KEY_SHA256=d9452fa0b846caaf239feb6e357601bc0cf7390885ee7c5679f9bfee6b31dd18
-HTTP=401 TIME=1.850364
-{"error":"unauthorized"}

@@ -1,5 +1,0 @@
-DATE=2026-03-05T20:37:26+04:00
-PWD=/home/habib/workspace/projects/SWD-ARC/mcp/server
-which node=/home/habib/.nvm/versions/node/v20.11.1/bin/node
-node -v=v20.11.1
-npm -v=10.2.4

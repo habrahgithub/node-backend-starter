@@ -1,3 +1,0 @@
-## wrong directive_id should deny
-{"jsonrpc":"2.0","id":"forge-0015","error":{"code":-32003,"message":"Access denied: agent_scope_mismatch","data":{"deny_reason":"agent_scope_mismatch"}}}
-HTTP_CODE=403

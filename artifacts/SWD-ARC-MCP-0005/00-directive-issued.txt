@@ -1,7 +1,0 @@
-SWD-ARC-MCP-0005 issued
-Status: PASS (execution directive)
-Scope: remote HTTPS MCP exposure for ChatGPT connector
-Paths:
-- /home/habib/workspace/projects/SWD-ARC/governance/canon/sop/SWD-ARC-MCP-0005_REMOTE_EXPOSURE.md
-- /home/habib/workspace/projects/SWD-ARC/docs/DECISIONS.md
-- /home/habib/workspace/projects/SWD-ARC/ops/logs/2026-03.md

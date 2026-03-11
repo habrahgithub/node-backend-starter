@@ -1,3 +1,0 @@
-CMD: curl -s -o /dev/null -w "code=%{http_code} connect=%{time_connect} start=%{time_starttransfer} total=%{time_total}" --max-time 20 https://www.starwealthdynamics.org/mcp/<connector_key>
-code=200 connect=0.163504 start=0.592949 total=20.000906
-exit_code=28

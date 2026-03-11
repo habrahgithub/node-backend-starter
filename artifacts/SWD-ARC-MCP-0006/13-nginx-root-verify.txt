@@ -1,6 +1,0 @@
-DATE=2026-03-05T17:32:30Z
-nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
-nginx: configuration file /etc/nginx/nginx.conf test is successful
-System has not been booted with systemd as init system (PID 1). Can't operate.
-Failed to connect to bus: Host is down
- * nginx is not running

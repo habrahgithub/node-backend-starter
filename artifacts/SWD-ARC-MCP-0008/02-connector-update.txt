@@ -1,7 +1,0 @@
-DATE=2026-03-05T18:19:41Z
-connector_url=https://www.starwealthdynamics.org/mcp
-auth_header_name=X-Gateway-Token
-auth_header_value=<REDACTED>
-auth_token_sha256=d0bf01e972689232aab8132a2631bcf69f98302ac689c4ee4b50b532051df131
-status=blocked
-reason=Vercel host does not currently expose MCP endpoints (/mcp and /api/health returned 404)

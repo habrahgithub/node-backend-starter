@@ -1,7 +1,0 @@
-DATE=2026-03-05T17:11:07Z
-node=v20.11.1
-npm=10.2.4
-path=PathA-tunnel-first
-mcp_permissions=["ping","health_check","get_metrics","vault.ping"]
-mcp_api_key_sha256=fe5a9035ca2508d6dca09f58582043e1897ee28983d9fb856a8830f7fa7f2e63
-proxy_token_sha256=e08d68f77dfc5d09060d257b7864b4ae3df3b6f58be4697af02b6d4cdc276ed4

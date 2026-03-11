@@ -1,1 +1,0 @@
-EVID_DIR=/home/habib/workspace/artifacts/SWD-ARC-HOUSEKEEP-20260305T171341Z

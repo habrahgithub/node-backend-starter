@@ -1,7 +1,7 @@
 # SWD Log Bundle Spec v1
 
 - Version: `1.0`
-- Status: canonical contract (Phase 1 executable in `swd-vault ingest logs`)
+- Status: proposed canonical contract
 - Scope: SWD governance logs converted to NDJSON and ingested via Vault CLI only
 
 ## Goals
