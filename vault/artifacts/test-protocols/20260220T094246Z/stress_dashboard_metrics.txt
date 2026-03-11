@@ -1,0 +1,11 @@
+tool=curl-parallel
+requests=200
+ok_200=200
+failed=0
+error_rate_pct=0.00
+p50_ms=702.85
+p95_ms=896.03
+p99_ms=980.24
+elapsed_s=8.064
+throughput_rps=24.80
+curl_parallel_rc=0

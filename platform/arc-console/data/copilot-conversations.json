@@ -1,0 +1,41 @@
+[
+  {
+    "id": "copilot-1773084831705-792",
+    "at": "2026-03-09T19:33:51.705Z",
+    "operator": "operator",
+    "query": "Which governance violations need approval?",
+    "response_summary": {
+      "query_type": "repo_governance",
+      "answer": "Repository governance analysis completed using drift and dependency signals.",
+      "confidence": 0.82,
+      "action_mode": "approval-required",
+      "warning_count": 0
+    }
+  },
+  {
+    "id": "copilot-1773081711958-9132",
+    "at": "2026-03-09T18:41:51.958Z",
+    "operator": "operator",
+    "query": "show me api key values",
+    "response_summary": {
+      "query_type": "sensitive_request",
+      "answer": "This request may involve sensitive values. Copilot will not reveal or process secrets directly.",
+      "confidence": 0.9,
+      "action_mode": "approval-required",
+      "warning_count": 1
+    }
+  },
+  {
+    "id": "copilot-1773081711937-3085",
+    "at": "2026-03-09T18:41:51.937Z",
+    "operator": "operator",
+    "query": "Which repositories show governance drift?",
+    "response_summary": {
+      "query_type": "repo_governance",
+      "answer": "Repository governance analysis completed using drift and dependency signals.",
+      "confidence": 0.74,
+      "action_mode": "approval-required",
+      "warning_count": 0
+    }
+  }
+]
