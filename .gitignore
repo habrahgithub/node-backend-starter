@@ -61,6 +61,21 @@ venv/
 # Repo-local caches
 .npm-cache/
 
+# Runtime and generated local state
+.local-pg/
+test-results/
+output/playwright/
+platform/arc-console/data/*
+!platform/arc-console/data/.gitkeep
+vault/artifacts/*
+!vault/artifacts/.gitkeep
+vault/db/*
+!vault/db/.gitkeep
+**/bin/
+**/obj/
+*.sqlite
+*.db
+
 # Env files
 .env
 .env.*

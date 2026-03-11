@@ -1,8 +1,0 @@
-config_path=/home/habib/.codex/config.toml
-35:approval_policy = "on-request"
-38:sandbox_mode = "workspace-write"
-45:network_access = false
-54:web_search = "disabled"
-61:inherit = "core"
-63:exclude = ["*KEY*", "*SECRET*", "*TOKEN*"]
-65:include_only = ["PATH", "HOME", "USER", "SHELL", "LANG", "LC_ALL"]

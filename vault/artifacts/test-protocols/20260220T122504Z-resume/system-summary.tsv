@@ -1,9 +1,0 @@
-layer	name	rc	log
-[RUN] swd-docsmith-sif-extension_verify
-system	swd-docsmith-sif-extension_verify	1	vault/artifacts/test-protocols/20260220T122504Z-resume/swd-docsmith-sif-extension_verify.log
-[RUN] swd-docsmith_brand-website_verify
-system	swd-docsmith_brand-website_verify	0	vault/artifacts/test-protocols/20260220T122504Z-resume/swd-docsmith_brand-website_verify.log
-[RUN] docsmith-payment-gateway_e2e-live
-system	docsmith-payment-gateway_e2e-live	1	vault/artifacts/test-protocols/20260220T122504Z-resume/docsmith-payment-gateway_e2e-live.log
-[RUN] swd-docsmith-sif-extension_test-e2e-stress
-system	swd-docsmith-sif-extension_test-e2e-stress	0	vault/artifacts/test-protocols/20260220T122504Z-resume/swd-docsmith-sif-extension_test-e2e-stress.log
